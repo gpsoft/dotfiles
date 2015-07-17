@@ -1,0 +1,51 @@
+[submodule "vimfiles/bundle/mru"]
+	path = vimfiles/bundle/mru
+	url = https://github.com/vim-scripts/mru.vim.git
+[submodule "vimfiles/bundle/bufexplorer"]
+	path = vimfiles/bundle/bufexplorer
+	url = https://github.com/jlanzarotta/bufexplorer.git
+[submodule "vimfiles/bundle/vim-json"]
+	path = vimfiles/bundle/vim-json
+	url = https://github.com/elzr/vim-json.git
+[submodule "vimfiles/bundle/ctrlp.vim"]
+	path = vimfiles/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vimfiles/bundle/vim-over"]
+	path = vimfiles/bundle/vim-over
+	url = https://github.com/osyo-manga/vim-over.git
+[submodule "vimfiles/bundle/lightline.vim"]
+	path = vimfiles/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "vimfiles/bundle/rainbow_parentheses.vim"]
+	path = vimfiles/bundle/rainbow_parentheses.vim
+	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "vimfiles/bundle/vim-clojure-static"]
+	path = vimfiles/bundle/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static.git
+[submodule "vimfiles/bundle/vim-clojure-highlight"]
+	path = vimfiles/bundle/vim-clojure-highlight
+	url = https://github.com/guns/vim-clojure-highlight.git
+[submodule "vimfiles/bundle/vim-fireplace"]
+	path = vimfiles/bundle/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace.git
+[submodule "vimfiles/bundle/vim-easymotion"]
+	path = vimfiles/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "vimfiles/bundle/previm"]
+	path = vimfiles/bundle/previm
+	url = https://github.com/kannokanno/previm.git
+[submodule "vimfiles/bundle/open-browser.vim"]
+	path = vimfiles/bundle/open-browser.vim
+	url = https://github.com/tyru/open-browser.vim.git
+[submodule "vimfiles/bundle/vim-fugitive"]
+	path = vimfiles/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vimfiles/bundle/vim-surround"]
+	path = vimfiles/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vimfiles/bundle/vim-repeat"]
+	path = vimfiles/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vimfiles/bundle/vim-commentary"]
+	path = vimfiles/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git

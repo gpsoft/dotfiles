@@ -1,0 +1,17 @@
+[user]
+	name = gpsoft
+	email = etoh.gpsoft@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = gvim
+	autoCRLF = false
+	quotepath = false
+[push]
+	default = simple
+[merge]
+	tool = gvimdiff
+[color "branch"]
+	upstream = cyan
+[alias]
+	ll = log --pretty=format:"%C(yellow)%h\\ %cd\\ %C(red)%d%Creset\\ %s" --date=short
+	ld = log -5 --pretty=format:"%C(yellow)%h%C(cyan)[%ci]%C(red)%d%Creset\\ by\\ %cn%n%s" --numstat

@@ -1,0 +1,7 @@
+[ui]
+username=maru
+ignore=~/.hgignore_global
+
+[alias]
+ll=log --style compact -l 3
+cr=commit -m "regular"
