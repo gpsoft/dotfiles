@@ -5,6 +5,7 @@ set fileformats=unix,dos,mac
 set runtimepath=~/.vim,$VIMRUNTIME
 
 "Pathogen.
+let g:pathogen_disabled = []  "Plugins you want to disable temporalily.
 execute pathogen#infect()
 execute pathogen#helptags()
 syntax on
@@ -92,10 +93,10 @@ let g:lightline = {
       \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
       \ }
 function! MyFugitive()
-  " if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-  "   let _ = fugitive#head()
-  "   return strlen(_) ? "\u2b60"._ : ''
-  " endif
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? "\u2b60"._ : ''
+  endif
   return ''
 endfunction
 
@@ -177,14 +178,16 @@ set number
 "Relativenumber can make scroll slow in terminal.
 " set relativenumber
 
-if has('mac')
-	set ambiwidth=single
-elseif has('unix')
-	set ambiwidth=single
+if ( has('win32') || has('win64') )
+    set listchars=    " better to clear lcs before setting ambiwidth to auto or double; or you could get E834.
+    set ambiwidth=auto
+    "Moved list setting to .gvimrc.
+    "set list lcs=tab:»\ ,eol:¬,trail:·
 else
-	set ambiwidth=auto
+    set ambiwidth=single
+    set list lcs=tab:»\ ,eol:¬,trail:·
 endif
-set list lcs=tab:»\ ,eol:┘,trail:·
+
 set laststatus=2
 
 "--------------------------------- Custom commands -------------------------
@@ -249,7 +252,8 @@ endfunction
 let g:clojure_highlight_references = 1
 let g:clojure_align_multiline_strings = 1
 
-
+nmap <C-Q> :q<CR>
+nmap <C-T> :w<CR>
 
 
 
@@ -262,8 +266,12 @@ nmap <Leader>E :Ex<CR>
 nmap <Leader>S :Sex<CR>
 nmap <Leader>V :Vex<CR>
 nmap <Leader>q :copen 10<CR>
-nmap <Leader>v :e $HOME/dotfiles/.vimrc<CR>
-nmap <Leader>s :so $MYVIMRC<CR>
+nmap <Leader>ve :e $HOME/dotfiles/.vimrc<CR>
+nmap <Leader>vs :so $MYVIMRC<CR>
+                "Re-loading rc files can cause some issues such as:
+                "  - rainbow paren doesn't work?
+                "  - ctrlp.vim
+                "  - vim-clojure-highlight
 nmap <Leader>m :MRU<CR>
 nmap <Leader>l :BufExplorer<CR>
 nmap <Leader>o :CtrlPMixed<CR>
