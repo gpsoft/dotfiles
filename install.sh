@@ -105,7 +105,7 @@ linkhome .gvimrc
 linkhome .vim vimfiles
 
 ##### UPDATE GIT SUBMODULES
-# git checkout master
-# git pull
-# git submodule init
-# git submodule update
+git checkout master
+git pull
+git submodule init
+git submodule update

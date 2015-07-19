@@ -1,4 +1,7 @@
 scriptencoding utf-8
+set encoding=utf-8
+set fileencodings=utf-8,cp932,sjis,utf-16le,euc-jp
+set fileformats=unix,dos,mac
 
 "Color(overwrite macvim).
 set t_Co=256
@@ -8,9 +11,15 @@ colorscheme slate
 set relativenumber
 
 "Key map.
-nmap <Leader>g :e $HOME/dotfiles/.gvimrc<CR>
+nmap <Leader>ge :e $HOME/dotfiles/.gvimrc<CR>
+nmap <Leader>gs :so $MYGVIMRC<CR>
 " autocmd bufwritepost .gvimrc source $MYGVIMRC
 nmap <C-W><C-S> :<C-u>call WinSidebyside()<CR>
+
+if ( has('win32') || has('win64') )
+    set list lcs=tab:»\ ,eol:¬,trail:·
+        "Don't use a character which shows in double-width.
+endif
 
 "Fonts.
 if has('mac')

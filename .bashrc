@@ -13,13 +13,6 @@ fi
 
 if win; then
     alias ls='ls -F'
-
-    alias Rsv='cd /d/ebica/pg/Rsv/cake/app'
-    alias Conf='cd /d/ebica/pg/Conf/cake/app'
-    alias Ope='cd /d/ebica/pg/Ope/cake/app'
-    alias Docs='cd /d/ebica/reference/Docs'
-
-    cd /d/ebica/pg/Conf/cake/app
 fi
 
 
