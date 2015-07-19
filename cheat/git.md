@@ -1,0 +1,69 @@
+# Git Cheat Sheet
+
+## Ref
+
+### 基準
+    master
+    br1
+    ref/heads/br1
+
+### designated
+    HEAD
+    FETCH_HEAD
+    ORIG_HEAD
+    MERGE_HEAD
+    CHERRY_PICK_HEAD
+
+### 履歴
+    master@{yesterday}
+    HEAD@{5 minutes ago}
+    HEAD@{1 month 20 days ago}
+    HEAD@{2015-03-15 13:00:00}
+
+    br1@{2}   ...refs/heads/br1の2つ前の値
+    @{2}      ...カレントブランチの2つ前の値
+    @{-2}     ...2つ前にcheckoutしたやつ
+
+### dereference
+    br1@{upstream}  ...br1のupstream
+    @{u}            ...カレントブランチのupstream
+    tag1^{commit}   ...tag1が指すコミット
+    tag1^{tree}
+    tag1^{tag}
+    tag1^{}         ...タグ以外のオブジェクトに行き着くまでderefする
+
+    HEAD^      ...最初のparent
+    HEAD^1     ...最初のparent
+    HEAD^2     ...2番目のparent
+    HEAD^2^    ...2番目のparentの最初のparent
+    tag1^0     ...tag1^{commit}
+    br1~3      ...br1^^^
+
+### 検索
+    br1^{/pattern}   ...コメントがマッチするyoungest commit
+    :/pattern        ...どのrefからでもOK
+
+### ツリーの一部
+    HEAD:foo.txt
+    br1@{2}:main.txt
+
+### 競合ファイル
+- stage0: 競合なし
+- stage1: 共通の親
+- stage2: merge先
+- stage3: merge元
+
+
+    :1:foo.txt    ...stage1
+    :2:foo.txt    ...stage2
+    :0:foo.txt    ...stage0
+    :foo.txt      ...stage0
+
+## Range
+    master          ...masterから到達できる親
+    ^origin/master  ...origin/masterから到達できる親は除く
+    br1..br2        ...br2 ^br1
+    br1...br2       ...br1かbr2のどちらか一方から到達できる親
+    br1^@           ...br1の全ての祖先(自分は含まない)
+    br1^!           ...br1 ^br1^ ^br1^2 ^br1^3(br1の親が3つあるとして)
+

@@ -2,7 +2,12 @@ scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,utf-16le,euc-jp
 set fileformats=unix,dos,mac
-set runtimepath=~/.vim,$VIMRUNTIME
+
+if (!exists("g:loaded_pathogen"))
+    "When re-loading rc, below causes a problem(pathogen can't find plagins?).
+    "But why did I need it in the first place?
+    set runtimepath=~/.vim,$VIMRUNTIME
+endif
 
 "Pathogen.
 execute pathogen#infect()
@@ -98,6 +103,16 @@ function! MyFugitive()
   " endif
   return ''
 endfunction
+function! AlterWombat()
+    "Inactive line is too dark, let's lighten it up a bit.
+    hi LightLineLeft_inactive_0 ctermbg=248 ctermfg=234 guibg=#a0a0a0 guifg=#000000
+    hi LightLineLeft_inactive_0_1 ctermbg=238 ctermfg=248 guibg=#444444 guifg=#a0a0a0
+    hi LightLineMiddle_inactive ctermbg=238 guibg=#444444
+    hi LightLineRight_inactive_1_2 ctermbg=238 ctermfg=238 guibg=#444444 guifg=#444444
+endfunction
+autocmd VimEnter * call AlterWombat()
+"      "It doesn't work in CUI; too early.
+autocmd BufRead * call AlterWombat()
 
 "VIM-CLOJURE-STATIC
 let g:clojure_fuzzy_indent = 1
@@ -122,6 +137,8 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
+let g:rbpt_max = 8
+let g:rbpt_loadcmd_toggle = 0
 autocmd VimEnter * RainbowParenthesesToggle
 autocmd Syntax * RainbowParenthesesLoadRound
 autocmd Syntax * RainbowParenthesesLoadSquare
@@ -141,6 +158,7 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 " set t_ve+=[?81;0;112c
 
+set notitle
 set suffixesadd=.clj,.rb  "for gf
 set nrformats=            "format for <C-A> or <C-X>
 set hidden
@@ -263,7 +281,8 @@ nmap <Leader>S :Sex<CR>
 nmap <Leader>V :Vex<CR>
 nmap <Leader>q :copen 10<CR>
 nmap <Leader>v :e $HOME/dotfiles/.vimrc<CR>
-nmap <Leader>s :so $MYVIMRC<CR>
+nmap <Leader>s :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
+                   "After re-loading .vimrc rainbow paren gets off.
 nmap <Leader>m :MRU<CR>
 nmap <Leader>l :BufExplorer<CR>
 nmap <Leader>o :CtrlPMixed<CR>
@@ -274,7 +293,7 @@ nmap <C-F> <Leader><Leader>f
 nnoremap gp "+gp
 nnoremap gP "+gP
 
-nnoremap <F2> :set invpaste<CR>
+nmap <F2> :set invpaste<CR>
 
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap & :&&<CR>
@@ -296,13 +315,15 @@ function! s:VSetSearch()
 endfunction
 
 "for special directories.
-nnoremap <Leader>c :Ex ~/dotfiles/cheat<CR>
+nmap <Leader>C :Ex ~/dotfiles/cheat<CR>
+nmap <Leader>cv :e ~/dotfiles/cheat/vim.md<CR>
+nmap <Leader>cg :e ~/dotfiles/cheat/git.md<CR>
 if has('mac')
-  nnoremap <Leader>n :Ex ~/notes<CR>
+  nmap <Leader>n :Ex ~/notes<CR>
 elseif has('unix')
 else
   if $COMPUTERNAME == "ANTARES"
   else
-    nnoremap <Leader>n :Ex d:\dwh\notes<CR>
+    nmap <Leader>n :Ex d:\dwh\notes<CR>
   endif
 endif
