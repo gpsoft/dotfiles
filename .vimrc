@@ -3,11 +3,14 @@ set encoding=utf-8
 set fileencodings=utf-8,cp932,sjis,utf-16le,euc-jp
 set fileformats=unix,dos,mac
 
-if (!exists("g:loaded_pathogen"))
-    "When re-loading rc, below causes a problem(pathogen can't find plagins?).
-    "But why did I need it in the first place?
-    set runtimepath=~/.vim,$VIMRUNTIME
-endif
+"Not necessary if you use 'vimfiles' instead of '.vim'.
+"if ( (has('win32') || has('win64')) &&
+"     !exists("g:loaded_pathogen"))
+"    "Add .vim to runtime path for Win.
+"    "But this causes a problem when re-loading rc(pathogen can't find plagins?),
+"    "so do it only first load.
+"    set runtimepath=~/.vim,$VIMRUNTIME
+"endif
 
 "Pathogen.
 let g:pathogen_disabled = []  "Plugins you want to disable temporalily.

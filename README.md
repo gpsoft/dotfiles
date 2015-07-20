@@ -58,7 +58,10 @@ About installation:
 - Git-1.9.5-preview20150319.exe
 - uncheck all options such as explorer integration
 - select "Use Git from the Windows Command Prompt" about PATH
+  - select third option or add PATH yourself for unix commands such as diff
+  - some vim commands, like diffthis and Gdiff, need it
 - select "Checkout as-is, commit as-is" about EOL conversion
+
 
 About firewall:
 - add following files to the white-list of your firewall

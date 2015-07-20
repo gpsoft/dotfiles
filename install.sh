@@ -102,10 +102,15 @@ linkhome .hgignore_global
 linkhome .hgrc
 linkhome .vimrc
 linkhome .gvimrc
-linkhome .vim vimfiles
+if win; then
+    linkhome vimfiles
+else
+    linkhome .vim vimfiles
+fi
 
 ##### UPDATE GIT SUBMODULES
 git checkout master
 git pull
 git submodule init
+echo updating submodules.
 git submodule update
