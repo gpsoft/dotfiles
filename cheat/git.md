@@ -1,5 +1,68 @@
 # Git Cheat Sheet
 
+## 戻す
+    git checkout -- FILE
+    git reset --hard ORIG_HEAD           ...pull(or merge)前へ
+
+マージのdry run:
+    git merge --no-commit --no-ff br1    ...してからの
+    git reset --hard HEAD
+
+## Diff
+    git diff --name-only ..origin/br1      ...ファイル名のみ表示
+
+## Branch
+    git branch -r       ...リモートのブランチ
+    git branch -a       ...全ブランチ
+
+## Remote
+    git push --set-upstream origin br1   ...アップ追跡ブラを設定しつつpush
+    git remote set-url origin git@github.com:gpsoft/othe.git   ...URL変更
+
+## Stash
+シンプルに:
+    git stash
+    work, work, work...
+    git stash pop
+
+いろいろ:
+    git stash save "hoge hoge hoge"
+    work, work, work...
+    git stash save "fuga fuga"
+    work, work, work...
+    git stash list
+    git stash pop stash@{NUMBER}              任意のstashを復帰
+    git stash pop                             最後のstashを復帰
+    git stash drop stash@{NUMBER}             任意のstashを廃棄
+
+- popの代わりにapplyなら、stashから削除せずに復帰できる
+- popでconflictしたら、ハンドで修正して、そのファイルをaddして、stashをdropしとけばいい
+
+## Submodule
+    cd ~/myproj
+    git submodule add git://github.com/someone/somelib.git lib/somelib
+                                              ...somelibの、そのコミットを取り込む
+    git commit
+
+    cd ~
+    git clone myproj otherwork
+    cd otherwork
+    git submodule init                        ...cloneだけでは不十分
+    git submodule update                      ...myprojのsomelibを取り込む
+
+    誰かがsomelibに変更を加えてcommit&push
+
+    cd ~/otherwork
+    git pull
+    git submodule update
+
+## Configuration
+    git config --get-regexp "^user"
+    git config --global color.branch.upstream "dim cyan"
+                   ...normal, black, red, green, yellow, blue, magenta, cyan, or white
+                   ...bold, dim, ul, blink, and reverse
+    git config --global core.quotepath false  ...日本語ファイル名
+
 ## Ref
 
 ### 基準
