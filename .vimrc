@@ -322,7 +322,7 @@ function! s:VSetSearch()
 endfunction
 
 "for special directories.
-nmap <Leader>C :Ex ~/dotfiles/cheat<CR>
+nmap <Leader>cs :e ~/dotfiles/cheat<CR>
 nmap <Leader>cv :e ~/dotfiles/cheat/vim.md<CR>
 nmap <Leader>cg :e ~/dotfiles/cheat/git.md<CR>
 if has('mac')
