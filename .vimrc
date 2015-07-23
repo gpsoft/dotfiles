@@ -288,7 +288,7 @@ noremap \ ,
 nmap <Leader>E :Ex<CR>
 nmap <Leader>S :Sex<CR>
 nmap <Leader>V :Vex<CR>
-nmap <Leader>q :copen 10<CR>
+nmap <Leader>q :copen 10<CR><C-w>J
 nmap <Leader>ve :e $HOME/dotfiles/.vimrc<CR>
 nmap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
                    "After re-loading .vimrc rainbow paren gets off.
