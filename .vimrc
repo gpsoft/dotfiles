@@ -191,7 +191,8 @@ set pastetoggle=<F2>
 set showmode
 
 set tw=0
-"autocmd FileType text setlocal tw=0
+autocmd FileType text setlocal tw=0
+        "Global setting doesn't work for text filetype?
 
 highlight ColorColumn ctermbg=magenta guibg=Magenta
 call matchadd('ColorColumn', '\%82v', 100)
