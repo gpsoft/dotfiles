@@ -14,10 +14,16 @@
 ## Branch
     git branch -r       ...リモートのブランチ
     git branch -a       ...全ブランチ
+    git branch --delete br1
+
+## Merge
+    git merge --squash --no-commit br1   ...br1での複数のコミットをひとまとめで
 
 ## Remote
     git push --set-upstream origin br1   ...アップ追跡ブラを設定しつつpush
     git remote set-url origin git@github.com:gpsoft/othe.git   ...URL変更
+    git push origin :br1           ...リモートリポジトリのbr1を削除
+    git push --delete origin br1   ...リモートリポジトリのbr1を削除
 
 ## Stash
 シンプルに:
@@ -55,6 +61,12 @@
     cd ~/otherwork
     git pull
     git submodule update
+
+    git submodule deinit lib/somelib           ...作業ディレクトリからsomelibを削除(init&updateすれば戻る)
+
+    git rm lib/somelib                 ...リポジトリからsomelibを削除。
+    git commit
+    rm -rf .git/modules/somelib
 
 ## Configuration
     git config --get-regexp "^user"
