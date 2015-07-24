@@ -301,9 +301,9 @@ nmap <C-F> <Leader><Leader>f
 nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gd :Gdiff<CR>
-nmap <Leader>gc :Gcommig<CR>
+nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gb :Gblame<CR>
-nmap <Leader>gl :Glog<CR>
+nmap <Leader>gl :Glog<CR>:copen<CR><C-w>J
 nmap <Leader>gr :Gread<CR>
 nmap <Leader>gw :Gwrite<CR>
 
