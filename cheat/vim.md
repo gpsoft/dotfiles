@@ -41,11 +41,11 @@
     gcc  gc{motion}     コメントをトグル
     C  S  I  gi         $までc | ^から$までc | ^でi | `^でi
 
-### Vim-Sorround
+### Vim-Surround
     S{delimiter}        選択範囲を囲む
     ys{text-obj}{delim} テキストオブジェクトを囲む
     cs{d1}{d2}  cst{d2} デリミタ/タグを変更
-    ds{d1}{d2}  dst{d2} デリミタ/タグを削除
+    ds{d1}  dst{d1} デリミタ/タグを削除
     sample: cs"'      " => '
             cst"      <tab> => "
             cs'<p>    <' => <p>
