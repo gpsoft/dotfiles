@@ -66,7 +66,7 @@
 
     git rm lib/somelib                 ...リポジトリからsomelibを削除。
     git commit
-    rm -rf .git/modules/somelib
+    rm -rf .git/modules/lib/somelib
 
 ## Configuration
     git config --get-regexp "^user"
