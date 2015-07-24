@@ -14,6 +14,7 @@
 ## Branch
     git branch -r       ...リモートのブランチ
     git branch -a       ...全ブランチ
+    git checkout -b br1 origin/br1       ...初めてのリモ追跡ブラをベースに作業する
 
 ## Remote
     git push --set-upstream origin br1   ...アップ追跡ブラを設定しつつpush
