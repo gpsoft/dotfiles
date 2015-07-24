@@ -289,7 +289,7 @@ nmap <Leader>E :Ex<CR>
 nmap <Leader>S :Sex<CR>
 nmap <Leader>V :Vex<CR>
 nmap <Leader>q :copen 10<CR><C-w>J
-nmap <Leader>ve :e $HOME/dotfiles/.vimrc<CR>
+nmap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
 nmap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
                    "After re-loading .vimrc rainbow paren gets off.
 nmap <Leader>m :MRU<CR>
@@ -298,6 +298,14 @@ nmap <Leader>o :CtrlPMixed<CR>
 nmap <Leader>r :OverCommandLine<CR>%s/
 nmap <Leader>p :PrevimOpen<CR>
 nmap <C-F> <Leader><Leader>f
+nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gd :Gdiff<CR>
+nmap <Leader>gc :Gcommig<CR>
+nmap <Leader>gb :Gblame<CR>
+nmap <Leader>gl :Glog<CR>
+nmap <Leader>gr :Gread<CR>
+nmap <Leader>gw :Gwrite<CR>
 
 nnoremap gp "+gp
 nnoremap gP "+gP
@@ -324,9 +332,9 @@ function! s:VSetSearch()
 endfunction
 
 "for special directories.
-nmap <Leader>cs :e ~/dotfiles/cheat<CR>
-nmap <Leader>cv :e ~/dotfiles/cheat/vim.md<CR>
-nmap <Leader>cg :e ~/dotfiles/cheat/git.md<CR>
+nmap <Leader>cs :split ~/dotfiles/cheat<CR>
+nmap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
+nmap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
 if has('mac')
   nmap <Leader>n :Ex ~/notes<CR>
 elseif has('unix')
