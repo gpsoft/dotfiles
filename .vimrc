@@ -307,6 +307,7 @@ nmap <Leader>gl :Glog<CR>:copen<CR><C-w>J
 nmap <Leader>gr :Gread<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gp :Git push<CR>
+nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 
 nnoremap gp "+gp
 nnoremap gP "+gP
