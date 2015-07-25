@@ -69,6 +69,8 @@
     git commit
     rm -rf .git/modules/lib/somelib
 
+gitは、.gitmodulesに、submoduleのurlとディレクトリの一覧を持つ。そこに登録するのがaddで、削除するのがdeinit。また、initによりリモートとローカルの.gitmodulesを同期し、updateにより.gitmodules内のsubmoduleをローカルに持ってくる。よってリモートに新しいsubmoduleが追加されたら、ローカルで再init&updateが必要。
+
 ## Configuration
     git config --get-regexp "^user"
     git config --global color.branch.upstream "dim cyan"
