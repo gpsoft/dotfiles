@@ -12,7 +12,7 @@ set relativenumber
 
 "Key map.
 nmap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
-nmap <Leader>gs :so $MYGVIMRC<CR>
+nmap <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 " autocmd bufwritepost .gvimrc source $MYGVIMRC
 nmap <C-W><C-S> :<C-u>call WinSidebyside()<CR>
 
@@ -49,8 +49,8 @@ function! InitPlacement()
 endfunction
 function! SidebysidePlacement()
 	if has('mac')
-		winpos 150 0
-		set lines=50 columns=150
+		winpos 60 0
+		set lines=50 columns=170
 	elseif has('unix')
 	else
 		if $COMPUTERNAME == "ANTARES"
