@@ -11,7 +11,7 @@ colorscheme slate
 set relativenumber
 
 "Key map.
-nmap <Leader>ge :e $HOME/dotfiles/.gvimrc<CR>
+nmap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
 nmap <Leader>gs :so $MYGVIMRC<CR>
 " autocmd bufwritepost .gvimrc source $MYGVIMRC
 nmap <C-W><C-S> :<C-u>call WinSidebyside()<CR>
