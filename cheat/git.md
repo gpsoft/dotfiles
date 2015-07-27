@@ -14,10 +14,11 @@
 ## Branch
     git branch -r       ...リモートのブランチ
     git branch -a       ...全ブランチ
+    git checkout -b br1 origin/br1       ...初めてのリモ追跡ブラをベースに作業する
     git branch --delete br1
 
 ## Merge
-    git merge --squash --no-commit br1   ...br1での複数のコミットをひとまとめで
+    git merge --squash --no-commit br1   ...br1での複数のcommitオブジェクトをひとまとめで
 
 ## Remote
     git push --set-upstream origin br1   ...アップ追跡ブラを設定しつつpush
@@ -45,28 +46,58 @@
 - popでconflictしたら、ハンドで修正して、そのファイルをaddして、stashをdropしとけばいい
 
 ## Submodule
+### submoduleの追加
     cd ~/myproj
     git submodule add git://github.com/someone/somelib.git lib/somelib
-                                              ...somelibの、そのコミットを取り込む
+                                       ...somelibの、現時点のブランチヘッドを取り込む
     git commit
+    git push
 
+### submodule付きのリポをclone
     cd ~
     git clone myproj otherwork
     cd otherwork
-    git submodule init                        ...cloneだけでは不十分
-    git submodule update                      ...myprojのsomelibを取り込む
+    git submodule init                 ...cloneだけでは不十分
+    git submodule update               ...myprojのsomelibを取り込む
+    あるいは、`clone`時に`--recursive`を付けるだけでもOK。
 
-    誰かがsomelibに変更を加えてcommit&push
+ここで取り込まれるsomelibは、sumelibの、submodule addした時点のブランチヘッド。そのミットは、cloneした時点では、既にブランチヘッドではないかもしれない。その場合、cloneしたローカルのsomelibのHEADはDETACHED状態である。
+
+### submoduleをpull
+    cd ~/myproj/lib/somelib
+    git pull
+    cd ..
+    git commit
+    git push
+
+全submoduleをpullしたいなら以下。
+
+    cd ~/myproj
+    git submodule foreach git pull
+    git commit
+    git push
+
+### submodule付きのリポをpull
+    cd ~/otherwork
+    git pull                           ...pullだけでは不十分
+    git submodule init
+    git submodule update
+
+submoduleが増えている可能性もあるので、initが必要。あるいは以下でもOK。
 
     cd ~/otherwork
     git pull
-    git submodule update
+    git submodule update --init
 
-    git submodule deinit lib/somelib           ...作業ディレクトリからsomelibを削除(init&updateすれば戻る)
+### submoduleの削除
+    git submodule deinit lib/somelib   ...作業ディレクトリからsomelibを削除(init&updateすれば戻る)
 
     git rm lib/somelib                 ...リポジトリからsomelibを削除。
     git commit
     rm -rf .git/modules/lib/somelib
+
+### まとめ
+gitは、.gitmodulesに、submoduleのurlとディレクトリの一覧を持つ。そこに登録するのがaddで、削除するのがdeinit。また、initによりリモートとローカルの.gitmodulesを同期し、updateにより.gitmodules内のsubmoduleをローカルに持ってくる。よってリモートに新しいsubmoduleが追加されたら、ローカルで再init&updateが必要。
 
 ## Configuration
     git config --get-regexp "^user"
@@ -74,6 +105,29 @@
                    ...normal, black, red, green, yellow, blue, magenta, cyan, or white
                    ...bold, dim, ul, blink, and reverse
     git config --global core.quotepath false  ...日本語ファイル名
+
+## 用語
+
+- gitオブジェクト              ...commit, tag, tree, blobのどれか。ハッシュで識別する
+- Ref                          ...gitオブジェクトを参照するポインタ(ハッシュ値)
+
+- ブランチ                     ...枝。ブランチヘッドから遡れるcommitオブジェクトすべて
+- ブランチヘッド               ...ブランチの先端。refs/heads/br1が参照しているcommitオブジェクト。単にブランチと呼ぶことも多い
+- HEAD                         ...通常、カレントブランチのブランチヘッドを指す
+- DETACHEDなHEADとは           ...ブランチヘッドでないcommitオブジェクトをcheckoutした状態。commitできない
+- bareなリポジトリとは         ...作業ツリーを持たないリポジトリ。リモートリポジトリがbareでない場合、そのカレントブランチへローカルからpushすることはできない
+
+- リモート(の)ブランチ         ...rm1のfugaとか
+- リモート追跡ブランチ         ...ローカルのrm1/hogeとか。fetchするとこれが更新される。リモ追跡ブラ
+- 追跡ブランチ                 ...ローカルのbr1が、リモートのブランチを追跡しているときのbr1のこと。追跡ブラ
+- アップストリーム追跡ブランチ ...ローカルのbr1が、リモートのブランチを追跡しているときのリモ追跡ブラのこと。アップ追跡ブラ
+      ローカル               　　リモート(rm1)
+      -------------------        --------------
+      br1 <====> rm1/hoge <====> fuga
+      ↑追跡ブラ  ↑アップ追跡ブラ
+
+- Refspec                      ...fetch, pull, pushにおいて、from(src)とto(dst)を指示するための引数。from:to、または+from:toと表記。+を付けるとffじゃなくてもto(dst)を更新する
+- fast-forward                 ...マージにおいて、単にブランチヘッドを先へ進めるだけで済ませること。ff
 
 ## Ref
 
@@ -102,7 +156,7 @@
 ### dereference
     br1@{upstream}  ...br1のupstream
     @{u}            ...カレントブランチのupstream
-    tag1^{commit}   ...tag1が指すコミット
+    tag1^{commit}   ...tag1が指すcommitオブジェクト
     tag1^{tree}
     tag1^{tag}
     tag1^{}         ...タグ以外のオブジェクトに行き着くまでderefする

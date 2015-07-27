@@ -23,6 +23,7 @@ Note that you must run git bash __as admin__ to install on Windows because insta
 ### From time to time(Update)
     cd ~/dotfiles
     git pull
+    git init
     git submodule update
 
 ## Note
