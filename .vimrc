@@ -88,29 +88,29 @@ let MRU_Exclude_Files = "^crontab\."
 
 "LIGHTLINE
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&readonly?"\u2b64":""}',
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \ },
-      \ 'component_visible_condition': {
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
-      \ },
-      \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
-      \ }
+            \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component': {
+            \   'readonly': '%{&readonly?"\u2b64":""}',
+            \ },
+            \ 'component_function': {
+            \   'fugitive': 'MyFugitive',
+            \ },
+            \ 'component_visible_condition': {
+            \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
+            \ },
+            \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+            \ }
 function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? "\u2b60"._ : ''
-  endif
-  return ''
+    if exists("*fugitive#head")
+        let _ = fugitive#head()
+        return strlen(_) ? "\u2b60"._ : ''
+    endif
+    return ''
 endfunction
 function! AlterWombat()
     "Inactive line is too dark, let's lighten it up a bit.
@@ -120,7 +120,7 @@ function! AlterWombat()
     hi LightLineRight_inactive_1_2 ctermbg=238 ctermfg=238 guibg=#444444 guifg=#444444
 endfunction
 autocmd VimEnter * call AlterWombat()
-"      "It doesn't work in CUI; too early.
+            "It doesn't work in CUI; too early.
 autocmd BufRead * call AlterWombat()
 
 "VIM-CLOJURE-STATIC
@@ -129,23 +129,23 @@ let g:clojure_fuzzy_indent_patterns = ['^\(future-\)\?facts\?$', '^prerequisites
 
 "RAINBOW-PAREN
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['black',       'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
 let g:rbpt_max = 8
 let g:rbpt_loadcmd_toggle = 0
 autocmd VimEnter * RainbowParenthesesToggle
@@ -228,29 +228,29 @@ set laststatus=2
 "--------------------------------- Custom commands -------------------------
 "Clojure REPL.
 if has('mac')
-  function! Repl(dir)
-    let script = "!osascript"
-      \ . " -e 'tell application \"iTerm\"'"
-      \ . " -e '  make new terminal'"
-      \ . " -e '  tell the current terminal'"
-      \ . " -e '    activate current session'"
-      \ . " -e '    launch session \"Default session\"'"
-      \ . " -e '    tell the last session'"
-      \ . " -e '      write text \"cd " . a:dir . "; lein repl\"'"
-      \ . " -e '    end tell'"
-      \ . " -e '    end tell'"
-      \ . " -e 'end tell'"
-    execute script
-  endfunction
-  command! Repl silent! call Repl(expand("%:p:h"))
+    function! Repl(dir)
+        let script = "!osascript"
+                    \ . " -e 'tell application \"iTerm\"'"
+                    \ . " -e '  make new terminal'"
+                    \ . " -e '  tell the current terminal'"
+                    \ . " -e '    activate current session'"
+                    \ . " -e '    launch session \"Default session\"'"
+                    \ . " -e '    tell the last session'"
+                    \ . " -e '      write text \"cd " . a:dir . "; lein repl\"'"
+                    \ . " -e '    end tell'"
+                    \ . " -e '    end tell'"
+                    \ . " -e 'end tell'"
+        execute script
+    endfunction
+    command! Repl silent! call Repl(expand("%:p:h"))
 elseif has('unix')
 else
-  command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
+    command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
 endif
 
 "Command prompt for Windows.
 if ( has('win32') || has('win64') )
-  command! Dos !start cmd.exe /k cd /d "%:h"
+    command! Dos !start cmd.exe /k cd /d "%:h"
 endif
 
 "--------------------------------- Experimental ----------------------------
@@ -268,11 +268,11 @@ let g:html_indent_inctags="html,body,head"
 "to set arglist to files in quickfix list.
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
-	let buffer_numbers = {}
-	for quickfix_item in getqlist()
-		let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-	endfor
-	return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+    let buffer_numbers = {}
+    for quickfix_item in getqlist()
+        let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+    endfor
+    return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
 "let g:EasyMotion_use_migemo = 1
@@ -337,10 +337,10 @@ cnoremap <expr> %% getcmdtype()==':' ? expand('%:h').'/' : '%%'
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 function! s:VSetSearch()
-	let temp = @s
-	norm! gv"sy
-	let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
-	let @s = temp
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
 endfunction
 
 "for special directories.

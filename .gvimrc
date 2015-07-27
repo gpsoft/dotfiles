@@ -23,12 +23,12 @@ endif
 
 "Fonts.
 if has('mac')
-  set guifont=Consolas:h14
-  set guifontwide=Monaco:h14
+    set guifont=Consolas:h14
+    set guifontwide=Monaco:h14
 elseif has('unix')
 else
-  set guifont=Consolas:h11
-  set guifontwide=MS_Gothic:h11
+    set guifont=Consolas:h11
+    set guifontwide=MS_Gothic:h11
 endif
 
 "Window placement.
