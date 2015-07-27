@@ -149,6 +149,13 @@ autocmd Syntax * RainbowParenthesesLoadRound
 autocmd Syntax * RainbowParenthesesLoadSquare
 autocmd Syntax * RainbowParenthesesLoadBraces
 
+"CTRLP
+let g:ctrlp_map = '<Nop>'
+let g:ctrlp_max_files  = 5000
+let g:ctrlp_max_depth = 6
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:8,results:30'
+
 "VIM-JSON
 let g:vim_json_syntax_conceal = 0
 
