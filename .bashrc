@@ -34,3 +34,7 @@ if ! win; then
     }
     PROMPT_COMMAND=__prompt_command
 fi
+
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
