@@ -33,43 +33,21 @@ endif
 
 "Window placement.
 function! InitPlacement()
-	if has('mac')
-		winpos 400 0
-		set lines=50 columns=100
-	elseif has('unix')
-	else
-		if $COMPUTERNAME == "ANTARES"
-			winpos 400 10
-			set lines=35 columns=90
-		else
-			winpos 800 10
-			set lines=50 columns=100
-		endif
-	endif
+    let l:placement = g:gvimrc_local_init_placement
+    execute 'winpos' l:placement[0] l:placement[1]
+    execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
 endfunction
 function! SidebysidePlacement()
-	if has('mac')
-		winpos 60 0
-		set lines=50 columns=170
-	elseif has('unix')
-	else
-		if $COMPUTERNAME == "ANTARES"
-			winpos 0 0
-			set lines=35 columns=160
-		else
-			winpos 320 10
-			set lines=50 columns=200
-		endif
-	endif
+    let l:placement = g:gvimrc_local_sbs_placement
+    execute 'winpos' l:placement[0] l:placement[1]
+    execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
 endfunction
 function! WinSidebyside()
-	call SidebysidePlacement()
-	if expand('#')==''
-		vsplit
-	else
-		vsplit #
-	endif
-	wincmd =
+    call SidebysidePlacement()
+    if expand('#')!='' && winnr('$')==1
+        vsplit #
+    endif
+    wincmd =
 endfunction
 
 call InitPlacement()

@@ -1,0 +1,12 @@
+" マシン固有の定数を書いて ~/.vimrc.constants.local に置く。
+" これを、.vimrcの先頭でsourceする。
+" バージョン管理しない。
+
+"--------------------------------- vim用 ------------------------------------
+"Path.
+" let g:vimrc_local_path_notes = 'd:\dwh\notes'
+
+"--------------------------------- gvim用 -----------------------------------
+"Window placement.
+" let g:gvimrc_local_init_placement = [800, 10, 50, 100]
+" let g:gvimrc_local_sbs_placement = [220, 10, 49, 200]

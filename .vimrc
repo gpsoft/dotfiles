@@ -19,6 +19,10 @@ execute pathogen#helptags()
 syntax on
 filetype plugin indent on
 
+if filereadable(expand("~/.vimrc.constants.local"))
+  source ~/.vimrc.constants.local
+endif
+
 "Auto commands.
 augroup vimrc
     autocmd!
@@ -182,16 +186,17 @@ set incsearch
 set noundofile
 set backup
 if has('mac')
-  set backupdir=/var/tmp/bak
-  set backupskip=/tmp/*,/private/tmp/*
+    set backupdir=/var/tmp/bak
+    set backupskip=/tmp/*,/private/tmp/*
 elseif has('unix')
 else
-  set backupdir=c:\tmp\apptmp\bak
-  set directory=c:\tmp\apptmp\swp
-  if $COMPUTERNAME == "ANTARES"
-    set backupdir=d:\tmp\apptmp\bak
-    set directory=d:\tmp\apptmp\swp
-  endif
+    if filereadable('c:\tmp\apptmp\nul')
+        set backupdir=c:\tmp\apptmp\bak
+        set directory=c:\tmp\apptmp\swp
+    else
+        set backupdir=d:\tmp\apptmp\bak
+        set directory=d:\tmp\apptmp\swp
+    endif
 endif
 
 set pastetoggle=<F2>
@@ -244,9 +249,7 @@ else
 endif
 
 "Command prompt for Windows.
-if has('mac')
-elseif has('unix')
-else
+if ( has('win32') || has('win64') )
   command! Dos !start cmd.exe /k cd /d "%:h"
 endif
 
@@ -344,12 +347,4 @@ endfunction
 nmap <Leader>cs :split ~/dotfiles/cheat<CR>
 nmap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
 nmap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
-if has('mac')
-  nmap <Leader>n :Ex ~/notes<CR>
-elseif has('unix')
-else
-  if $COMPUTERNAME == "ANTARES"
-  else
-    nmap <Leader>n :Ex d:\dwh\notes<CR>
-  endif
-endif
+execute 'nmap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
