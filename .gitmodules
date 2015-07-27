@@ -22,9 +22,11 @@
 [submodule "vimfiles/bundle/vim-clojure-static"]
 	path = vimfiles/bundle/vim-clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
+	ignore = untracked
 [submodule "vimfiles/bundle/vim-clojure-highlight"]
 	path = vimfiles/bundle/vim-clojure-highlight
 	url = https://github.com/guns/vim-clojure-highlight.git
+	ignore = untracked
 [submodule "vimfiles/bundle/vim-fireplace"]
 	path = vimfiles/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
