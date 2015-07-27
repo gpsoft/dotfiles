@@ -96,7 +96,15 @@ submoduleが増えている可能性もあるので、initが必要。あるい�
     git commit
     rm -rf .git/modules/lib/somelib
 
-### まとめ
+### submodule tips
+Vimのプラグインをsubmoduleで管理していると、プラグインを使っているだけなのにsubmoduleの作業ツリーがdirtyになってしまうことがある。この場合、.gitmodulesを修正して、submoduleのuntrackedなファイルをignoreさせると良い。
+
+    [submodule "vimfiles/bundle/vim-clojure-static"]
+    path = vimfiles/bundle/vim-clojure-static
+    url = https://github.com/guns/vim-clojure-static.git
+    ignore = untracked
+
+### submodule まとめ
 gitは、.gitmodulesに、submoduleのurlとディレクトリの一覧を持つ。そこに登録するのがaddで、削除するのがdeinit。また、initによりリモートとローカルの.gitmodulesを同期し、updateにより.gitmodules内のsubmoduleをローカルに持ってくる。よってリモートに新しいsubmoduleが追加されたら、ローカルで再init&updateが必要。
 
 ## Configuration
