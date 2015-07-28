@@ -1,13 +1,15 @@
 ## Dotfiles
 
-Dotfiles for...
+My dotfiles for...
 
 - bash
 - vim
 - git
-- hg(Mercurial)
+- hg(Mercurial) ...may be coming soon
 
 ## Usage
+
+This is a message for myself as I'm the only user.
 
 ### First time(Install)
 Assuming that you're using bash(git bash if on Windows)...
@@ -20,11 +22,12 @@ Assuming that you're using bash(git bash if on Windows)...
 
 Note that you must run git bash __as admin__ to install on Windows because install.sh uses mklink.
 
+You can put some machine-depend settings in .bashrc.local or .vimrc.constants.local. You've got templates in the dotfiles directory.
+
 ### From time to time(Update)
     cd ~/dotfiles
     git pull
-    git init
-    git submodule update
+    git submodule update --init
 
 ## Note
 
@@ -47,7 +50,7 @@ Or to pull all submodules:
     git submodule foreach git pull
     git commit -am "update all plugins"
 
-And don't forget to push to the upstream.
+And don't forget to push your repo to the upstream.
 
 ### Symbolic links on Windows
 When you edit one of dotfiles on Windows, you'd better open the file directly
@@ -74,5 +77,5 @@ About firewall:
 
 About git bash:
 - change fonts back and forth until it shows multi-byte characters correctly
-- turn off "Enable Ctrl shortcut key(something like that)" option that introduced in Windows 10
+- turn off "Enable Ctrl shortcut key(something like that)" option that was introduced in Windows 10
 
