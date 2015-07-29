@@ -347,4 +347,6 @@ endfunction
 nmap <Leader>cs :split ~/dotfiles/cheat<CR>
 nmap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
 nmap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
-execute 'nmap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
+if exists('g:vimrc_local_path_notes')
+    execute 'nmap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
+endif

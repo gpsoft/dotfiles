@@ -33,11 +33,17 @@ endif
 
 "Window placement.
 function! InitPlacement()
+    if ( !exists('g:gvimrc_local_init_placement') )
+        return
+    endif
     let l:placement = g:gvimrc_local_init_placement
     execute 'winpos' l:placement[0] l:placement[1]
     execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
 endfunction
 function! SidebysidePlacement()
+    if ( !exists('g:gvimrc_local_sbs_placement') )
+        return
+    endif
     let l:placement = g:gvimrc_local_sbs_placement
     execute 'winpos' l:placement[0] l:placement[1]
     execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
