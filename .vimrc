@@ -65,7 +65,6 @@ augroup vimrc
         setlocal foldexpr=GetClojureFold()
         setlocal foldmethod=expr
         setlocal nofoldenable
-        nnoremap <Space> za
     endfunction
 
     "autocmd bufwritepost .vimrc source $MYVIMRC
@@ -321,6 +320,8 @@ nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 
 nnoremap gp "+gp
 nnoremap gP "+gP
+
+nnoremap <Space> za
 
 nmap <F2> :set invpaste<CR>
 
