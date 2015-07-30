@@ -41,7 +41,7 @@ augroup vimrc
     autocmd FileType xml setlocal sw=4 sts=4 ts=4
 
     "Map file extension to file type.
-    autocmd BufNewFile,BufRead *.ctp set filetype=php
+    autocmd BufNewFile,BufRead *.ctp set filetype=html
     if has('mac')
         " MacVimでは、mdを開いた後でsplitするとfiletypeがmodula2に戻ってしまう。
         " しかたないのでvim本体を修正した。
@@ -287,7 +287,14 @@ let g:clojure_align_multiline_strings = 1
 nmap <C-Q> :q<CR>
 nmap <C-T> :w<CR>
 
-
+function! s:PhpIndent() range
+    let t = &filetype
+    let &filetype='php'
+    execute a:firstline . ',' .a:lastline . 'normal! =='
+    let &filetype = t
+endfunction
+command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
+vmap g= :PhpIndent<CR>
 
 
 
