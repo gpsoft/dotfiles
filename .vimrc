@@ -339,8 +339,11 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 imap <C-w> <Nop>
 imap <C-u> <Nop>
+imap <C-t> <Esc><C-t>
 
 cnoremap <expr> %% getcmdtype()==':' ? expand('%:h').'/' : '%%'
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
