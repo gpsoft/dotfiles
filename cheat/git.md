@@ -2,10 +2,12 @@
 
 ## 戻す
     git checkout -- FILE
+    git reset HEAD^                      ...commit前へ
     git reset --hard ORIG_HEAD           ...pull(or merge)前へ
+    git commit --amend                   ...直前のコミットを上書きする感じ
 
 マージのdry run:
-    git merge --no-commit --no-ff br1    ...してからの
+    git merge --no-commit --no-ff br1    してからの
     git reset --hard HEAD
 
 ## Diff
@@ -204,4 +206,19 @@ gitは、.gitmodulesに、submoduleのurlとディレクトリの一覧を持つ
     br1...br2       ...br1かbr2のどちらか一方から到達できる親
     br1^@           ...br1の全ての祖先(自分は含まない)
     br1^!           ...br1 ^br1^ ^br1^2 ^br1^3(br1の親が3つあるとして)
+
+## Hookスクリプト
+### push禁止
+    #!/bin/sh
+
+    while read local_ref local_sha remote_ref remote_sha
+    do
+        echo $remote_ref
+        if ! expr "${remote_ref##refs/heads/}" : "topic_.*$" >/dev/null; then
+            echo "*** You can push topic branch only. ***"
+            exit 1
+        fi
+    done
+
+    exit 0
 
