@@ -18,6 +18,10 @@
     git branch -a       ...全ブランチ
     git checkout -b br1 origin/br1       ...初めてのリモ追跡ブラをベースに作業する
     git branch --delete br1
+    git branch -m br1 br1_trial   ...リネーム
+    git branch -m br1_trial       ...カレントをリネーム
+    git branch -d -r origin/br1       ...リモ追跡ブラを削除
+                                      ...リモートのブランチを削除するわけではないし、追跡ブラとアップ追跡ブラの関係が切れるわけでもない
 
 ## Merge
     git merge --squash --no-commit br1   ...br1での複数のcommitオブジェクトをひとまとめで
@@ -27,6 +31,7 @@
     git remote set-url origin git@github.com:gpsoft/othe.git   ...URL変更
     git push origin :br1           ...リモートリポジトリのbr1を削除
     git push --delete origin br1   ...リモートリポジトリのbr1を削除
+    git branch --unset-upstream br1   ...br1の追跡設定を解除
 
 ## Stash
 シンプルに:
