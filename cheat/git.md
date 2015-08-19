@@ -45,9 +45,11 @@
     git stash save "fuga fuga"
     work, work, work...
     git stash list
+    git stash show stash@{NUMBER}
     git stash pop stash@{NUMBER}              任意のstashを復帰
     git stash pop                             最後のstashを復帰
     git stash drop stash@{NUMBER}             任意のstashを廃棄
+    git checkout stash@{NUMBER} foo.txt       一部のファイルだけ作業ツリーへ
 
 - popの代わりにapplyなら、stashから削除せずに復帰できる
 - popでconflictしたら、ハンドで修正して、そのファイルをaddして、stashをdropしとけばいい
