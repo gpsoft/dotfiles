@@ -52,7 +52,7 @@ augroup vimrc
 
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad
-    autocmd FileType gitcommit set spell
+    autocmd FileType gitcommit setlocal spell
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
