@@ -15,3 +15,4 @@
 [alias]
 	ll = log --pretty=format:"%C(yellow)%h\\ %cd\\ %C(red)%d%Creset\\ %s" --date=short
 	ld = log -5 --pretty=format:"%C(yellow)%h%C(cyan)[%ci]%C(red)%d%Creset\\ by\\ %cn%n%s" --numstat
+	sta = status --short --branch
