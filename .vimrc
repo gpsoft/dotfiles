@@ -325,6 +325,7 @@ nmap <Leader>gR :Gread<CR>
 nmap <Leader>gW :Gwrite<CR>
 "nmap <Leader>gp :Git push<CR>
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
+nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
 
 nnoremap gp "+gp
 nnoremap gP "+gP
