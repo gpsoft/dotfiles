@@ -10,6 +10,15 @@
     git merge --no-commit --no-ff br1    してからの
     git reset --hard HEAD
 
+## 無視する
+    git update-index --assume-unchanged a-file-must-be-edited-locally
+    git ls-files -v |grep ^h
+    git update-index --no-assume-unchanged a-file-must-be-edited-locally
+
+## 探す
+    git branch --contains 8d7baf8
+    git show :/^BUGFIX        ...メッセージがBUGFIXで始まる最後のコミット
+
 ## Diff
     git diff --name-only ..origin/br1      ...ファイル名のみ表示
 
@@ -32,6 +41,11 @@
     git push origin :br1           ...リモートリポジトリのbr1を削除
     git push --delete origin br1   ...リモートリポジトリのbr1を削除
     git branch --unset-upstream br1   ...br1の追跡設定を解除
+
+## Cherry-pick
+    git cherry-pick --no-commit 8d7baf8
+    git cherry-pick br1           ...br1のtipのコミットだけをpick
+
 
 ## Stash
 シンプルに:
