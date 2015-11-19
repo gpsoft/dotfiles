@@ -27,8 +27,8 @@ if has('mac')
     set guifontwide=Monaco:h14
 elseif has('unix')
 else
-    set guifont=Consolas:h11
-    set guifontwide=MS_Gothic:h11
+    set guifont=MyricaM_M:h13
+    set guifontwide=MyricaM_M:h13
 endif
 
 "Window placement.
