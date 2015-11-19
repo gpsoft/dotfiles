@@ -31,6 +31,8 @@
     git branch -m br1_trial       ...カレントをリネーム
     git branch -d -r origin/br1       ...リモ追跡ブラを削除
                                       ...リモートのブランチを削除するわけではないし、追跡ブラとアップ追跡ブラの関係が切れるわけでもない
+    git branch --set-upstream-to origin/br1
+    git branch --unset-upstream
 
 ## Merge
     git merge --squash --no-commit br1   ...br1での複数のcommitオブジェクトをひとまとめで
@@ -46,6 +48,10 @@
     git cherry-pick --no-commit 8d7baf8
     git cherry-pick br1           ...br1のtipのコミットだけをpick
 
+## Rebase
+    git rebase master             ...カレントブランチをmasterへ
+    git rebase --continue         ...競合ファイルを編集しaddした後で継続
+    git rebase --abort            ...競合したのでrebaseを取消し
 
 ## Stash
 シンプルに:
@@ -67,6 +73,10 @@
 
 - popの代わりにapplyなら、stashから削除せずに復帰できる
 - popでconflictしたら、ハンドで修正して、そのファイルをaddして、stashをdropしとけばいい
+
+## Prumbing
+    git ref-log
+    git show-ref
 
 ## Submodule
 ### submoduleの追加
