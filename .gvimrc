@@ -16,6 +16,9 @@ nmap <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 " autocmd bufwritepost .gvimrc source $MYGVIMRC
 nmap <C-W><C-S> :<C-u>call WinSidebyside()<CR>
 
+nmap <F12> :let &guifont = substitute(&guifont, ':h\(\d\+\)', '\=":h" . (submatch(1) - 1)', '')<CR>
+nmap <S-F12> :let &guifont = substitute(&guifont, ':h\(\d\+\)', '\=":h" . (submatch(1) + 1)', '')<CR>
+
 if ( has('win32') || has('win64') )
     set list lcs=tab:»\ ,eol:¬,trail:·
         "Don't use a character which shows in double-width.
