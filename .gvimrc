@@ -5,7 +5,15 @@ set fileformats=unix,dos,mac
 
 "Color(overwrite macvim).
 set t_Co=256
+"Slate
+set background=dark
 colorscheme slate
+set background=light
+"Solarized
+autocmd ColorScheme * highlight SpecialKey guifg=grey guibg=#fdf6e3
+autocmd ColorScheme * highlight WarningMsg guifg=white guibg=lightred
+colorscheme solarized
+let g:solarized_menu=0
 
 "No problem with relativenumber fog gvim.
 set relativenumber

@@ -60,3 +60,15 @@
 [submodule "vimfiles/bundle/PHP-Indenting-for-VIm"]
 	path = vimfiles/bundle/PHP-Indenting-for-VIm
 	url = https://github.com/2072/PHP-Indenting-for-VIm.git
+[submodule "vimfiles/bundle/vim-syntax-for-PHP"]
+	path = vimfiles/bundle/vim-syntax-for-PHP
+	url = https://github.com/2072/vim-syntax-for-PHP.git
+[submodule "vimfiles/bundle/vim-lucius"]
+	path = vimfiles/bundle/vim-lucius
+	url = https://github.com/jonathanfilip/vim-lucius.git
+[submodule "vimfiles/bundle/vim-colors-solarized"]
+	path = vimfiles/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vimfiles/bundle/ultisnips"]
+	path = vimfiles/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

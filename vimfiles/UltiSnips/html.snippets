@@ -1,0 +1,50 @@
+snippet htm "html" b
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    $0
+</body>
+</html>
+endsnippet
+
+snippet css "css" b
+<link rel="stylesheet" type="text/css" href="css/$0.css">
+endsnippet
+
+snippet js "javascript" b
+<script src="js/$0.js"></script>
+endsnippet
+
+snippet jq "jquery from cdn" b
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+endsnippet
+
+snippet i "an inline tag"
+<${1:span}>$0</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet b "a block tag" b
+<${1:div}>
+    $0
+</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet scr "script" b
+<script>
+$(function(){
+    $0
+});
+</script>
+endsnippet
+
+snippet sty "style" b
+<style>
+$1 {
+    $0
+}
+</style>
+endsnippet
