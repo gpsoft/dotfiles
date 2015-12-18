@@ -1,0 +1,51 @@
+" config for vrapper(awesome plugin for eclipse)
+" http://vrapper.sourceforge.net/update-site/stable
+" http://vrapper.sourceforge.net/documentation/
+
+" vim-like
+set ignorecase
+set smartcase
+set infercase
+set hlsearch
+set incsearch
+set list
+set number
+set cursorline
+
+" original
+set imdisable
+set contentassistmode
+set novisualmouse
+
+" keymap
+noremap \ ,
+nmap <C-Q> :q<CR>
+nmap <C-T> :w<CR>
+nnoremap gp "+gp
+nnoremap gP "+gP
+
+" invokes eclipse commands.
+" better use eclipseuiaction(instead of eclipseuiaction) for the commands that shows a popup.
+" I don't see any difference though.
+eclipseaction jumpToDeclaration org.eclipse.jdt.ui.edit.text.java.open.editor
+eclipseaction searchCallers org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
+eclipseaction openJavadoc org.eclipse.jdt.ui.edit.text.java.open.external.javadoc
+eclipseuiaction showTips org.eclipse.ui.edit.text.showInformation
+eclipseuiaction showView org.eclipse.ui.views.showView
+eclipseuiaction openResource org.eclipse.ui.navigate.openResource
+eclipseuiaction quickTextSearch org.springsource.ide.eclipse.quicksearch.commands.quicksearchCommand
+eclipseuiaction listBuffers org.eclipse.ui.window.openEditorDropDown
+eclipseaction pasteCB org.eclipse.ui.edit.paste
+eclipseaction quickAccess org.eclipse.ui.window.quickAccess
+eclipseuiaction quickFix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+eclipseuiaction goImplementation org.eclipse.jdt.ui.edit.text.java.open.implementation
+nmap K :showTips<CR>
+nmap ,r :searchCallers<CR>
+nmap ,v :showView<CR>
+nmap ,o :openResource<CR>
+nmap ,g :quickTextSearch<CR>
+nmap ,l :listBuffers<CR>
+nmap ,a :quickAccess<CR>
+nmap ,f :quickFix<CR>
+nmap ,i :goImplementation<CR>
+

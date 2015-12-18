@@ -102,6 +102,7 @@ linkhome .hgignore_global
 linkhome .hgrc
 linkhome .vimrc
 linkhome .gvimrc
+linkhome .vrapperrc
 if win; then
     linkhome vimfiles
 else
