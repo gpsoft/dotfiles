@@ -41,7 +41,8 @@ augroup vimrc
     autocmd FileType xml setlocal sw=4 sts=4 ts=4
 
     "Map file extension to file type.
-    autocmd BufNewFile,BufRead *.ctp set filetype=html
+    autocmd BufNewFile,BufRead *.ctp set filetype=php
+    autocmd BufNewFile,BufRead *.log set filetype=messages
     if has('mac')
         " MacVimでは、mdを開いた後でsplitするとfiletypeがmodula2に戻ってしまう。
         " しかたないのでvim本体を修正した。
@@ -50,6 +51,7 @@ augroup vimrc
         autocmd BufNewFile,BufRead *.md set filetype=markdown
     endif
 
+    autocmd FileType messages setlocal autoread
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad
     autocmd FileType gitcommit setlocal spell
