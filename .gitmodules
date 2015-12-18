@@ -60,3 +60,6 @@
 [submodule "vimfiles/bundle/PHP-Indenting-for-VIm"]
 	path = vimfiles/bundle/PHP-Indenting-for-VIm
 	url = https://github.com/2072/PHP-Indenting-for-VIm.git
+[submodule "vimfiles/bundle/vim-syntax-for-PHP"]
+	path = vimfiles/bundle/vim-syntax-for-PHP
+	url = https://github.com/2072/vim-syntax-for-PHP.git
