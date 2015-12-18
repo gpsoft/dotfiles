@@ -63,3 +63,6 @@
 [submodule "vimfiles/bundle/vim-lucius"]
 	path = vimfiles/bundle/vim-lucius
 	url = https://github.com/jonathanfilip/vim-lucius.git
+[submodule "vimfiles/bundle/vim-colors-solarized"]
+	path = vimfiles/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
