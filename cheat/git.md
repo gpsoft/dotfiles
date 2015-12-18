@@ -53,6 +53,15 @@
     git rebase --continue         ...競合ファイルを編集しaddした後で継続
     git rebase --abort            ...競合したのでrebaseを取消し
 
+## Remote
+リモートで:
+    mkdir lanmap.git
+    cd lanmap.git
+    git init --bare
+ローカルで:
+    git remote add origin ssh://USER@HOST/PATH/TO/THE/REPO
+    git push --set-upstream origin master
+
 ## Stash
 シンプルに:
     git stash

@@ -163,6 +163,13 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:8,results:30'
 "VIM-JSON
 let g:vim_json_syntax_conceal = 0
 
+"UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+
+
 "--------------------------------- Options ---------------------------------
 set t_Co=256
 colorscheme slate
