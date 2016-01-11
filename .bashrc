@@ -3,8 +3,8 @@ function mac() { [ `uname` = "Darwin" ]; }
 function linux() { [ `uname` = "Linux" ]; }
 
 alias cd='cd -P'
-alias ls='ls --color=auto -F'
-alias ll='ls -lrt'
+alias ls='ls --color=auto -F --show-control-chars'
+alias ll='ls -lrt --show-control-chars'
 
 if mac; then
     alias gvim='mvim'
@@ -12,7 +12,7 @@ if mac; then
 fi
 
 if win; then
-    alias ls='ls -F'
+    alias ls='ls -F --show-control-chars'
 fi
 
 
