@@ -39,6 +39,7 @@ eclipseaction pasteCB org.eclipse.ui.edit.paste
 eclipseaction quickAccess org.eclipse.ui.window.quickAccess
 eclipseuiaction quickFix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
 eclipseuiaction goImplementation org.eclipse.jdt.ui.edit.text.java.open.implementation
+eclipseuiaction showOutline org.eclipse.jdt.ui.edit.text.java.show.outline
 nmap K :showTips<CR>
 nmap ,r :searchCallers<CR>
 nmap ,v :showView<CR>
@@ -48,4 +49,5 @@ nmap ,l :listBuffers<CR>
 nmap ,a :quickAccess<CR>
 nmap ,f :quickFix<CR>
 nmap ,i :goImplementation<CR>
+nmap ,t :showOutline<CR>
 
