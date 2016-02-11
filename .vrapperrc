@@ -23,6 +23,11 @@ nmap <C-Q> :q<CR>
 nmap <C-T> :w<CR>
 nnoremap gp "+gp
 nnoremap gP "+gP
+nmap <C-W><C-H> <C-W>h
+nmap <C-W><C-J> <C-W>j
+nmap <C-W><C-K> <C-W>k
+nmap <C-W><C-L> <C-W>l
+nnoremap <C-W><C-S> :vsplit<CR>
 
 " invokes eclipse commands.
 " better use eclipseuiaction(instead of eclipseuiaction) for the commands that shows a popup.
@@ -40,6 +45,7 @@ eclipseaction quickAccess org.eclipse.ui.window.quickAccess
 eclipseuiaction quickFix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
 eclipseuiaction goImplementation org.eclipse.jdt.ui.edit.text.java.open.implementation
 eclipseuiaction showOutline org.eclipse.jdt.ui.edit.text.java.show.outline
+eclipseuiaction contentAssist org.eclipse.ui.edit.text.contentAssist.proposals
 nmap K :showTips<CR>
 nmap ,r :searchCallers<CR>
 nmap ,v :showView<CR>
@@ -50,4 +56,5 @@ nmap ,a :quickAccess<CR>
 nmap ,f :quickFix<CR>
 nmap ,i :goImplementation<CR>
 nmap ,t :showOutline<CR>
+
 
