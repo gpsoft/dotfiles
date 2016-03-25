@@ -28,6 +28,10 @@ snippet boo "bootstrap from cdn" b
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 endsnippet
 
+snippet com "comment" i
+<!-- $0 -->
+endsnippet
+
 snippet i "an inline tag"
 <${1:span}>$0</${1/(\w+).*/$1/}>
 endsnippet
@@ -52,4 +56,51 @@ $1 {
     $0
 }
 </style>
+endsnippet
+
+snippet inp "input" b
+<input type="text" id="" name="" placeholder="Your name" value="" />
+endsnippet
+
+snippet inph "input hidden" b
+<input type="hidden" id="" name="" value="" />
+endsnippet
+
+snippet inps "input submit" b
+<input type="submit" value="Done" />
+endsnippet
+
+snippet sel "select" b
+<select id="" name="" value="">
+    <option value=""></option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+</select>
+endsnippet
+
+snippet tab "table" b
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+endsnippet
+
+snippet lip "lorem ipsum" i
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+endsnippet
+
+snippet lipj "lorem ipsum in japanese" i
+半分はおまえをこしらえては天井のけちのように夕方へやめし出しとくださいたと見し舞台にせたなかできるて向けたて、ゴーシュにどうまぜてゴーシュの室の狸のいっているたまし。野ねずみはこれがこの首をしばらくなく云いので通りてもう狸へはいりて、「う、ゴーシュ、それは小麦顔ってんが云いて来見。」とやめましまし。
 endsnippet
