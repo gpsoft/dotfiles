@@ -337,6 +337,7 @@ nmap <Leader>gW :Gwrite<CR>
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
 nmap <Leader>b :silent! !%:p<CR>
+nnoremap <Leader>f migg=G`izz
 
 nnoremap gp "+gp
 nnoremap gP "+gP
