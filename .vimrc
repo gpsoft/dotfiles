@@ -30,6 +30,7 @@ augroup vimrc
     "Tab.
     autocmd FileType vim setlocal sw=4 sts=4 ts=4 et
     autocmd FileType ruby setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType go setlocal sw=4 sts=4 ts=4 noet
     autocmd FileType markdown setlocal sw=2 sts=2 ts=2 et
     autocmd FileType java setlocal sw=4 sts=4 ts=4 et
     autocmd FileType javascript setlocal sw=4 sts=4 ts=4 et
