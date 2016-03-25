@@ -43,6 +43,7 @@
     git push origin :br1           ...リモートリポジトリのbr1を削除
     git push --delete origin br1   ...リモートリポジトリのbr1を削除
     git branch --unset-upstream br1   ...br1の追跡設定を解除
+    push --all は「全ブランチ」だが、fetch --allは「全リモート」
 
 ## Cherry-pick
     git cherry-pick --no-commit 8d7baf8
