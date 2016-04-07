@@ -37,6 +37,8 @@ if has('mac')
     set guifont=Consolas:h14
     set guifontwide=Monaco:h14
 elseif has('unix')
+    set guifont=Consolas\ 13
+    " set guifontwide=Ricty\ Diminished\ 13
 else
     " set guifont=MyricaM_M:h13
     " set guifontwide=MyricaM_M:h13
