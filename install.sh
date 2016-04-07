@@ -103,6 +103,8 @@ linkhome .hgrc
 linkhome .vimrc
 linkhome .gvimrc
 linkhome .vrapperrc
+linkhome .vimperatorrc
+linkhome .vimperator
 if win; then
     linkhome vimfiles
 else

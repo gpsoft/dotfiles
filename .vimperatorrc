@@ -1,0 +1,24 @@
+"
+set ignorecase
+set smartcase
+set hlsearch
+map <C-l> :nohlsearch<CR>
+set defsearch=google
+
+"
+set focuscontent
+set hintchars=;asdfghjklerui
+set! ui.caretWidth=4
+
+"
+style! -name=commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+highlight Hint font-size:120%;text-transform:uppercase;color:blue;background-color:#aaccff;border-color:blue;border-width:1px;border-style:solid;padding:0 2px;z-index: 2147483647;
+
+noremap <C-a> i<C-a>
+inoremap <C-a> <insert><C-a><insert>
+
+map U :u<Space>
+
+map y :echo 'Yank!'<CR>Y
+vmap <silent> * y<Esc><Esc>P
+
