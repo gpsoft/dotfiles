@@ -3,7 +3,7 @@
 	email = etoh.gpsoft@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = gvim
+	editor = gvim -f
 	autoCRLF = false
 	quotepath = false
 [push]
