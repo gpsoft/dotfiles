@@ -307,6 +307,15 @@ endfunction
 command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
 vmap g= :PhpIndent<CR>
 
+function! s:Marks()
+    marks
+    echo 'Jump to mark: '
+    let marks = nr2char(getchar())
+    redraw
+    execute 'normal! `' . marks
+endfunction
+command! Marks call s:Marks()
+nmap <Leader>` :Marks<CR>
 
 
 "--------------------------------- Keymaps ---------------------------------
