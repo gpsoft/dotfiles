@@ -358,6 +358,8 @@ nmap <F2> :set invpaste<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap & :&&<CR>
 
+nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
+
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 imap <C-w> <Nop>
