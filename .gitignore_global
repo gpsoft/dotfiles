@@ -1,11 +1,20 @@
+# backup files.
 *~
+*.bak
+
+# OS secrets.
 .DS_Store
 .DS_Store?
-*.swp
-*.swo
+.Trashes
+._*
+Thumbs.db
+
+# vim things.
+*.sw[l-p]
 *.orig
 .netrwhist
 
+# git things?
 *_BACKUP_*
 *_BASE_*
 *_LOCAL_*
