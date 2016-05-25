@@ -6,6 +6,7 @@
 	editor = gvim -f
 	autoCRLF = false
 	quotepath = false
+	pager = less --quit-if-one-screen --no-init
 [push]
 	default = simple
 [merge]
