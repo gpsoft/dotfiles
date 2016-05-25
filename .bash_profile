@@ -1,4 +1,5 @@
 export PATH=$PATH:~/bin
+export VTE_CJK_WIDTH=1
 
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
