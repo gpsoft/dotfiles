@@ -4,6 +4,7 @@ set smartcase
 set hlsearch
 map <C-l> :nohlsearch<CR>
 set defsearch=google
+set titlestring=
 
 "
 set focuscontent
