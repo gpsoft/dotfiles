@@ -188,6 +188,7 @@ set notitle
 set suffixesadd=.clj,.rb  "for gf
 set nrformats=            "format for <C-A> or <C-X>
 set hidden
+set ignorecase
 set smartcase
 set infercase
 set incsearch
@@ -199,6 +200,8 @@ if has('mac')
     set backupdir=/var/tmp/bak
     set backupskip=/tmp/*,/private/tmp/*
 elseif has('unix')
+    set backupdir=/var/tmp/bak
+    set backupskip=/tmp/*,/private/tmp/*
 else
     if filereadable('c:\tmp\apptmp\nul')
         set backupdir=c:\tmp\apptmp\bak
