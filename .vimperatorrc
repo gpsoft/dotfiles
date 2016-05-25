@@ -22,3 +22,4 @@ map U :u<Space>
 map y :echo 'Yank!'<CR>Y
 vmap <silent> * y<Esc><Esc>P
 
+nnoremap <C-l> i<C-a><Esc>
