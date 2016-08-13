@@ -4,9 +4,17 @@ snippet htm "html" b
 <head>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 <body>
     $0
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    });
+    </script>
 </body>
 </html>
 endsnippet
@@ -16,16 +24,16 @@ snippet css "css" b
 endsnippet
 
 snippet js "javascript" b
-<script src="js/$0.js"></script>
+<script type="text/javascript" src="js/$0.js"></script>
 endsnippet
 
 snippet jq "jquery from cdn" b
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 endsnippet
 
 snippet boo "bootstrap from cdn" b
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 endsnippet
 
 snippet com "comment" i
@@ -43,7 +51,7 @@ snippet b "a block tag" b
 endsnippet
 
 snippet scr "script" b
-<script>
+<script type="text/javascript">
 $(function(){
     $0
 });
