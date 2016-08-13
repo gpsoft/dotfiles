@@ -18,6 +18,9 @@ let g:solarized_menu=0
 "No problem with relativenumber fog gvim.
 set relativenumber
 
+"No toolbar.
+set guioptions-=T
+
 "Key map.
 nmap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
 nmap <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
@@ -37,8 +40,9 @@ if has('mac')
     set guifont=Consolas:h14
     set guifontwide=Monaco:h14
 elseif has('unix')
-    set guifont=Consolas\ 13
+    set guifont=Consolas\ 12
     " set guifontwide=Ricty\ Diminished\ 13
+    set linespace=1
 else
     " set guifont=MyricaM_M:h13
     " set guifontwide=MyricaM_M:h13

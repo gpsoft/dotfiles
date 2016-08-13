@@ -40,6 +40,7 @@ augroup vimrc
     autocmd FileType html setlocal sw=4 sts=4 ts=4 et
     autocmd FileType sh setlocal sw=4 sts=4 ts=4 et
     autocmd FileType xml setlocal sw=4 sts=4 ts=4
+    autocmd FileType css setlocal sw=4 sts=4 ts=4 et
 
     "Map file extension to file type.
     autocmd BufNewFile,BufRead *.ctp set filetype=php
@@ -172,6 +173,11 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
+"Open-Browser & previm
+"let g:netrw_browsex_viewer="firefox-bin"
+" if exists('g:vimrc_local_browser')
+"     execute 'let g:previm_open_cmd="'.g:vimrc_local_browser.'"<CR>'
+" endif
 
 "--------------------------------- Options ---------------------------------
 set t_Co=256
@@ -296,7 +302,7 @@ endfunction
 
 "let g:clojure_fold = 1
 let g:clojure_highlight_references = 1
-let g:clojure_align_multiline_strings = 1
+let g:clojure_align_multiline_strings = 0
 
 nmap <C-Q> :q<CR>
 nmap <C-T> :w<CR>
