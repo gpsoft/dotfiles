@@ -1,4 +1,4 @@
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/local/bin:~/.gem/ruby/2.1.0/bin
 export VTE_CJK_WIDTH=1
 
 if [ -f ~/.bashrc ]; then
