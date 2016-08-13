@@ -2,9 +2,11 @@
 set ignorecase
 set smartcase
 set hlsearch
-map <C-l> :nohlsearch<CR>
 set defsearch=google
 set titlestring=
+
+" Mac only
+set editor=/Applications/MacVim.app/Contents/MacOS/gvim\ -f
 
 "
 set focuscontent
@@ -28,4 +30,5 @@ nnoremap y :js util.copyToClipboard(buffer.URL, true)<CR>
 noremap <C-c> <C-v><C-c>
 
 "Refresh
+"map <C-l> :nohlsearch<CR>
 nnoremap <C-l> i<C-a><Esc>
