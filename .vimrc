@@ -45,6 +45,8 @@ augroup vimrc
     "Map file extension to file type.
     autocmd BufNewFile,BufRead *.ctp set filetype=php
     autocmd BufNewFile,BufRead *.log set filetype=messages
+    autocmd BufNewFile,BufRead *.cljs set filetype=clojure
+    autocmd BufNewFile,BufRead *.boot set filetype=clojure
     if has('mac')
         " MacVimでは、mdを開いた後でsplitするとfiletypeがmodula2に戻ってしまう。
         " しかたないのでvim本体を修正した。
@@ -55,8 +57,12 @@ augroup vimrc
 
     autocmd FileType messages setlocal autoread
     autocmd FileType vim setlocal keywordprg=:help
-    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad
+    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask
+    " autocmd FileType clojure setlocal iskeyword-=/
+    " autocmd FileType clojure setlocal iskeyword-=.
     autocmd FileType gitcommit setlocal spell
+    autocmd FileType clojure let g:paredit_leader=',,'
+    autocmd FileType clojure let g:paredit_electric_return=0
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
@@ -191,7 +197,7 @@ colorscheme slate
 " set t_ve+=[?81;0;112c
 
 set notitle
-set suffixesadd=.clj,.rb  "for gf
+set suffixesadd=.clj,.cljs,.rb  "for gf
 set nrformats=            "format for <C-A> or <C-X>
 set hidden
 set ignorecase
@@ -395,3 +401,5 @@ nmap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
 if exists('g:vimrc_local_path_notes')
     execute 'nmap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
 endif
+
+nmap cpP :Eval<CR>
