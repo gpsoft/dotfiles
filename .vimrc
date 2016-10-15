@@ -244,8 +244,11 @@ if ( has('win32') || has('win64') )
     "Moved list setting to .gvimrc.
     "set list lcs=tab:»\ ,eol:¬,trail:·
 else
-    set ambiwidth=single
-    set list lcs=tab:»\ ,eol:¬,trail:·
+    set ambiwidth=double
+    "set list lcs=tab:»\ ,eol:¬,trail:·
+    set list lcs=tab:»\ ,eol:¬,trail:©
+    " .bash_profile
+    " export VTE_CJK_WIDTH=1
 endif
 
 set laststatus=2
