@@ -14,3 +14,16 @@ snippet ns "namespace" b
     )
   (:gen-class))
 endsnippet
+
+snippet atr "datomic assertion attribute" w
+{:db/id #db/id [:db.part/db]
+ :db/ident $0
+ :db/doc ""
+ :db/valueType :db.type/
+ :db/cardinality :db.cardinality/one
+ :db.install/_attribute :db.part/db}
+endsnippet
+
+snippet add "datomic assertion" b
+[:db/add #db/id[:db.part/user] :db/ident $0]
+endsnippet
