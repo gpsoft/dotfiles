@@ -181,6 +181,27 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
+"Vim-sexp
+let g:sexp_mappings = {
+            \ 'sexp_round_head_wrap_list':      '<Leader><Leader>i',
+            \ 'sexp_round_tail_wrap_list':      '<Leader><Leader>I',
+            \ 'sexp_square_head_wrap_list':     '<Leader><Leader>[',
+            \ 'sexp_square_tail_wrap_list':     '<Leader><Leader>]',
+            \ 'sexp_curly_head_wrap_list':      '<Leader><Leader>{',
+            \ 'sexp_curly_tail_wrap_list':      '<Leader><Leader>}',
+            \ 'sexp_round_head_wrap_element':   '<Leader><Leader>w',
+            \ 'sexp_round_tail_wrap_element':   '<Leader><Leader>W',
+            \ 'sexp_square_head_wrap_element':  '<Leader><Leader>e[',
+            \ 'sexp_square_tail_wrap_element':  '<Leader><Leader>e]',
+            \ 'sexp_curly_head_wrap_element':   '<Leader><Leader>e{',
+            \ 'sexp_curly_tail_wrap_element':   '<Leader><Leader>e}',
+            \ 'sexp_insert_at_list_head':       '<Leader><Leader>h',
+            \ 'sexp_insert_at_list_tail':       '<Leader><Leader>l',
+            \ 'sexp_splice_list':               '<Leader><Leader>@',
+            \ 'sexp_raise_list':                '<Leader><Leader>o',
+            \ 'sexp_raise_element':             '<Leader><Leader>O',
+            \ }
+
 "Open-Browser & previm
 "let g:netrw_browsex_viewer="firefox-bin"
 " if exists('g:vimrc_local_browser')
