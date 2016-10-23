@@ -75,3 +75,9 @@
 [submodule "vimfiles/bundle/paredit.vim"]
 	path = vimfiles/bundle/paredit.vim
 	url = git://github.com/vim-scripts/paredit.vim
+[submodule "vimfiles/bundle/vim-sexp"]
+	path = vimfiles/bundle/vim-sexp
+	url = https://github.com/guns/vim-sexp
+[submodule "vimfiles/bundle/vim-sexp-mappings-for-regular-people"]
+	path = vimfiles/bundle/vim-sexp-mappings-for-regular-people
+	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people

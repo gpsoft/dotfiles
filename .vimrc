@@ -13,7 +13,9 @@ set fileformats=unix,dos,mac
 "endif
 
 "Pathogen.
-let g:pathogen_disabled = []  "Plugins you want to disable temporalily.
+let g:pathogen_disabled = [
+    \ "paredit.vim"
+    \ ]  "Plugins you want to disable temporalily.
 execute pathogen#infect()
 execute pathogen#helptags()
 syntax on
