@@ -171,6 +171,11 @@ autocmd Syntax * RainbowParenthesesLoadBraces
 " let g:ctrlp_max_depth = 6
 " let g:ctrlp_clear_cache_on_exit = 0
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:8,results:30'
+let g:ctrlp_working_path_mode = 'wra'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
+    \ }
 
 "VIM-JSON
 let g:vim_json_syntax_conceal = 0
