@@ -218,6 +218,12 @@ let g:tagbar_type_php={
             \ 'd:constant definitions:0:0',
             \ 'f:functions']}
 
+"BufExplorer
+let g:bufExplorerShowDirectories=0
+let g:bufExplorerShowNoName=0
+let g:bufExplorerShowUnlisted=0
+let g:bufExplorerSortBy='fullpath'
+
 "Open-Browser & previm
 "let g:netrw_browsex_viewer="firefox-bin"
 " if exists('g:vimrc_local_browser')
@@ -387,7 +393,7 @@ nmap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
 nmap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
                    "After re-loading .vimrc rainbow paren gets off.
 nmap <Leader>m :MRU<CR>
-nmap <Leader>l :BufExplorer<CR>
+nmap <Leader>l :BufExplorerHorizontalSplit<CR>
 nmap <Leader>o :CtrlPMixed<CR>
 nmap <Leader>r :OverCommandLine<CR>%s/
 nmap <Leader>p :PrevimOpen<CR>
