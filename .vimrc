@@ -14,7 +14,8 @@ set fileformats=unix,dos,mac
 
 "Pathogen.
 let g:pathogen_disabled = [
-    \ "paredit.vim"
+    \ "paredit.vim",
+    \ "PHP-Indenting-for-VIm"
     \ ]  "Plugins you want to disable temporalily.
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -65,6 +66,8 @@ augroup vimrc
     autocmd FileType gitcommit setlocal spell
     autocmd FileType clojure let g:paredit_leader=',,'
     autocmd FileType clojure let g:paredit_electric_return=0
+    autocmd FileType php setlocal foldmethod=indent | normal zR
+    autocmd FileType php setlocal indentkeys="0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/"
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
@@ -311,6 +314,7 @@ endif
 
 "--------------------------------- Experimental ----------------------------
 let php_htmlInStrings=1
+let php_sql_query=1
 
 let g:html_indent_script1="inc"
 let g:html_indent_style1="inc"
@@ -397,7 +401,7 @@ nnoremap <Leader>f migg=G`izz
 nnoremap gp "+gp
 nnoremap gP "+gP
 
-nnoremap <Space> za
+nnoremap <Space> zA
 
 nmap <F2> :set invpaste<CR>
 
