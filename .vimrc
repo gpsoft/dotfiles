@@ -210,6 +210,14 @@ let g:sexp_mappings = {
             \ 'sexp_raise_element':             '<Leader><Leader>O',
             \ }
 
+"Tagbar
+let g:tagbar_width=30
+let g:tagbar_type_php={
+            \ 'kinds': [
+            \ 'c:classes',
+            \ 'd:constant definitions:0:0',
+            \ 'f:functions']}
+
 "Open-Browser & previm
 "let g:netrw_browsex_viewer="firefox-bin"
 " if exists('g:vimrc_local_browser')
@@ -384,7 +392,8 @@ nmap <Leader>o :CtrlPMixed<CR>
 nmap <Leader>r :OverCommandLine<CR>%s/
 nmap <Leader>p :PrevimOpen<CR>
 nmap <C-F> <Leader><Leader>f
-nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>t :TagbarOpenAutoClose<CR>
+nmap <Leader>T :echo tagbar#currenttag('[%s]', '')<CR>
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gd :Gdiff<CR>
 nmap <Leader>gc :Gcommit<CR>
