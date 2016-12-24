@@ -141,6 +141,7 @@ autocmd BufRead * call AlterWombat()
 "VIM-CLOJURE-STATIC
 let g:clojure_fuzzy_indent = 1
 let g:clojure_fuzzy_indent_patterns = ['^\(future-\)\?facts\?$', '^prerequisites\?$']
+let g:clojure_maxlines = 300
 
 "RAINBOW-PAREN
 let g:rbpt_colorpairs = [
