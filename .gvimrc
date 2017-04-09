@@ -76,3 +76,6 @@ function! WinSidebyside()
 endfunction
 
 call InitPlacement()
+
+set guioptions-=m
+set guioptions-=T

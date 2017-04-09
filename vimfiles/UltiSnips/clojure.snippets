@@ -24,6 +24,12 @@ snippet atr "datomic assertion attribute" w
  :db.install/_attribute :db.part/db}
 endsnippet
 
+snippet ent "datomic assertion entry" w
+{:db/id #db/id [:db.part/user]
+ :$0
+}
+endsnippet
+
 snippet add "datomic assertion" b
 [:db/add #db/id[:db.part/user] :db/ident $0]
 endsnippet

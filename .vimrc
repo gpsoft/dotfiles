@@ -14,7 +14,8 @@ set fileformats=unix,dos,mac
 
 "Pathogen.
 let g:pathogen_disabled = [
-    \ "paredit.vim"
+    \ "paredit.vim",
+    \ "PHP-Indenting-for-VIm"
     \ ]  "Plugins you want to disable temporalily.
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -65,6 +66,8 @@ augroup vimrc
     autocmd FileType gitcommit setlocal spell
     autocmd FileType clojure let g:paredit_leader=',,'
     autocmd FileType clojure let g:paredit_electric_return=0
+    autocmd FileType php setlocal foldmethod=indent | normal zR
+    autocmd FileType php setlocal indentkeys="0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/"
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
@@ -138,6 +141,7 @@ autocmd BufRead * call AlterWombat()
 "VIM-CLOJURE-STATIC
 let g:clojure_fuzzy_indent = 1
 let g:clojure_fuzzy_indent_patterns = ['^\(future-\)\?facts\?$', '^prerequisites\?$']
+let g:clojure_maxlines = 300
 
 "RAINBOW-PAREN
 let g:rbpt_colorpairs = [
@@ -171,6 +175,11 @@ autocmd Syntax * RainbowParenthesesLoadBraces
 " let g:ctrlp_max_depth = 6
 " let g:ctrlp_clear_cache_on_exit = 0
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:8,results:30'
+let g:ctrlp_working_path_mode = 'wra'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
+    \ }
 
 "VIM-JSON
 let g:vim_json_syntax_conceal = 0
@@ -201,6 +210,20 @@ let g:sexp_mappings = {
             \ 'sexp_raise_list':                '<Leader><Leader>o',
             \ 'sexp_raise_element':             '<Leader><Leader>O',
             \ }
+
+"Tagbar
+let g:tagbar_width=30
+let g:tagbar_type_php={
+            \ 'kinds': [
+            \ 'c:classes',
+            \ 'd:constant definitions:0:0',
+            \ 'f:functions']}
+
+"BufExplorer
+let g:bufExplorerShowDirectories=0
+let g:bufExplorerShowNoName=0
+let g:bufExplorerShowUnlisted=0
+let g:bufExplorerSortBy='fullpath'
 
 "Open-Browser & previm
 "let g:netrw_browsex_viewer="firefox-bin"
@@ -306,6 +329,7 @@ endif
 
 "--------------------------------- Experimental ----------------------------
 let php_htmlInStrings=1
+let php_sql_query=1
 
 let g:html_indent_script1="inc"
 let g:html_indent_style1="inc"
@@ -370,12 +394,13 @@ nmap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
 nmap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
                    "After re-loading .vimrc rainbow paren gets off.
 nmap <Leader>m :MRU<CR>
-nmap <Leader>l :BufExplorer<CR>
+nmap <Leader>l :BufExplorerHorizontalSplit<CR>
 nmap <Leader>o :CtrlPMixed<CR>
 nmap <Leader>r :OverCommandLine<CR>%s/
 nmap <Leader>p :PrevimOpen<CR>
 nmap <C-F> <Leader><Leader>f
-nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>t :TagbarOpenAutoClose<CR>
+nmap <Leader>T :echo tagbar#currenttag('[%s]', '')<CR>
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gd :Gdiff<CR>
 nmap <Leader>gc :Gcommit<CR>
@@ -388,11 +413,12 @@ nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
 nmap <Leader>b :silent! !%:p<CR>
 nnoremap <Leader>f migg=G`izz
+nnoremap <Leader>* *``zz
 
 nnoremap gp "+gp
 nnoremap gP "+gP
 
-nnoremap <Space> za
+nnoremap <Space> zA
 
 nmap <F2> :set invpaste<CR>
 
