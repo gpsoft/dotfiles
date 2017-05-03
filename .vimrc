@@ -382,6 +382,14 @@ endfunction
 command! Marks call s:Marks()
 nmap <Leader>` :Marks<CR>
 
+function! s:ToggleSyntax()
+    if exists("g:syntax_on")
+        syntax off
+    else
+        syntax enable
+    endif
+endfunction
+command! ToggleSyntax call s:ToggleSyntax()
 
 "--------------------------------- Keymaps ---------------------------------
 let mapleader = ","
@@ -425,7 +433,7 @@ nmap <F2> :set invpaste<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 nnoremap & :&&<CR>
 
-nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
+nmap <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
 
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
