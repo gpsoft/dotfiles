@@ -256,6 +256,7 @@ set incsearch
 
 set noundofile
 set backup
+set noswapfile
 if has('mac')
     set backupdir=/var/tmp/bak
     set backupskip=/tmp/*,/private/tmp/*
