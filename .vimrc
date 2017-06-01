@@ -15,7 +15,11 @@ set fileformats=unix,dos,mac
 "Pathogen.
 let g:pathogen_disabled = [
     \ "paredit.vim",
-    \ "PHP-Indenting-for-VIm"
+    \ "PHP-Indenting-for-VIm",
+    \ "Align",
+    \ "SQLUtilities",
+    \ "dbext.vim",
+    \ "vim-projectionist"
     \ ]  "Plugins you want to disable temporalily.
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -238,7 +242,7 @@ let g:sqlutil_load_default_maps = 0
 let g:sqlutil_align_where = 0
 let g:sqlutil_align_comma = 1
 
-:dbext
+"dbext
 let g:dbext_map_prefix = '<Leader>q'
 let g:dbext_default_profile_hoge = 'type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=hoge'
 let g:dbext_default_profile_fuga = 'type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=fuga'
