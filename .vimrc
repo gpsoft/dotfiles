@@ -415,7 +415,7 @@ nmap <Leader>t :TagbarOpenAutoClose<CR>
 nmap <Leader>T :echo tagbar#currenttag('[%s]', '')<CR>
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gd :Gdiff<CR>
-nmap <Leader>gc :Gcommit<CR>
+" nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gb :Gblame<CR>
 nmap <Leader>gl :Glog<CR>:copen<CR><C-w>J
 nmap <Leader>gR :Gread<CR>
@@ -424,8 +424,11 @@ nmap <Leader>gW :Gwrite<CR>
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
 nmap <Leader>b :silent! !%:p<CR>
-nnoremap <Leader>f migg=G`izz
-nnoremap <Leader>* *``zz
+nnoremap <Leader>F migg=G`izz
+nnoremap <Leader>f mi=i}`izz
+" nnoremap <Leader>* *``zz
+nnoremap * :let @/="\\<".expand("<cword>")."\\>" \| set hlsearch<CR>
+nnoremap g* :let @/=expand("<cword>") \| set hlsearch<CR>
 
 nnoremap gp "+gp
 nnoremap gP "+gP
