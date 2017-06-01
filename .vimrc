@@ -331,6 +331,7 @@ endif
 "--------------------------------- Experimental ----------------------------
 let php_htmlInStrings=1
 let php_sql_query=1
+" let php_folding=1   " it may slow vim down
 
 let g:html_indent_script1="inc"
 let g:html_indent_style1="inc"
