@@ -238,6 +238,15 @@ let g:sqlutil_load_default_maps = 0
 let g:sqlutil_align_where = 0
 let g:sqlutil_align_comma = 1
 
+:dbext
+let g:dbext_map_prefix = '<Leader>q'
+let g:dbext_default_profile_hoge = 'type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=hoge'
+let g:dbext_default_profile_fuga = 'type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=fuga'
+let g:dbext_default_MYSQL_extra = '--default-character-set=utf8'
+let g:dbext_default_profile = 'hoge'
+let g:dbext_default_buffer_lines = 20
+let g:dbext_default_always_prompt_for_variables=0
+
 "--------------------------------- Options ---------------------------------
 set t_Co=256
 colorscheme slate
@@ -482,4 +491,16 @@ nnoremap <Leader>aa :A<CR>
 nnoremap <Leader>av :AV<CR>
 nnoremap <Leader>as :AS<CR>
 nnoremap <Leader>at :AT<CR>
+
+" for ebext
+fu! OpenTabForSql()
+    let f = 'C:\Users\gpsoft\sql\scratchpad.sql'
+    let bn = bufwinnr(f)
+    if bn > 0
+        :exe bn.'wincmd w'
+    else
+        silent execute('tabe '.f.' | normal gg,qlt')
+    endif
+endfunc
+command! Sql call OpenTabForSql()
 
