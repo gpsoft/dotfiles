@@ -470,3 +470,11 @@ if exists('g:vimrc_local_path_notes')
 endif
 
 nmap cpP :Eval<CR>
+
+" for projectionist
+nnoremap <Leader>a :A<CR>
+nnoremap <Leader>aa :A<CR>
+nnoremap <Leader>av :AV<CR>
+nnoremap <Leader>as :AS<CR>
+nnoremap <Leader>at :AT<CR>
+
