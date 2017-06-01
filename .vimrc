@@ -233,6 +233,11 @@ let g:bufExplorerSortBy='fullpath'
 "     execute 'let g:previm_open_cmd="'.g:vimrc_local_browser.'"<CR>'
 " endif
 
+"SQLUtilities
+let g:sqlutil_load_default_maps = 0
+let g:sqlutil_align_where = 0
+let g:sqlutil_align_comma = 1
+
 "--------------------------------- Options ---------------------------------
 set t_Co=256
 colorscheme slate
