@@ -504,3 +504,20 @@ fu! OpenTabForSql()
 endfunc
 command! Sql call OpenTabForSql()
 
+" for tortoise svn
+fu! TortoiseCommand(com, others)
+    let filename = expand("%")
+    let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
+    silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
+endfunc
+fu! TortoiseBlame()
+    let filename = expand("%")
+    let linenum = line(".")
+    let others = '/line:'.linenum.' /closeonend'
+    call TortoiseCommand('blame', others)
+endfunc
+nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
+nnoremap <Leader>tl : call TortoiseCommand('log', '')<CR>
+nnoremap <Leader>tc : call TortoiseCommand('commit', '')<CR>
+nnoremap <Leader>tb : call TortoiseBlame()<CR>
+
