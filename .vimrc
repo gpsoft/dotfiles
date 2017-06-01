@@ -212,8 +212,9 @@ let g:sexp_mappings = {
             \ }
 
 "Tagbar
-let g:tagbar_width=30
+let g:tagbar_width=50
 let g:tagbar_type_php={
+            \ 'ctagsargs': '--php-kinds=cdf -f -',
             \ 'kinds': [
             \ 'c:classes',
             \ 'd:constant definitions:0:0',
