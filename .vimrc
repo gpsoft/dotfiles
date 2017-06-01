@@ -180,6 +180,7 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_prompt_mappings = {
     \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
     \ }
+let g:ctrlp_custom_ignore = '\v(out|target)/*'
 
 "VIM-JSON
 let g:vim_json_syntax_conceal = 0
