@@ -343,6 +343,12 @@ else
     command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
 endif
 
+"ClojureScript REPL
+function! Brepl()
+    execute 'Piggieback (adzerk.boot-cljs-repl/repl-env)'
+endfunction
+command! Piggie silent! call Brepl()
+
 "Command prompt for Windows.
 if ( has('win32') || has('win64') )
     command! Dos !start cmd.exe /k cd /d "%:h"
