@@ -331,6 +331,11 @@ endif
 
 set laststatus=2
 
+set noimdisable
+set iminsert=0
+set imsearch=-1
+inoremap <C-[> <ESC>:set iminsert=0<CR>
+
 "--------------------------------- Custom commands -------------------------
 "Clojure REPL.
 if has('mac')
