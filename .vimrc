@@ -280,6 +280,9 @@ set infercase
 set incsearch
 "set nowrapscan
 
+let mapleader = ","
+noremap \ ,
+
 set noundofile
 set backup
 set noswapfile
@@ -387,6 +390,9 @@ function! QuickfixFilenames()
 endfunction
 
 "let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_do_mapping=0
+nmap <C-F> <Leader><Leader>f
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 
 "let g:sexp_enable_insert_mode_mappings = 0
 
@@ -428,8 +434,6 @@ endfunction
 command! ToggleSyntax call s:ToggleSyntax()
 
 "--------------------------------- Keymaps ---------------------------------
-let mapleader = ","
-noremap \ ,
 nmap <Leader>E :Ex<CR>
 nmap <Leader>S :Sex<CR>
 nmap <Leader>V :Vex<CR>
@@ -442,7 +446,6 @@ nmap <Leader>l :BufExplorerHorizontalSplit<CR>
 nmap <Leader>o :CtrlPMixed<CR>
 nmap <Leader>r :OverCommandLine<CR>%s/
 nmap <Leader>p :PrevimOpen<CR>
-nmap <C-F> <Leader><Leader>f
 nmap <Leader>t :TagbarOpenAutoClose<CR>
 nmap <Leader>T :echo tagbar#currenttag('[%s]', '')<CR>
 nmap <Leader>gs :Gstatus<CR>
