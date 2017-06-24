@@ -477,6 +477,9 @@ nnoremap & :&&<CR>
 
 nmap <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
 
+nnoremap <C-k> :res +3<CR>
+" nnoremap <C-j> :res -3<CR>
+
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 imap <C-w> <Nop>
