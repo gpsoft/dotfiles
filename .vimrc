@@ -107,7 +107,7 @@ let MRU_Exclude_Files = "^crontab\."
 
 "LIGHTLINE
 let g:lightline = {
-            \ 'colorscheme': 'wombat',
+            \ 'colorscheme': 'jellybean',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -121,6 +121,14 @@ let g:lightline = {
             \ 'component_visible_condition': {
             \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
             \ },
+            \ 'mode_map': {
+            \   'n' : 'N',
+            \   'i' : 'I',
+            \   'R' : 'R',
+            \   'v' : 'V',
+            \   'V' : 'VL',
+            \   'c' : 'C',
+            \   "\<C-v>": 'VB'},
             \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
             \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
             \ }
