@@ -107,7 +107,7 @@ let MRU_Exclude_Files = "^crontab\."
 
 "LIGHTLINE
 let g:lightline = {
-            \ 'colorscheme': 'jellybean',
+            \ 'colorscheme': 'jellybeans',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
