@@ -27,8 +27,8 @@ nmap <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 " autocmd bufwritepost .gvimrc source $MYGVIMRC
 nmap <C-W><C-S> :<C-u>call WinSidebyside()<CR>
 
-nmap <F12> :let &guifont = substitute(&guifont, ':h\(\d\+\)', '\=":h" . (submatch(1) - 1)', '')<CR>
-nmap <S-F12> :let &guifont = substitute(&guifont, ':h\(\d\+\)', '\=":h" . (submatch(1) + 1)', '')<CR>
+nmap <F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))+0.5))', '')<CR>
+nmap <S-F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))-0.5))', '')<CR>
 
 if ( has('win32') || has('win64') )
     set list lcs=tab:»\ ,eol:¬,trail:·
