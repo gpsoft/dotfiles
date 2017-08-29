@@ -40,15 +40,24 @@ if has('mac')
     set guifont=Consolas:h14
     " set guifontwide=Monaco:h14
 elseif has('unix')
-    set guifont=Consolas\ 12
+    set guifont=Consolas\ 13
+    " set guifont=adobe-source-han-sans\ 12
     " set guifontwide=Ricty\ Diminished\ 13
-    set linespace=1
 else
     " set guifont=MyricaM_M:h13
     " set guifontwide=MyricaM_M:h13
     set guifont=Consolas:h11
     set guifontwide=MS_Gothic:h11
 endif
+
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor-blinkon0
+set guicursor+=i-ci:ver30-iCursor-blinkon0
+" set guicursor+=i-ci:ver30-iCursor-blinkwait300-blinkon300-blinkoff100
+" set guicursor+=n-v-c:blinkon0
+" set guicursor+=i-ci:blinkon0
+" set guicursor+=i-ci:blinkwait300-blinkon300-blinkoff300
+" set guicursor+=i-ci:ver50-iCursor-blinkwait300-blinkon200-blinkoff150
 
 "Window placement.
 function! InitPlacement()
