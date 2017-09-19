@@ -6,10 +6,12 @@
 "Path.
 " let g:vimrc_local_path_notes = 'd:\dwh\notes'
 " let g:vimrc_local_path_notes = '~/notes'
-" let g:vimrc_local_disabled_plugins = []
+
+"Disable plugins
+let g:vimrc_local_disabled_plugins = [
+        \ ]
 
 "--------------------------------- gvim用 -----------------------------------
 "Window placement.
 let g:gvimrc_local_init_placement = [800, 10, 40, 100]
 let g:gvimrc_local_sbs_placement = [220, 10, 40, 180]
-

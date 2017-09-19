@@ -2,4 +2,4 @@
 " これを、.vimrcの最後でsourceする。
 " バージョン管理しない。
 
-
+set relativenumber

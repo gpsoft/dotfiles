@@ -3,3 +3,17 @@
 " バージョン管理しない。
 
 set linespace=0
+
+" Font
+" Mac/Win
+" set guifont=Consolas:h12
+" set guifont=MyricaM_M:h12
+" set guifontwide=MyricaM_M:h12
+" set guifontwide=MS_Gothic:h12
+" set guifontwide=Monaco:h12
+" Linux
+" set guifont=Consolas\ 13
+" set guifont=Cantarell\ 12
+" set guifontwide=SourceHanCodeJP\ 12
+" set guifontwide=SourceHanSansJP\ 12
+" set guifontwide=Ricty\ Diminished\ 13

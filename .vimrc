@@ -33,31 +33,35 @@ filetype plugin indent on
 " Basic settings
 " {{{
 set t_Co=256
+set background=dark
 colorscheme slate
+highlight ColorColumn ctermbg=magenta guibg=Magenta
+call matchadd('ColorColumn', '\%82v', 1000)
 
 set notitle
 set noruler
 set laststatus=2
 set showmode
-set tw=0
+set textwidth=0
 set number
-"Relativenumber can make scroll slow in terminal.
 " set relativenumber
+"    Relativenumber can make scroll slow in terminal.
 
 if ( has('win32') || has('win64') )
-    set listchars=    " better to clear lcs before setting ambiwidth to auto or double; or you could get E834.
+    set listchars=
+    "    better to clear lcs before setting ambiwidth to auto or double;
+    "    or you could get E834.
     set ambiwidth=auto
-    "Moved list setting to .gvimrc.
-    "set list lcs=tab:»\ ,eol:¬,trail:·
 else
     set ambiwidth=double
-    "set list lcs=tab:»\ ,eol:¬,trail:·
+    "    should be 'double' to show fullwidth chars(such as ■)
+    "    correctly.
     set list lcs=tab:»\ ,eol:¬,trail:©
-    " .bash_profile
-    " export VTE_CJK_WIDTH=1
+    "    can't use a char which shows in fullwidth.
 endif
 
 set autoindent
+set smartindent
 set smarttab
 set backspace=indent,eol,start
 set complete=.,w,b,u,t
@@ -69,8 +73,8 @@ set wildmenu
 set scrolloff=1
 set sidescrolloff=3
 
-set suffixesadd=.clj,.cljs,.rb  "for gf
-set nrformats=            "format for <C-A> or <C-X>
+set suffixesadd=.clj,.cljs,.rb  " for gf
+set nrformats=                  " format for <C-A> or <C-X>
 set hidden
 
 set ignorecase
@@ -87,19 +91,19 @@ if has('mac')
     set backupskip=/tmp/*,/private/tmp/*
 elseif has('unix')
     set backupdir=/var/tmp/bak
-    set backupskip=/tmp/*,/private/tmp/*
+    set backupskip=/tmp/*
 else
     if filereadable('c:\tmp\apptmp\nul')
         set backupdir=c:\tmp\apptmp\bak
         set directory=c:\tmp\apptmp\swp
-    else
+    elseif filereadable('d:\tmp\apptmp\nul')
         set backupdir=d:\tmp\apptmp\bak
         set directory=d:\tmp\apptmp\swp
+    else
+        set nobackup
+        set noswapfile
     endif
 endif
-
-highlight ColorColumn ctermbg=magenta guibg=Magenta
-call matchadd('ColorColumn', '\%82v', 100)
 
 "Block cursor in terminal.
 "let &t_ti.="\e[1 q"
@@ -140,6 +144,7 @@ augroup vimrc_tab
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
     autocmd FileType css setlocal noet
+    autocmd FileType javascript setlocal noet
 augroup END
 " }}}
 
@@ -164,23 +169,29 @@ augroup END
     "autocmd bufwritepost .vimrc source $MYVIMRC
     autocmd bufwritepost *.md call previm#refresh()
 
-    autocmd FileType text setlocal tw=0
-    "Global setting doesn't work for text filetype?
+    autocmd FileType text setlocal textwidth=0
+    autocmd FileType vim setlocal textwidth=0
+    "    Global setting doesn't work for some filetypes
 " }}}
 
 " FileType(php)
 " {{{
-
 augroup vimrc_php
     autocmd!
     autocmd BufNewFile,BufRead *.ctp set filetype=php
     autocmd FileType php setlocal foldmethod=indent | normal zR
     autocmd FileType php setlocal indentkeys=
             \ "0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/"
+
+    autocmd FileType php setlocal autoindent
+    autocmd FileType php setlocal smartindent
+       "    indentation in php has been broken??
 augroup END
 
-" let php_htmlInStrings=1
-" let php_sql_query=1
+let php_htmlInStrings=1
+let php_sql_query=1
+let php_baselib=1
+let php_parent_error_close=1
 " let php_folding=1   " it may slow vim down
 
 " function! s:PhpIndent() range
@@ -191,7 +202,6 @@ augroup END
 " endfunction
 " command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
 " vmap g= :PhpIndent<CR>
-
 " }}}
 
 " FileType(Clojure)
@@ -202,7 +212,7 @@ augroup vimrc_clj
     autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
     autocmd FileType clojure setlocal lispwords+=
-            \ defproject,provided,tabular,domonad,with-monad,defmonad,deftask
+            \ "defproject,provided,tabular,domonad,with-monad,defmonad,deftask"
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
 
@@ -334,21 +344,21 @@ function! MyFugitive()
 endfunction
 function! AlterWombat()
     "Inactive status line is too dark, let's lighten it up a bit.
-    hi LightLineLeft_inactive_0
-            \ ctermbg=248 ctermfg=234 guibg=#a0a0a0 guifg=#000000
-    hi LightLineLeft_inactive_0_1
-            \ ctermbg=238 ctermfg=248 guibg=#444444 guifg=#a0a0a0
-    hi LightLineMiddle_inactive
+    hi! LightLineLeft_inactive_0
+            \ ctermbg=243 ctermfg=234 guibg=#808080 guifg=#000000
+    hi! LightLineLeft_inactive_0_1
+            \ ctermbg=238 ctermfg=243 guibg=#444444 guifg=#808080
+    hi! LightLineMiddle_inactive
             \ ctermbg=238 guibg=#444444
-    hi LightLineRight_inactive_1_2
+    hi! LightLineRight_inactive_1_2
             \ ctermbg=238 ctermfg=238 guibg=#444444 guifg=#444444
 endfunction
 augroup vimrc_ll
     autocmd!
     autocmd VimEnter * call AlterWombat()
-    "It doesn't work in CUI; too early.
-    autocmd BufRead * call AlterWombat()
+    autocmd WinEnter * call AlterWombat()
 augroup END
+call AlterWombat()
 " }}}
 
 " Plugins(Ctrlp)
@@ -620,6 +630,7 @@ nmap <F2> :set invpaste<CR>
 
 " Folding
 nnoremap <Space> zA
+nnoremap g<Space> zR
 
 " Arrange windows
 nnoremap <C-k> :res +3<CR>

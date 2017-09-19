@@ -11,7 +11,6 @@ set fileformats=unix,dos,mac
 " Basic settings
 " {{{
 set t_Co=256
-"overwriting macvim?
 
 " Slate
 set background=dark
@@ -23,6 +22,8 @@ autocmd ColorScheme * highlight SpecialKey guifg=grey guibg=#fdf6e3
 autocmd ColorScheme * highlight WarningMsg guifg=white guibg=lightred
 colorscheme solarized
 let g:solarized_menu=0
+
+highlight ColorColumn ctermbg=magenta guibg=Magenta
 
 set relativenumber
 set guioptions-=m
@@ -37,18 +38,15 @@ endif
 " Font
 " {{{
 
+" Should be overwritten in gvimrc.local
 if has('mac')
     set guifont=Consolas:h14
-    " set guifontwide=Monaco:h14
 elseif has('unix')
     set guifont=Consolas\ 13
 else
-    " set guifont=MyricaM_M:h13
-    " set guifontwide=MyricaM_M:h13
     set guifont=Consolas:h11
     set guifontwide=MS_Gothic:h11
 endif
-
 " }}}
 
 " Cursor
