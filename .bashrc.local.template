@@ -1,2 +1,17 @@
-# マシン固有の設定を書いて ~/.bashrc.local に置く。
-# バージョン管理しない。
+## マシン固有の設定を書いて ~/.bashrc.local に置く。
+## バージョン管理しない。
+
+## Alias for Docker
+if ! win; then
+    alias dkps='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.ID}}\t{{.Status}}"'
+    alias dkim='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.Size}}"'
+    alias dkrm='docker ps --filter "status=exited" --format "{{.ID}}\t{{.Status}}" |grep "weeks ago" |cut -f1 |xargs docker rm'
+    alias dkrma='docker container prune'
+    alias dkrmi='docker images --filter "dangling=true" -q |xargs docker rmi'
+    alias dkrmv='docker volume ls --filter "dangling=true" -q |xargs docker volume rm'
+    alias dkc='docker-compose'
+
+    if mac; then
+        alias dktty='screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty'
+    fi
+fi
