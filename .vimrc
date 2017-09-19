@@ -635,7 +635,7 @@ nmap <F2> :set invpaste<CR>
 
 " Folding
 nnoremap <Space> zA
-nnoremap g<Space> zR
+nnoremap g<Space> zi
 
 " Arrange windows
 nnoremap <C-k> :res +3<CR>
