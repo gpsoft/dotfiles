@@ -331,13 +331,22 @@ endif
 
 set laststatus=2
 
-function! TurnOffIme()
-  call system('fcitx-remote -c')
-endfunction
-set noimdisable
-set iminsert=0
-set imsearch=-1
-inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>:call TurnOffIme()<CR>
+" function! TurnOffIme()
+"   call system('fcitx-remote -c')
+" endfunction
+" set noimdisable
+" set iminsert=0
+" set imsearch=-1
+" inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>:call TurnOffIme()<CR>
+
+set noimcmdline
+inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>
+if has('unix')
+    function! ImeOff()
+        exec system("fcitx-remote -c")
+    endfunction
+    autocmd! InsertLeave * call ImeOff()
+endif
 
 "--------------------------------- Custom commands -------------------------
 "Clojure REPL.
