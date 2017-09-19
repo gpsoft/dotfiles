@@ -13,8 +13,8 @@ set fileformats=unix,dos,mac
 set t_Co=256
 
 " Slate
-set background=dark
-colorscheme slate
+" set background=dark
+" colorscheme slate
 
 " Solarized
 set background=light

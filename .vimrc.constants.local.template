@@ -10,6 +10,8 @@
 "Disable plugins
 let g:vimrc_local_disabled_plugins = [
         \ ]
+"    for example, ultisnips doesn't work in msys bash on Windows
+"    because of msys-python2.7.dll
 
 "--------------------------------- gvim用 -----------------------------------
 "Window placement.
