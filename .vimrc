@@ -87,6 +87,7 @@ set smartcase
 set infercase
 set incsearch
 set wrapscan
+set history=200
 
 set noundofile
 set backup
@@ -125,9 +126,9 @@ endif
 " function! TurnOffIme()
 "   call system('fcitx-remote -c')
 " endfunction
-" set noimdisable
-" set iminsert=0
-" set imsearch=-1
+set noimdisable
+set iminsert=0
+set imsearch=-1
 " inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>:call TurnOffIme()<CR>
 
 set noimcmdline
@@ -185,8 +186,7 @@ augroup vimrc_php
     autocmd!
     autocmd BufNewFile,BufRead *.ctp set filetype=php
     autocmd FileType php setlocal foldmethod=indent | normal zR
-    autocmd FileType php setlocal indentkeys=
-            \ "0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/"
+    autocmd FileType php setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/
 
     autocmd FileType php setlocal autoindent
     autocmd FileType php setlocal smartindent
@@ -216,8 +216,7 @@ augroup vimrc_clj
     autocmd BufNewFile,BufRead *.cljs set filetype=clojure
     autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
-    autocmd FileType clojure setlocal lispwords+=
-            \ "defproject,provided,tabular,domonad,with-monad,defmonad,deftask"
+    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
 
@@ -434,10 +433,8 @@ let g:sexp_mappings = {
 " Plugins(Dbext)
 " {{{
 let g:dbext_map_prefix = '<Leader>q'
-let g:dbext_default_profile_hoge =
-        \ 'type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=hoge'
-let g:dbext_default_profile_fuga =
-        \ 'type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=fuga'
+let g:dbext_default_profile_hoge='type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=hoge'
+let g:dbext_default_profile_fuga='type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=fuga'
 let g:dbext_default_MYSQL_extra = '--default-character-set=utf8'
 let g:dbext_default_profile = 'hoge'
 let g:dbext_default_buffer_lines = 20
