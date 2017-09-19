@@ -84,3 +84,4 @@
 [submodule "vimfiles/bundle/vim-swap"]
 	path = vimfiles/bundle/vim-swap
 	url = https://github.com/machakann/vim-swap.git
+	ignore = untracked
