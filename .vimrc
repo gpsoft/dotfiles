@@ -19,8 +19,9 @@ endif
 " Pathogen
 " {{{
 if ( !exists("g:loaded_pathogen") )
-    set runtimepath=$HOME/vimfiles,$VIMRUNTIME
+    set runtimepath=$HOME/vimfiles,$HOME/.vim,$VIMRUNTIME
     "    for msys bash on Windows
+    "    note that has('unix') is 1 under msys
 endif
 let g:pathogen_disabled = [
         \ "PHP-Indenting-for-VIm",
