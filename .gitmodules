@@ -81,3 +81,16 @@
 [submodule "vimfiles/bundle/vim-swap"]
 	path = vimfiles/bundle/vim-swap
 	url = https://github.com/machakann/vim-swap.git
+	ignore = untracked
+[submodule "vimfiles/bundle/Align"]
+	path = vimfiles/bundle/Align
+	url = https://github.com/vim-scripts/Align.git
+[submodule "vimfiles/bundle/SQLUtilities"]
+	path = vimfiles/bundle/SQLUtilities
+	url = https://github.com/vim-scripts/SQLUtilities.git
+[submodule "vimfiles/bundle/dbext.vim"]
+	path = vimfiles/bundle/dbext.vim
+	url = https://github.com/vim-scripts/dbext.vim.git
+[submodule "vimfiles/bundle/vim-projectionist"]
+	path = vimfiles/bundle/vim-projectionist
+	url = https://github.com/tpope/vim-projectionist.git
