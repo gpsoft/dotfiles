@@ -41,8 +41,6 @@ if has('mac')
     " set guifontwide=Monaco:h14
 elseif has('unix')
     set guifont=Consolas\ 13
-    " set guifont=adobe-source-han-sans\ 12
-    " set guifontwide=Ricty\ Diminished\ 13
 else
     " set guifont=MyricaM_M:h13
     " set guifontwide=MyricaM_M:h13
@@ -88,3 +86,9 @@ call InitPlacement()
 
 set guioptions-=m
 set guioptions-=T
+
+if filereadable(expand("~/.gvimrc.local"))
+  source ~/.gvimrc.local
+endif
+
+set autoindent
