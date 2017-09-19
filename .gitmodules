@@ -72,9 +72,6 @@
 [submodule "vimfiles/bundle/ultisnips"]
 	path = vimfiles/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "vimfiles/bundle/paredit.vim"]
-	path = vimfiles/bundle/paredit.vim
-	url = git://github.com/vim-scripts/paredit.vim
 [submodule "vimfiles/bundle/vim-sexp"]
 	path = vimfiles/bundle/vim-sexp
 	url = https://github.com/guns/vim-sexp
