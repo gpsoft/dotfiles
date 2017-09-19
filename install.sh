@@ -49,18 +49,7 @@ function symlink() {
 
     # move away if 1st arg is a real dir/file.
     if [[ -e "$1" ]]; then
-        local t="/tmp"
-        if win; then
-            t="$HOME/AppData/Local/Temp"
-            # can't use $TMP here.
-        fi
-        echo MOVING $1 TO $t.
-        echo RESCUE THEM IF YOU NEED.
-        if win; then
-            cmd <<<"move \"`winpath $1`\" \"`winpath $t`\"" >/dev/null
-        else
-            mv "$1" "$t"
-        fi
+        movetotmp ~/$1
     fi
 
     # make a link.
@@ -84,6 +73,33 @@ function linkhome() {
         real=$2
     fi
     symlink ~/$1 `pwd`/$real;
+}
+
+# move a file to temp dir.
+function movetotmp() {
+    local t="/tmp"
+    if win; then
+        t="$HOME/AppData/Local/Temp"
+        # can't use $TMP here.
+    fi
+    echo MOVING $1 TO $t.
+    echo RESCUE THEM IF YOU NEED.
+    if win; then
+        cmd <<<"move \"`winpath $1`\" \"`winpath $t`\"" >/dev/null
+    else
+        mv "$1" "$t"
+    fi
+}
+
+# copy a template file to home
+function copytempl() {
+    if [[ -e ~/$1 ]]; then
+        movetotmp ~/$1
+    fi
+    if [[ -e $1.template ]]; then
+        echo copying $1.template to ~
+        cp $1.template ~/$1
+    fi
 }
 
 ##### MAKE SYMBOLIC LINKS
@@ -110,6 +126,11 @@ if win; then
 else
     linkhome .vim vimfiles
 fi
+
+copytempl .bashrc.local
+copytempl .vimrc.constants.local
+copytempl .vimrc.local
+copytempl .gvimrc.local
 
 ##### UPDATE GIT SUBMODULES
 git checkout master
