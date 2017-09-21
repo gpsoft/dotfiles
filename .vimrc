@@ -512,6 +512,14 @@ function! s:ToggleSyntax()
 endfunction
 command! ToggleSyntax call s:ToggleSyntax()
 
+function! ToggleFold()
+    if &foldlevel > 0
+        setlocal foldlevel=0
+    else
+        setlocal foldlevel=99
+    endif
+endfunction
+
 " :Qargs
 " Set arglist to files in quickfix list.
 " Thanks to Drew Neil
@@ -634,7 +642,8 @@ inoremap <C-V> <F2><C-R>+<F2>
 
 " Folding
 nnoremap <Space> zA
-nnoremap g<Space> zi
+" nnoremap g<Space> zi
+nnoremap g<Space> :<C-U>call ToggleFold()<CR>
 
 " Arrange windows
 " nnoremap <C-k> :res +3<CR>
