@@ -367,7 +367,7 @@ call AlterWombat()
 
 " Plugins(Ctrlp)
 " {{{
-" let g:ctrlp_map = '<Nop>'
+let g:ctrlp_map = '<Nop>'
 " let g:ctrlp_max_files  = 5000
 " let g:ctrlp_max_depth = 6
 " let g:ctrlp_clear_cache_on_exit = 0
@@ -636,8 +636,10 @@ nnoremap <Space> zA
 nnoremap g<Space> zi
 
 " Arrange windows
-nnoremap <C-k> :res +3<CR>
+" nnoremap <C-k> :res +3<CR>
 " nnoremap <C-j> :res -3<CR>
+nnoremap <C-P> :res +2<CR>
+nnoremap <C-N> :res -2<CR>
 
 " Misc
 nnoremap <Leader>q :copen 10<CR><C-w>J
