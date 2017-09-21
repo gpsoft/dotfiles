@@ -175,6 +175,7 @@ augroup END
     "autocmd bufwritepost .vimrc source $MYVIMRC
     autocmd bufwritepost *.md call previm#refresh()
 
+    autocmd BufRead vim setlocal foldlevel=0
     autocmd FileType text setlocal textwidth=0
     autocmd FileType vim setlocal textwidth=0
     "    Global setting doesn't work for some filetypes
@@ -681,4 +682,4 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " }}}
 
-" vim:fdm=marker:fmr={{{,}}}:fdl=0:sw=4:sts=4:ts=4:et:
+" vim:fdm=marker:fmr={{{,}}}:sw=4:sts=4:ts=4:et:

@@ -114,4 +114,4 @@ endif
 
 call InitPlacement()
 
-" vim:fdm=marker:fmr={{{,}}}:fdl=0:sw=4:sts=4:ts=4:et:
+" vim:fdm=marker:fmr={{{,}}}:sw=4:sts=4:ts=4:et:
