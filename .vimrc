@@ -605,7 +605,7 @@ nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
 nnoremap * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw!<CR>
 " nnoremap & :&&<CR>
 
 " Replacing
