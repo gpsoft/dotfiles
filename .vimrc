@@ -206,7 +206,7 @@ let php_parent_error_close=1
 "     let &filetype = t
 " endfunction
 " command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
-" vmap g= :PhpIndent<CR>
+" vnoremap g= :PhpIndent<CR>
 " }}}
 
 " FileType(Clojure)
@@ -576,17 +576,17 @@ nnoremap <C-T> :w<CR>
 nnoremap <Leader>E :Ex<CR>
 nnoremap <Leader>S :Sex<CR>
 nnoremap <Leader>V :Vex<CR>
-nmap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
-nmap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
+nnoremap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
+nnoremap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
 "After re-loading .vimrc rainbow paren gets off.
-nmap <Leader>m :MRU<CR>
-nmap <Leader>l :BufExplorerHorizontalSplit<CR>
-nmap <Leader>o :CtrlPMixed<CR>
-nmap <Leader>cs :split ~/dotfiles/cheat<CR>
-nmap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
-nmap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
+nnoremap <Leader>m :MRU<CR>
+nnoremap <Leader>l :BufExplorerHorizontalSplit<CR>
+nnoremap <Leader>o :CtrlPMixed<CR>
+nnoremap <Leader>cs :split ~/dotfiles/cheat<CR>
+nnoremap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
+nnoremap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
 if exists('g:vimrc_local_path_notes')
-    execute 'nmap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
+    execute 'nnoremap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
 endif
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>aa :A<CR>
@@ -597,8 +597,8 @@ nnoremap <Leader>at :AT<CR>
 " Moving around
 nmap <C-F> <Leader><Leader>f
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
-nmap <Leader>t :TagbarOpenAutoClose<CR>
-nmap <Leader>T :echo tagbar#currenttag('[%s]', '')<CR>
+nnoremap <Leader>t :TagbarOpenAutoClose<CR>
+nnoremap <Leader>T :echo tagbar#currenttag('[%s]', 'not in a function?')<CR>
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
@@ -612,14 +612,14 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Git(fugitive)
-nmap <Leader>gs :Gstatus<CR>
-nmap <Leader>gd :Gdiff<CR>
-" nmap <Leader>gc :Gcommit<CR>
-nmap <Leader>gb :Gblame<CR>
-nmap <Leader>gl :Glog<CR>:copen<CR><C-w>J
-nmap <Leader>gR :Gread<CR>
-nmap <Leader>gW :Gwrite<CR>
-"nmap <Leader>gp :Git push<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+" nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gl :Glog<CR>:copen<CR><C-w>J
+nnoremap <Leader>gR :Gread<CR>
+nnoremap <Leader>gW :Gwrite<CR>
+" nnoremap <Leader>gp :Git push<CR>
 
 " Indentation
 nnoremap <Leader>F migg=G`izz
@@ -628,7 +628,8 @@ nnoremap <Leader>f mi=i}`izz
 " Pasting
 nnoremap gp "+gp
 nnoremap gP "+gP
-nmap <F2> :set invpaste<CR>
+nnoremap <F2> :set invpaste<CR>
+inoremap <C-V> <F2><C-R>+<F2>
 
 " Folding
 nnoremap <Space> zA
@@ -640,11 +641,11 @@ nnoremap <C-k> :res +3<CR>
 
 " Misc
 nnoremap <Leader>q :copen 10<CR><C-w>J
-nmap <Leader>r :OverCommandLine<CR>%s/
-nmap <Leader>p :PrevimOpen<CR>
-" nmap <Leader>b :silent! !%:p<CR>
-nmap <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
-nmap <Leader>` :Marks<CR>
+nnoremap <Leader>r :OverCommandLine<CR>%s/
+nnoremap <Leader>p :PrevimOpen<CR>
+" nnoremap <Leader>b :silent! !%:p<CR>
+nnoremap <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+nnoremap <Leader>` :Marks<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
