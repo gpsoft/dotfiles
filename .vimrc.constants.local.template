@@ -10,8 +10,12 @@
 "Disable plugins
 let g:vimrc_local_disabled_plugins = [
         \ ]
-"    for example, ultisnips doesn't work in msys bash on Windows
-"    because of msys-python2.7.dll
+if ( has('win32unix') )
+    call add(g:vimrc_local_disabled_plugins, "ultisnips")
+"    ultisnips doesn't work in msys bash on Windows
+"    because msys-python2.7.dll is missing.
+"    note that this vim has come with git(not Kaoriya-vim)
+endif
 
 "--------------------------------- gvim用 -----------------------------------
 "Window placement.
