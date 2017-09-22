@@ -35,6 +35,15 @@ if ! win; then
     PROMPT_COMMAND=__prompt_command
 fi
 
+vim()
+{
+    # Enable to use <C-Q> in vim
+    local STTYOPTS="$(stty --save)"
+    stty -ixon
+    command vim "$@"
+    stty "$STTYOPTS"
+}
+
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
