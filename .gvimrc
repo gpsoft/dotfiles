@@ -18,9 +18,10 @@ set t_Co=256
 
 " Solarized
 set background=light
-autocmd ColorScheme * highlight SpecialKey guifg=grey guibg=#fdf6e3
-autocmd ColorScheme * highlight WarningMsg guifg=white guibg=lightred
 colorscheme solarized
+highlight! SpecialKey guifg=grey guibg=#fdf6e3
+highlight! WarningMsg guifg=white guibg=lightred
+highlight! MatchParen guifg=red guibg=#FBD6D0
 let g:solarized_menu=0
 
 highlight ColorColumn ctermbg=magenta guibg=Magenta
