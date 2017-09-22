@@ -97,12 +97,12 @@ endfunction
 
 " File system
 nnoremap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
-nnoremap <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 
 " Arrange windows
-nnoremap <C-W><C-S> :<C-u>call WinSidebyside()<CR>
-nnoremap <F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))+0.5))', '')<CR>
-nnoremap <S-F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))-0.5))', '')<CR>
+nnoremap <silent> <C-W><C-S> :<C-u>call WinSidebyside()<CR>
+nnoremap <silent> <F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))+0.5))', '')<CR>
+nnoremap <silent> <S-F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))-0.5))', '')<CR>
 " }}}
 
 " Local config

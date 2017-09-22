@@ -586,10 +586,10 @@ nnoremap <Leader>E :Ex<CR>
 nnoremap <Leader>S :Sex<CR>
 nnoremap <Leader>V :Vex<CR>
 nnoremap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
-nnoremap <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
+nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
 "After re-loading .vimrc rainbow paren gets off.
 nnoremap <Leader>m :MRU<CR>
-nnoremap <Leader>l :BufExplorerHorizontalSplit<CR>
+nnoremap <silent> <Leader>l :BufExplorerHorizontalSplit<CR>
 nnoremap <Leader>o :CtrlPMixed<CR>
 nnoremap <Leader>cs :split ~/dotfiles/cheat<CR>
 nnoremap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
@@ -612,8 +612,8 @@ nnoremap <Leader>T :echo tagbar#currenttag('[%s]', 'not in a function?')<CR>
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
-nnoremap * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
-nnoremap g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
+nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
+nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw!<CR>
 " nnoremap & :&&<CR>
 
@@ -643,20 +643,20 @@ inoremap <C-V> <F2><C-R>+<F2>
 " Folding
 nnoremap <Space> zA
 " nnoremap g<Space> zi
-nnoremap g<Space> :<C-U>call ToggleFold()<CR>
+nnoremap <silent> g<Space> :<C-U>call ToggleFold()<CR>
 
 " Arrange windows
 " nnoremap <C-k> :res +3<CR>
 " nnoremap <C-j> :res -3<CR>
-nnoremap <C-P> :res +2<CR>
-nnoremap <C-N> :res -2<CR>
+nnoremap <silent> <C-P> :res +2<CR>
+nnoremap <silent> <C-N> :res -2<CR>
 
 " Misc
-nnoremap <Leader>q :copen 10<CR><C-w>J
+nnoremap <silent> <Leader>q :copen 10<CR><C-w>J
 nnoremap <Leader>r :OverCommandLine<CR>%s/
 nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
-nnoremap <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
 nnoremap <Leader>` :Marks<CR>
 
 " Insert mode
