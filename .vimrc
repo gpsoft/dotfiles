@@ -39,7 +39,10 @@ filetype plugin indent on
 " {{{
 set t_Co=256
 set background=dark
-colorscheme slate
+" colorscheme slate
+colorscheme lucius
+highlight LineNr ctermfg=247 ctermbg=238
+highlight CursorLineNr ctermfg=172 ctermbg=240
 highlight ColorColumn ctermbg=magenta guibg=Magenta
 call matchadd('ColorColumn', '\%82v', 1000)
 
