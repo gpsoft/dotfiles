@@ -232,16 +232,14 @@ augroup vimrc_clj
             return "="
         endif
     endfunction
+
     function! EnableClojureFolding()
         setlocal foldexpr=GetClojureFold()
         setlocal foldmethod=expr
         setlocal nofoldenable
     endfunction
 
-    autocmd VimEnter clojure RainbowParenthesesToggle
-    autocmd Syntax clojure RainbowParenthesesLoadRound
-    autocmd Syntax clojure RainbowParenthesesLoadSquare
-    autocmd Syntax clojure RainbowParenthesesLoadBraces
+    autocmd FileType clojure call ActivateRainbowParen()
 augroup END
 
 "let g:clojure_fold = 1
@@ -407,6 +405,13 @@ let g:rbpt_colorpairs = [
         \ ]
 let g:rbpt_max = 8
 let g:rbpt_loadcmd_toggle = 0
+
+function! ActivateRainbowParen()
+    RainbowParenthesesLoadRound
+    RainbowParenthesesLoadSquare
+    RainbowParenthesesLoadBraces
+    RainbowParenthesesActivate
+endfunction
 " }}}
 
 " Plugins(Vim-sexp)
@@ -589,8 +594,9 @@ nnoremap <Leader>E :Ex<CR>
 nnoremap <Leader>S :Sex<CR>
 nnoremap <Leader>V :Vex<CR>
 nnoremap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
-nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:RainbowParenthesesActivate<CR>
-"After re-loading .vimrc rainbow paren gets off.
+nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>
+"After re-loading .vimrc, rainbow paren gets off.
+"You should do <C-L> on each clojure buffer to re-activate it.
 nnoremap <Leader>m :MRU<CR>
 nnoremap <silent> <Leader>l :BufExplorerHorizontalSplit<CR>
 nnoremap <Leader>o :CtrlPMixed<CR>
@@ -617,7 +623,7 @@ nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
 nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw!<CR>
+nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
 " nnoremap & :&&<CR>
 
 " Replacing
