@@ -18,10 +18,10 @@ endif
 
 " Pathogen
 " {{{
-if ( !exists("g:loaded_pathogen") )
+if ( !exists("g:loaded_pathogen") && has('win32unix') )
     set runtimepath=$HOME/vimfiles,$HOME/.vim,$VIMRUNTIME
     "    for msys bash on Windows
-    "    note that has('unix') is 1 under msys
+    "    note that has('unix') is 1 under msys(so is 'win32unix')
 endif
 let g:pathogen_disabled = [
         \ "PHP-Indenting-for-VIm",
@@ -82,6 +82,8 @@ set formatoptions+=j
 set noautoread
 set pastetoggle=<F2>
 
+set timeout timeoutlen=600 ttimeoutlen=100
+"    longer ttimeoutlen makes slow to move from insert mode to normal mode.
 set wildmenu
 set scrolloff=1
 set sidescrolloff=3
@@ -103,14 +105,25 @@ set noswapfile
 if has('mac')
     set backupdir=/var/tmp/bak
     set backupskip=/tmp/*,/private/tmp/*
+elseif has('win32unix')
+    if isdirectory('/c/tmp/apptmp')
+        set backupdir=/c/tmp/apptmp/bak
+        set directory=/c/tmp/apptmp/swp
+    elseif isdirectory('/d/tmp/apptmp')
+        set backupdir=/d/tmp/apptmp/bak
+        set directory=/d/tmp/apptmp/swp
+    else
+        set nobackup
+        set noswapfile
+    endif
 elseif has('unix')
     set backupdir=/var/tmp/bak
     set backupskip=/tmp/*
 else
-    if filereadable('c:\tmp\apptmp\nul')
+    if isdirectory('c:\tmp\apptmp\bak')
         set backupdir=c:\tmp\apptmp\bak
         set directory=c:\tmp\apptmp\swp
-    elseif filereadable('d:\tmp\apptmp\nul')
+    elseif isdirectory('d:\tmp\apptmp\bak')
         set backupdir=d:\tmp\apptmp\bak
         set directory=d:\tmp\apptmp\swp
     else
@@ -120,11 +133,13 @@ else
 endif
 
 "Block cursor in terminal.
-"let &t_ti.="\e[1 q"
-"let &t_SI.="\e[5 q"
-"let &t_EI.="\e[1 q"
-"let &t_te.="\e[0 q"
-" set t_ve+=[?81;0;112c
+if ( has('win32unix') )
+    "let &t_ti.="\e[1 q"
+    "let &t_te.="\e[0 q"
+    let &t_SI.="\e[5 q"
+    let &t_EI.="\e[1 q"
+    " set t_ve+=[?81;0;112c
+endif
 
 " }}}
 
@@ -141,7 +156,7 @@ set imsearch=-1
 
 set noimcmdline
 inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>
-if has('unix')
+if has('unix') && !has('win32unix')
     function! ImeOff()
         exec system("fcitx-remote -c")
     endfunction
@@ -476,7 +491,7 @@ if has('mac')
         execute script
     endfunction
     command! Repl silent! call Repl(expand("%:p:h"))
-elseif has('unix')
+elseif has('unix') && !has('win32unix')
 else
     command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
 endif
