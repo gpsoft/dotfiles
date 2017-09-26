@@ -691,7 +691,7 @@ nnoremap <Leader>` :Marks<CR>
 " Insert mode
 inoremap <C-w> <Nop>
 inoremap <C-u> <Nop>
-inoremap <C-t> <Esc><C-t>
+inoremap <C-t> <Esc>:w<CR>
 
 " Command Window
 cnoremap <expr> %% getcmdtype()==':' ? expand('%:h').'/' : '%%'
