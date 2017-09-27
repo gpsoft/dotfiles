@@ -45,6 +45,10 @@
     git branch --unset-upstream br1   ...br1の追跡設定を解除
     push --all は「全ブランチ」だが、fetch --allは「全リモート」
 
+## Blame
+
+    git blame -w -M hoge.md  ...空白を無視(-w)、移動を考慮(-M)
+
 ## Cherry-pick
     git cherry-pick --no-commit 8d7baf8
     git cherry-pick br1           ...br1のtipのコミットだけをpick

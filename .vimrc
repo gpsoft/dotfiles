@@ -653,7 +653,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 " nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gb :Gblame -w -M<CR>
 nnoremap <Leader>gl :Glog<CR>:copen<CR><C-w>J
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
