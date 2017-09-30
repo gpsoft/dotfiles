@@ -156,7 +156,7 @@ set imsearch=-1
 
 set noimcmdline
 inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>
-if has('unix') && !has('win32unix')
+if has('unix') && !has('win32unix') && !has('mac')
     function! ImeOff()
         exec system("fcitx-remote -c")
     endfunction
