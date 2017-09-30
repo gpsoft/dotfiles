@@ -2,6 +2,7 @@ export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export PATH=/Applications/XAMPP/bin:Vendor/bin:$PATH
 export PATH=/Applications/MacVim.app/Contents/MacOS:$PATH
 export PATH=/Applications/android-sdk/platform-tools:$PATH
+export PATH=/Applications/KindleGen:$PATH
 export PATH=$PATH:~/.cabal/bin
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home
