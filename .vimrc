@@ -331,10 +331,22 @@ endif
 
 set laststatus=2
 
-set noimdisable
-set iminsert=0
-set imsearch=-1
-inoremap <C-[> <ESC>:set iminsert=0<CR>
+" function! TurnOffIme()
+"   call system('fcitx-remote -c')
+" endfunction
+" set noimdisable
+" set iminsert=0
+" set imsearch=-1
+" inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>:call TurnOffIme()<CR>
+
+set noimcmdline
+inoremap <silent> <C-[> <ESC>:set iminsert=0<CR>
+if has('unix')
+    function! ImeOff()
+        exec system("fcitx-remote -c")
+    endfunction
+    autocmd! InsertLeave * call ImeOff()
+endif
 
 "--------------------------------- Custom commands -------------------------
 "Clojure REPL.
@@ -550,3 +562,8 @@ nnoremap <Leader>tl : call TortoiseCommand('log', '')<CR>
 nnoremap <Leader>tc : call TortoiseCommand('commit', '')<CR>
 nnoremap <Leader>tb : call TortoiseBlame()<CR>
 
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+set autoindent

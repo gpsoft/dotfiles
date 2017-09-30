@@ -81,3 +81,7 @@
 [submodule "vimfiles/bundle/vim-sexp-mappings-for-regular-people"]
 	path = vimfiles/bundle/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people
+[submodule "vimfiles/bundle/vim-swap"]
+	path = vimfiles/bundle/vim-swap
+	url = https://github.com/machakann/vim-swap.git
+	ignore = untracked
