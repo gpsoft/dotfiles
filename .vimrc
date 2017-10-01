@@ -667,7 +667,7 @@ nnoremap <Leader>f mi=i}`izz
 nnoremap gp "+gp
 nnoremap gP "+gP
 nnoremap <F2> :set invpaste<CR>
-inoremap <C-V> <F2><C-R>+<F2>
+inoremap <C-G><C-V> <F2><C-R>+<F2>
 
 " Folding
 nnoremap <Space> zA
