@@ -69,8 +69,10 @@ else
     set ambiwidth=double
     "    should be 'double' to show fullwidth chars(such as ■)
     "    correctly.
-    set list lcs=tab:»\ ,eol:¬,trail:©
-    "    can't use a char which shows in fullwidth.
+    " set list lcs=tab:»\ ,eol:¬,trail:©
+    set list lcs=tab:»\ ,eol:¬,trail:∙
+    "    need to update lcs depending on the terminal font
+    "    so that they don't include any fullwidth-caracter.
 endif
 
 set autoindent

@@ -43,7 +43,8 @@ endif
 if has('mac')
     set guifont=Consolas:h14
 elseif has('unix')
-    set guifont=Consolas\ 13
+    " set guifont=Consolas\ 13
+    set guifont=Ricty\ Diminished\ 13
 else
     set guifont=Consolas:h11
     set guifontwide=MS_Gothic:h11
