@@ -639,6 +639,14 @@ nmap <C-F> <Leader><Leader>f
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 nnoremap <Leader>t :TagbarOpenAutoClose<CR>
 nnoremap <Leader>T :echo tagbar#currenttag('[%s]', 'not in a function?')<CR>
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+vnoremap k gk
+vnoremap j gj
+vnoremap gk k
+vnoremap gj j
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
