@@ -320,9 +320,9 @@ let g:bufExplorerSortBy='fullpath'
 
 " Open-Browser & previm
 " let g:netrw_browsex_viewer="firefox-bin"
-" if exists('g:vimrc_local_browser')
-"     execute 'let g:previm_open_cmd="'.g:vimrc_local_browser.'"<CR>'
-" endif
+if exists('g:vimrc_local_browser')
+    let g:previm_open_cmd=g:vimrc_local_browser
+endif
 
 " SQLUtilities
 let g:sqlutil_load_default_maps = 0
