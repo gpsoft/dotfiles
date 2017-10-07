@@ -56,6 +56,7 @@ set notitle
 set noruler
 set laststatus=2
 set showmode
+set showcmd
 set textwidth=0
 set number
 " set relativenumber
