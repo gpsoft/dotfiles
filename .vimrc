@@ -234,7 +234,7 @@ let php_parent_error_close=1
 "     let &filetype = t
 " endfunction
 " command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
-" vnoremap g= :PhpIndent<CR>
+" xnoremap g= :PhpIndent<CR>
 " }}}
 
 " FileType(Clojure)
@@ -657,10 +657,10 @@ nnoremap k gk
 nnoremap j gj
 nnoremap gk k
 nnoremap gj j
-vnoremap k gk
-vnoremap j gj
-vnoremap gk k
-vnoremap gj j
+xnoremap k gk
+xnoremap j gj
+xnoremap gk k
+xnoremap gj j
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
