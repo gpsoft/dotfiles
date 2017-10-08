@@ -590,6 +590,18 @@ fu! TortoiseBlame()
     call TortoiseCommand('blame', others)
 endfunc
 
+":PasteReplace()
+"Replace selected text with unnamed register
+"without breaking unnamed register.
+function! PasteReplace()
+    normal! gv"_d
+    if col('.') >= col('$') - 1
+        normal! p
+    else
+        normal! P
+    endif
+endfunction
+
 " }}}
 
 " Experimental
@@ -713,6 +725,7 @@ cnoremap <C-n> <Down>
 " Visual mode
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
 " for Fireplace
 nnoremap cpP :Eval<CR>
