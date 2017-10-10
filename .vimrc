@@ -171,13 +171,14 @@ endif
 
 " Tab
 " {{{
-set sw=4 sts=4 ts=4 et
+set sw=0 sts=0 ts=4 et
 augroup vimrc_tab
     autocmd!
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
     autocmd FileType css setlocal noet
     autocmd FileType javascript setlocal noet
+    autocmd FileType markdown setlocal ts=2
 augroup END
 " }}}
 
