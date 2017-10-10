@@ -100,6 +100,7 @@ set ignorecase
 set smartcase
 set infercase
 set incsearch
+set hlsearch
 set wrapscan
 set history=200
 
