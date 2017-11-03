@@ -336,6 +336,10 @@ let g:sqlutil_align_comma = 1
 " Easymotion
 "let g:EasyMotion_use_migemo = 1
 let g:EasyMotion_do_mapping=0
+let g:EasyMotion_keys = 'ASDFGHJKL;WERTYUIO'
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_verbose = 0
 
 " }}}
 
