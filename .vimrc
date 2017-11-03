@@ -47,7 +47,7 @@ set background=dark
 colorscheme lucius
 highlight LineNr ctermfg=247 ctermbg=238
 highlight CursorLineNr ctermfg=172 ctermbg=240
-highlight ColorColumn ctermbg=magenta guibg=Magenta
+highlight ColorColumn ctermbg=5
 
 call matchadd('ColorColumn', '\%82v', 1000)
 

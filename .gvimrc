@@ -24,7 +24,7 @@ highlight! WarningMsg guifg=white guibg=lightred
 highlight! MatchParen guifg=red guibg=#FBD6D0
 let g:solarized_menu=0
 
-highlight ColorColumn ctermbg=magenta guibg=Magenta
+highlight ColorColumn guibg=#ffcfcf
 
 set relativenumber
 set guioptions-=m
