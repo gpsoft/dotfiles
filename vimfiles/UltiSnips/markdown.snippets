@@ -7,10 +7,38 @@ snippet img "image"
 endsnippet
 
 snippet tab "table"
-|     |        |    |
+|$0     |        |    |
 |----:|:-------|:--:|
 |     |        |    |
 |     |        |    |
 |     |        |    |
 
+endsnippet
+
+snippet esc "escape key" i
+<C-[>
+endsnippet
+
+snippet kb "key" i
+\`KB$1\`$0
+endsnippet
+
+snippet cus "cursor position" i
+CUSHERE$0
+endsnippet
+
+snippet spell "spell table"
+
+|呪文                      |意味|
+|:-------------------------|:---|
+|$0                          ||
+|                          ||
+
+endsnippet
+
+snippet png "png image"
+
+![$1](img/$2.png)
+
+$0
 endsnippet
