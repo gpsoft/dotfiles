@@ -53,7 +53,7 @@ call matchadd('ColorColumn', '\%82v', 1000)
 call matchadd('ColorColumn', '\%83v', 1000)
 
 set notitle
-set noruler
+set ruler
 set laststatus=2
 set showmode
 set showcmd
