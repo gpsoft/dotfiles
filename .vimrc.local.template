@@ -3,3 +3,5 @@
 " バージョン管理しない。
 
 set relativenumber
+
+" let g:EasyMotion_use_migemo = 1

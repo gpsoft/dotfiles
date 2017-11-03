@@ -50,11 +50,13 @@ highlight CursorLineNr ctermfg=172 ctermbg=240
 highlight ColorColumn ctermbg=5
 
 call matchadd('ColorColumn', '\%82v', 1000)
+call matchadd('ColorColumn', '\%83v', 1000)
 
 set notitle
-set noruler
+set ruler
 set laststatus=2
 set showmode
+set showcmd
 set textwidth=0
 set number
 " set relativenumber
@@ -98,6 +100,7 @@ set ignorecase
 set smartcase
 set infercase
 set incsearch
+set hlsearch
 set wrapscan
 set history=200
 
@@ -169,13 +172,14 @@ endif
 
 " Tab
 " {{{
-set sw=4 sts=4 ts=4 et
+set sw=0 sts=0 ts=4 et
 augroup vimrc_tab
     autocmd!
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
     autocmd FileType css setlocal noet
     autocmd FileType javascript setlocal noet
+    autocmd FileType markdown setlocal ts=2
 augroup END
 " }}}
 
@@ -232,7 +236,7 @@ let php_parent_error_close=1
 "     let &filetype = t
 " endfunction
 " command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
-" vnoremap g= :PhpIndent<CR>
+" xnoremap g= :PhpIndent<CR>
 " }}}
 
 " FileType(Clojure)
@@ -320,9 +324,9 @@ let g:bufExplorerSortBy='fullpath'
 
 " Open-Browser & previm
 " let g:netrw_browsex_viewer="firefox-bin"
-" if exists('g:vimrc_local_browser')
-"     execute 'let g:previm_open_cmd="'.g:vimrc_local_browser.'"<CR>'
-" endif
+if exists('g:vimrc_local_browser')
+    let g:previm_open_cmd=g:vimrc_local_browser
+endif
 
 " SQLUtilities
 let g:sqlutil_load_default_maps = 0
@@ -330,12 +334,11 @@ let g:sqlutil_align_where = 0
 let g:sqlutil_align_comma = 1
 
 " Easymotion
-"let g:EasyMotion_use_migemo = 1
 let g:EasyMotion_do_mapping=0
 let g:EasyMotion_keys = 'ASDFGHJKL;WERTYUIO'
 let g:EasyMotion_use_upper = 1
-let g:EasyMotion_use_migemo = 1
 let g:EasyMotion_verbose = 0
+"let g:EasyMotion_use_migemo = 1  " Moved to .vimrc.local
 
 " }}}
 
@@ -592,6 +595,18 @@ fu! TortoiseBlame()
     call TortoiseCommand('blame', others)
 endfunc
 
+":PasteReplace()
+"Replace selected text with unnamed register
+"without breaking unnamed register.
+function! PasteReplace()
+    normal! gv"_d
+    if col('.') >= col('$') - 1
+        normal! p
+    else
+        normal! P
+    endif
+endfunction
+
 " }}}
 
 " Experimental
@@ -643,6 +658,14 @@ nmap <C-F> <Leader><Leader>f
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 nnoremap <Leader>t :TagbarOpenAutoClose<CR>
 nnoremap <Leader>T :echo tagbar#currenttag('[%s]', 'not in a function?')<CR>
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+xnoremap k gk
+xnoremap j gj
+xnoremap gk k
+xnoremap gj j
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
@@ -707,6 +730,7 @@ cnoremap <C-n> <Down>
 " Visual mode
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
 " for Fireplace
 nnoremap cpP :Eval<CR>

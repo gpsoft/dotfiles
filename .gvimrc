@@ -10,7 +10,7 @@ set fileformats=unix,dos,mac
 
 " Basic settings
 " {{{
-set t_Co=256
+" set t_Co=256
 
 " Slate
 " set background=dark
