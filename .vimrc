@@ -620,7 +620,6 @@ endfunction
 
 " haskell
 "let g:haskell_conceal = 0
-" }}}
 
 " folding markdown
 function! MarkdownLevel()
@@ -633,6 +632,7 @@ function! MarkdownLevel()
     endif
 endfunction
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
+" }}}
 
 " Key mappings
 " {{{
