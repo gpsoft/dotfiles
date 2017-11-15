@@ -622,6 +622,18 @@ endfunction
 "let g:haskell_conceal = 0
 " }}}
 
+" folding markdown
+function! MarkdownLevel()
+    let h = matchstr(getline(v:lnum), '^#\+')
+    if empty(h)
+        return "="
+    else
+        " return ">" . len(h)
+        return ">1"
+    endif
+endfunction
+autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
+
 " Key mappings
 " {{{
 
