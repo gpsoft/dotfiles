@@ -9,6 +9,7 @@ if ! win; then
     alias dkrma='docker container prune'
     alias dkrmi='docker images --filter "dangling=true" -q |xargs docker rmi'
     alias dkrmv='docker volume ls --filter "dangling=true" -q |xargs docker volume rm'
+    alias dkrun='docker run --rm -it -v$(pwd):/tmp -w /tmp'
     alias dkc='docker-compose'
 
     if mac; then
