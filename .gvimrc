@@ -92,6 +92,11 @@ function! WinSidebyside()
     wincmd =
 endfunction
 
+function! s:incFontSize(delta)
+    let &guifont=substitute(&guifont, '\v([0-9.]+)$',
+            \ '\=(string(str2float(submatch(1))+'
+            \ . string(a:delta) . '))', '')
+endfunction
 " }}}
 "
 " Key mappings
@@ -103,8 +108,8 @@ nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 
 " Arrange windows
 nnoremap <silent> <C-W><C-S> :<C-u>call WinSidebyside()<CR>
-nnoremap <silent> <F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))+0.5))', '')<CR>
-nnoremap <silent> <S-F12> :let &guifont = substitute(&guifont, '\v([0-9.]+)$', '\=(string(str2float(submatch(1))-0.5))', '')<CR>
+nnoremap <silent> <F12> :call <SID>incFontSize(0.5)<CR>
+nnoremap <silent> <S-F12> :call <SID>incFontSize(-0.5)<CR>
 " }}}
 
 " Local config
