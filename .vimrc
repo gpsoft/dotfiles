@@ -249,6 +249,7 @@ augroup vimrc_clj
     autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
+    autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
