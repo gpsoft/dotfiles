@@ -664,6 +664,7 @@ nnoremap <Leader>aa :A<CR>
 nnoremap <Leader>av :AV<CR>
 nnoremap <Leader>as :AS<CR>
 nnoremap <Leader>at :AT<CR>
+nnoremap <C-G> 1<C-G>
 
 " Moving around
 nmap <C-F> <Leader><Leader>f
