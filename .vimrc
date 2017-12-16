@@ -624,7 +624,7 @@ endfunction
 
 " folding markdown
 function! MarkdownLevel()
-    let h = matchstr(getline(v:lnum), '^#\+')
+    let h = matchstr(getline(v:lnum), '\v^#{1,3}[^#]')
     if empty(h)
         return "="
     else
