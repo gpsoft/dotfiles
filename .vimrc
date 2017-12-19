@@ -570,6 +570,14 @@ function! QuickfixFilenames()
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+" :Blog
+if exists('g:vimrc_local_path_notes')
+    function! s:openBlogDir()
+        execute 'Sexp '.g:vimrc_local_path_notes.'/gpblog/resources/templates/md/posts'
+    endfunction
+    command! Blog call <SID>openBlogDir()
+endif
+
 " :Sql
 " Open Dbext
 fu! OpenTabForSql()
