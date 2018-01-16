@@ -616,6 +616,9 @@ function! PasteReplace()
     endif
 endfunction
 
+":
+command! OpenBrowserCurrent execute "OpenBrowser" "file:///" . expand('%:p:gs?\\?/?')
+
 " }}}
 
 " Experimental
@@ -738,6 +741,8 @@ nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
 nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
 nnoremap <Leader>` :Marks<CR>
+nnoremap <Leader>bf :OpenBrowserCurrent<CR>
+nmap <Leader>bu <Plug>(openbrowser-open)
 
 " Insert mode
 inoremap <C-w> <Nop>
