@@ -743,6 +743,7 @@ nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSynta
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
+nnoremap <Leader>w :set wrap!<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
