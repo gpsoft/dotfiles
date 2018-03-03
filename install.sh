@@ -121,6 +121,7 @@ linkhome .gvimrc
 linkhome .vrapperrc
 linkhome .vimperatorrc
 linkhome .vimperator
+linkhome .tmux.conf
 if win; then
     linkhome vimfiles
 else

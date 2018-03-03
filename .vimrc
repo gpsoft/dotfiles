@@ -668,6 +668,7 @@ nnoremap <Leader>o :CtrlPMixed<CR>
 nnoremap <Leader>cs :split ~/dotfiles/cheat<CR>
 nnoremap <Leader>cv :split ~/dotfiles/cheat/vim.md<CR>
 nnoremap <Leader>cg :split ~/dotfiles/cheat/git.md<CR>
+nnoremap <Leader>ct :split ~/dotfiles/cheat/tmux.md<CR>
 if exists('g:vimrc_local_path_notes')
     execute 'nnoremap <Leader>n :Ex' g:vimrc_local_path_notes.'<CR>'
 endif
