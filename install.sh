@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-##### FUNCTIONS
+##### UTILITY FUNCTIONS
 function win() { [[ -n "$WINDIR" ]]; }
 function mac() { [ `uname` = "Darwin" ]; }
 function linux() { [ `uname` = "Linux" ]; }
@@ -11,6 +11,19 @@ function winpath() {
     local p=${1/\//}
     p=${p/\//:\\}
     echo ${p//\//\\}
+}
+
+# delete a symlink
+function dellink() {
+    if win; then
+        local c="del"
+        if [[ -d "$1" ]]; then
+            c="rd"
+        fi
+        cmd <<<"$c \"`winpath $1`\"" >/dev/null
+    else
+        rm "$1"
+    fi
 }
 
 # usage: symlink <LINK> <REAL>
@@ -36,20 +49,12 @@ function symlink() {
     # delete if it's already been linked.
     if symlink "$1"; then
         echo removing $1.
-        if win; then
-            local c="del"
-            if [[ -d "$1" ]]; then
-                c="rd"
-            fi
-            cmd <<<"$c \"`winpath $1`\"" >/dev/null
-        else
-            rm "$1"
-        fi
+        dellink $1
     fi
 
-    # move away if 1st arg is a real dir/file.
+    # save it if 1st arg is a real dir/file.
     if [[ -e "$1" ]]; then
-        movetotmp ~/$1
+        moveorg $1
     fi
 
     # make a link.
@@ -66,13 +71,19 @@ function symlink() {
     ln -s "$2" "$1"
 }
 
-# a wrapper to call symlink.
-function linkhome() {
-    local real=$1
-    if [[ -n "$2" ]]; then
-        real=$2
+# move the original file
+function moveorg() {
+    local o="$1.org"
+    if [[ -e $o ]]; then
+        echo "CANNOT CONTINUE; $o already exists."
+        exit -1
     fi
-    symlink ~/$1 `pwd`/$real;
+    echo moving original to $o.
+    if win; then
+        cmd <<<"move \"`winpath $1`\" \"`winpath $o`\"" >/dev/null
+    else
+        mv "$1" "$o"
+    fi
 }
 
 # move a file to temp dir.
@@ -89,6 +100,20 @@ function movetotmp() {
     else
         mv "$1" "$t"
     fi
+}
+
+
+
+
+##### OPERATION FUNCTIONS
+
+# a wrapper to call symlink.
+function linkhome() {
+    local real=$1
+    if [[ -n "$2" ]]; then
+        real=$2
+    fi
+    symlink ~/$1 `pwd`/$real;
 }
 
 # copy a template file to home
@@ -109,18 +134,16 @@ elif win; then
     linkhome .bash_profile .bash_profile.win
 else
     linkhome .bash_profile
+    linkhome .profile
+    linkhome .xprofile
 fi
 linkhome .bashrc
 linkhome .colorrc
 linkhome .gitconfig
 linkhome .gitignore_global
-linkhome .hgignore_global
-linkhome .hgrc
 linkhome .vimrc
 linkhome .gvimrc
 linkhome .vrapperrc
-linkhome .vimperatorrc
-linkhome .vimperator
 linkhome .tmux.conf
 if win; then
     linkhome vimfiles
@@ -134,7 +157,7 @@ copytempl .vimrc.local
 copytempl .gvimrc.local
 
 ##### UPDATE GIT SUBMODULES
-git checkout master
+git checkout renewal2017
 git pull
 git submodule init
 echo updating submodules.

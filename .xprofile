@@ -1,0 +1,6 @@
+if [ -f ~/.xprofile.org ]; then
+   source ~/.xprofile.org
+fi
+
+export PATH=~/bin:~/local/bin:$PATH
+export VTE_CJK_WIDTH=1

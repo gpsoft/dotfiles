@@ -1,3 +1,7 @@
+if [ -f ~/.bashrc.org ]; then
+   source ~/.bashrc.org
+fi
+
 function win() { [[ -n "$WINDIR" ]]; }
 function mac() { [ `uname` = "Darwin" ]; }
 function linux() { [ `uname` = "Linux" ]; }
