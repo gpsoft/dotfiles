@@ -413,7 +413,7 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
         \ }
-let g:ctrlp_custom_ignore = '\v(out|target)/*'
+let g:ctrlp_custom_ignore = '\v(out|target|bin|vendor)/*'
 " }}}
 
 " Plugins(Rainbow-paren)
