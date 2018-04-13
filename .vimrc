@@ -752,6 +752,7 @@ nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
 nnoremap <Leader>w :set wrap!<CR>
+nnoremap <Leader>% :let @0=@%\| :echo "Current file path copied."<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
