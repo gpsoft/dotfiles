@@ -19,3 +19,5 @@
 	ld = log -5 --pretty=format:'%C(yellow)%h%C(cyan)[%ci]%C(red)%d%Creset by %cn%n%s' --numstat
 	sd = show --pretty=format:'%C(yellow)%h%C(cyan)[%ci]%C(red)%d%Creset by %cn%n%s' --numstat
 	sta = status --short --branch
+	co = checkout
+	com = commit
