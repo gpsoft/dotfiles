@@ -482,6 +482,9 @@ let g:dbext_default_MYSQL_extra = '--default-character-set=utf8'
 let g:dbext_default_profile = 'hoge'
 let g:dbext_default_buffer_lines = 20
 let g:dbext_default_always_prompt_for_variables=0
+function! DBextPostResult(db_type, buf_nr)
+    setlocal ts=16
+endfunction
 " }}}
 
 " Custom commands
@@ -584,16 +587,19 @@ endif
 
 " :Sql
 " Open Dbext
-fu! OpenTabForSql()
-    let f = 'C:\Users\gpsoft\sql\scratchpad.sql'
+fu! OpenTabForSql(...)
+    let f = '\Users\gpsoft\sql\scratchpad.sql'
     let bn = bufwinnr(f)
     if bn > 0
         :exe bn.'wincmd w'
     else
         silent execute('tabe '.f.' | normal gg,qlt')
     endif
+    if a:0 >= 1
+        silent execute('DBSetOption profile='.a:1)
+    endif
 endfunc
-command! Sql call OpenTabForSql()
+command! -nargs=? Sql call OpenTabForSql(<f-args>)
 
 " TortoiseSVN
 fu! TortoiseCommand(com, others)
