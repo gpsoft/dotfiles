@@ -226,6 +226,23 @@ augroup vimrc_php
     autocmd FileType php setlocal autoindent
     autocmd FileType php setlocal smartindent
        "    indentation in php has been broken??
+
+    autocmd FileType php noremap <script> <buffer> <silent> ]]
+            \ :call <SID>NextPhpSection(1, 0, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> [[
+            \ :call <SID>NextPhpSection(1, 1, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> ][
+            \ :call <SID>NextPhpSection(2, 0, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> []
+            \ :call <SID>NextPhpSection(2, 1, 0)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> ]]
+            \ :<c-u>call <SID>NextPhpSection(1, 0, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> [[
+            \ :<c-u>call <SID>NextPhpSection(1, 1, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> ][
+            \ :<c-u>call <SID>NextPhpSection(2, 0, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> []
+            \ :<c-u>call <SID>NextPhpSection(2, 1, 1)<cr>
 augroup END
 
 let php_htmlInStrings=1
@@ -233,6 +250,30 @@ let php_sql_query=1
 let php_baselib=1
 let php_parent_error_close=1
 " let php_folding=1   " it may slow vim down
+
+function! s:NextPhpSection(type, backwards, visual)
+    if a:visual
+        normal! gv
+    endif
+
+    if a:type == 1
+        let pattern = '\v^\s*(public |private ){0,1}function'
+        " note that using {0,1} instead of ?
+        " for backward search
+        let flags = ''
+    elseif a:type == 2
+        let pattern = '\v^}'
+        let flags = ''
+    endif
+
+    if a:backwards
+        let dir = '?'
+    else
+        let dir = '/'
+    endif
+
+    execute 'silent normal! ' . dir . pattern . dir . flags . "\r"
+endfunction
 
 " function! s:PhpIndent() range
 "     let t = &filetype
