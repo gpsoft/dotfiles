@@ -103,6 +103,7 @@ set incsearch
 set hlsearch
 set wrapscan
 set history=200
+set wildignore+=**/obj/**,**/debug/**,**/bin/**
 
 set noundofile
 set backup
@@ -175,6 +176,8 @@ endif
 set sw=0 sts=0 ts=4 et
 augroup vimrc_tab
     autocmd!
+    autocmd FileType php setlocal noet
+    autocmd FileType html setlocal noet
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
     autocmd FileType css setlocal noet
@@ -594,12 +597,15 @@ command! Sql call OpenTabForSql()
 
 " TortoiseSVN
 fu! TortoiseCommand(com, others)
-    let filename = expand("%")
+    let filename = expand("%:p")
+    if filename==''
+        let filename = getcwd()
+    endif
     let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
     silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
 endfunc
 fu! TortoiseBlame()
-    let filename = expand("%")
+    let filename = expand("%:p")
     let linenum = line(".")
     let others = '/line:'.linenum.' /closeonend'
     call TortoiseCommand('blame', others)
