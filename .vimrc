@@ -184,6 +184,7 @@ augroup vimrc_tab
     autocmd FileType css setlocal noet
     autocmd FileType javascript setlocal noet
     autocmd FileType markdown setlocal ts=2
+    autocmd FileType sql setlocal ts=2
 augroup END
 " }}}
 
