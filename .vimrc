@@ -699,6 +699,8 @@ xnoremap k gk
 xnoremap j gj
 xnoremap gk k
 xnoremap gj j
+nnoremap <C-]> g<C-]>
+nnoremap g<C-]> <C-]>
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
