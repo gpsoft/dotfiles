@@ -103,6 +103,8 @@ set incsearch
 set hlsearch
 set wrapscan
 set history=200
+set wildignore+=**/obj/**,**/debug/**,**/bin/**
+set foldlevelstart=99
 
 set noundofile
 set backup
@@ -175,11 +177,14 @@ endif
 set sw=0 sts=0 ts=4 et
 augroup vimrc_tab
     autocmd!
+    autocmd FileType php setlocal noet
+    autocmd FileType html setlocal noet
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
     autocmd FileType css setlocal noet
     autocmd FileType javascript setlocal noet
     autocmd FileType markdown setlocal ts=2
+    autocmd FileType sql setlocal ts=2
 augroup END
 " }}}
 
@@ -221,6 +226,23 @@ augroup vimrc_php
     autocmd FileType php setlocal autoindent
     autocmd FileType php setlocal smartindent
        "    indentation in php has been broken??
+
+    autocmd FileType php noremap <script> <buffer> <silent> ]]
+            \ :call <SID>NextPhpSection(1, 0, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> [[
+            \ :call <SID>NextPhpSection(1, 1, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> ][
+            \ :call <SID>NextPhpSection(2, 0, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> []
+            \ :call <SID>NextPhpSection(2, 1, 0)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> ]]
+            \ :<c-u>call <SID>NextPhpSection(1, 0, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> [[
+            \ :<c-u>call <SID>NextPhpSection(1, 1, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> ][
+            \ :<c-u>call <SID>NextPhpSection(2, 0, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> []
+            \ :<c-u>call <SID>NextPhpSection(2, 1, 1)<cr>
 augroup END
 
 let php_htmlInStrings=1
@@ -228,6 +250,30 @@ let php_sql_query=1
 let php_baselib=1
 let php_parent_error_close=1
 " let php_folding=1   " it may slow vim down
+
+function! s:NextPhpSection(type, backwards, visual)
+    if a:visual
+        normal! gv
+    endif
+
+    if a:type == 1
+        let pattern = '\v^\s*(public |private ){0,1}function'
+        " note that using {0,1} instead of ?
+        " for backward search
+        let flags = ''
+    elseif a:type == 2
+        let pattern = '\v^}'
+        let flags = ''
+    endif
+
+    if a:backwards
+        let dir = '?'
+    else
+        let dir = '/'
+    endif
+
+    execute 'silent normal! ' . dir . pattern . dir . flags . "\r"
+endfunction
 
 " function! s:PhpIndent() range
 "     let t = &filetype
@@ -410,7 +456,7 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
         \ }
-let g:ctrlp_custom_ignore = '\v(out|target)/*'
+let g:ctrlp_custom_ignore = '\v(out|target|bin|vendor)/*'
 " }}}
 
 " Plugins(Rainbow-paren)
@@ -479,6 +525,9 @@ let g:dbext_default_MYSQL_extra = '--default-character-set=utf8'
 let g:dbext_default_profile = 'hoge'
 let g:dbext_default_buffer_lines = 20
 let g:dbext_default_always_prompt_for_variables=0
+function! DBextPostResult(db_type, buf_nr)
+    setlocal ts=16
+endfunction
 " }}}
 
 " Custom commands
@@ -581,25 +630,31 @@ endif
 
 " :Sql
 " Open Dbext
-fu! OpenTabForSql()
-    let f = 'C:\Users\gpsoft\sql\scratchpad.sql'
+fu! OpenTabForSql(...)
+    let f = '\Users\gpsoft\sql\scratchpad.sql'
     let bn = bufwinnr(f)
     if bn > 0
         :exe bn.'wincmd w'
     else
         silent execute('tabe '.f.' | normal gg,qlt')
     endif
+    if a:0 >= 1
+        silent execute('DBSetOption profile='.a:1)
+    endif
 endfunc
-command! Sql call OpenTabForSql()
+command! -nargs=? Sql call OpenTabForSql(<f-args>)
 
 " TortoiseSVN
 fu! TortoiseCommand(com, others)
-    let filename = expand("%")
+    let filename = expand("%:p")
+    if filename==''
+        let filename = getcwd()
+    endif
     let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
     silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
 endfunc
 fu! TortoiseBlame()
-    let filename = expand("%")
+    let filename = expand("%:p")
     let linenum = line(".")
     let others = '/line:'.linenum.' /closeonend'
     call TortoiseCommand('blame', others)
@@ -693,6 +748,8 @@ xnoremap k gk
 xnoremap j gj
 xnoremap gk k
 xnoremap gj j
+nnoremap <C-]> g<C-]>
+nnoremap g<C-]> <C-]>
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
@@ -746,6 +803,7 @@ nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
 nnoremap <Leader>w :set wrap!<CR>
+nnoremap <Leader>% :let @0=@%\| :echo "Current file path copied."<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
