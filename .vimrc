@@ -556,6 +556,9 @@ else
     command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
 endif
 
+command! ClojureSandbox normal i(require '[clojure.repl :refer :all]'[clojure.tools.trace :refer [trace-vars]]'[clojure.pprint :refer [pprint pp]])(defn add-dep [dep-v](require '[cemerick.pomegranate :as pome])(require '[cemerick.pomegranate.aether :as aether])(let [repos (merge @(resolve 'aether/maven-central){"clojars" "https://clojars.org/repo"})]((resolve 'pome/add-dependencies):coordinates  [dep-v]:repositories  repos)))gg
+
+
 " :Piggie
 " ClojureScript REPL
 function! Brepl()
@@ -822,6 +825,8 @@ xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
 " for Fireplace
 nnoremap cpP :Eval<CR>
+nnoremap cpR :Require<CR><CR>
+nnoremap cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:.,$-1yank<CR>:q<CR>%p
 
 " for Tortoise svn
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
