@@ -643,6 +643,9 @@ endif
 " Open Dbext
 fu! OpenTabForSql(...)
     let f = '\Users\gpsoft\sql\scratchpad.sql'
+    if exists('g:vimrc_sql_scratchpad')
+        let f = g:vimrc_sql_scratchpad
+    endif
     let bn = bufwinnr(f)
     if bn > 0
         :exe bn.'wincmd w'
