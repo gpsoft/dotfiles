@@ -363,9 +363,11 @@ let g:UltiSnipsEditSplit="vertical"
 " Tagbar
 let g:tagbar_width=50
 let g:tagbar_type_php={
-        \ 'ctagsargs': '--php-kinds=cdf -f -',
         \ 'kinds': [
+        \ 'n:namespaces',
         \ 'c:classes',
+        \ 't:traits',
+        \ 'i:interfaces',
         \ 'd:constant definitions:0:0',
         \ 'f:functions']}
 
