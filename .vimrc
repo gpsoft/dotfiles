@@ -185,6 +185,7 @@ augroup vimrc_tab
     autocmd FileType javascript setlocal noet
     autocmd FileType markdown setlocal ts=2
     autocmd FileType sql setlocal ts=2
+    autocmd FileType mru setlocal ts=32
 augroup END
 " }}}
 
@@ -343,6 +344,11 @@ let g:clojure_maxlines = 300
 " MRU
 let MRU_Max_Entries = 100
 let MRU_Exclude_Files = "^crontab\."
+let MRU_Filename_Format = {
+        \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
+        \ 'parser': '\t- \zs.*\ze$',
+        \ 'syntax': '\v^.*\t- '
+        \ }
 
 " VIM-JSON
 let g:vim_json_syntax_conceal = 0
