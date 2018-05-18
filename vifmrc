@@ -1,0 +1,20 @@
+set vicmd=gvim
+set cpoptions-=t
+
+nnoremap - h
+"nnoremap l <nop>
+
+nnoremap o :!gvim --remote-tab-silent %f<cr>
+
+nnoremap ,ve :write | execute ':!gvim ~/dotfiles/vifmrc' | restart<cr>
+
+nnoremap ,e :!start %d<cr>
+nnoremap ,p :view<cr>
+
+nnoremap yy "ayy
+nnoremap Y "Ayy
+nnoremap ,% :!echo %"d:gs!\!/! %i | clip<cr>
+
+nnoremap b :bmgo<space>
+
+source ~/.vifmrc.local

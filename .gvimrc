@@ -18,10 +18,13 @@ set fileformats=unix,dos,mac
 
 " Solarized
 set background=light
+augroup gvimrc_color
+    autocmd!
+    autocmd ColorScheme solarized highlight! SpecialKey guifg=grey guibg=#fdf6e3
+    autocmd ColorScheme solarized highlight! WarningMsg guifg=white guibg=lightred
+    autocmd ColorScheme solarized highlight! MatchParen guifg=red guibg=#FBD6D0
+augroup END
 colorscheme solarized
-highlight! SpecialKey guifg=grey guibg=#fdf6e3
-highlight! WarningMsg guifg=white guibg=lightred
-highlight! MatchParen guifg=red guibg=#FBD6D0
 let g:solarized_menu=0
 
 highlight ColorColumn guibg=#ffcfcf

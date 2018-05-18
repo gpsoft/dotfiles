@@ -185,6 +185,7 @@ augroup vimrc_tab
     autocmd FileType javascript setlocal noet
     autocmd FileType markdown setlocal ts=2
     autocmd FileType sql setlocal ts=2
+    autocmd FileType mru setlocal ts=32
 augroup END
 " }}}
 
@@ -343,6 +344,11 @@ let g:clojure_maxlines = 300
 " MRU
 let MRU_Max_Entries = 100
 let MRU_Exclude_Files = "^crontab\."
+let MRU_Filename_Format = {
+        \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
+        \ 'parser': '\t- \zs.*\ze$',
+        \ 'syntax': '\v^.*\t- '
+        \ }
 
 " VIM-JSON
 let g:vim_json_syntax_conceal = 0
@@ -357,9 +363,11 @@ let g:UltiSnipsEditSplit="vertical"
 " Tagbar
 let g:tagbar_width=50
 let g:tagbar_type_php={
-        \ 'ctagsargs': '--php-kinds=cdf -f -',
         \ 'kinds': [
+        \ 'n:namespaces',
         \ 'c:classes',
+        \ 't:traits',
+        \ 'i:interfaces',
         \ 'd:constant definitions:0:0',
         \ 'f:functions']}
 
@@ -631,6 +639,9 @@ endif
 " Open Dbext
 fu! OpenTabForSql(...)
     let f = '\Users\gpsoft\sql\scratchpad.sql'
+    if exists('g:vimrc_sql_scratchpad')
+        let f = g:vimrc_sql_scratchpad
+    endif
     let bn = bufwinnr(f)
     if bn > 0
         :exe bn.'wincmd w'
@@ -802,7 +813,7 @@ nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
 nnoremap <Leader>w :set wrap!<CR>
-nnoremap <Leader>% :let @0=@%\| :echo "Current file path copied."<CR>
+nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
