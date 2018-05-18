@@ -292,7 +292,7 @@ augroup vimrc_clj
     autocmd BufNewFile,BufRead *.cljs set filetype=clojure
     autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
-    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask
+    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask,go-loop
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
     autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
@@ -556,15 +556,11 @@ else
     command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
 endif
 
-command! ClojureSandbox normal i(require '[clojure.repl :refer :all]'[clojure.tools.trace :refer [trace-vars]]'[clojure.pprint :refer [pprint pp]])(defn add-dep [dep-v](require '[cemerick.pomegranate :as pome])(require '[cemerick.pomegranate.aether :as aether])(let [repos (merge @(resolve 'aether/maven-central){"clojars" "https://clojars.org/repo"})]((resolve 'pome/add-dependencies):coordinates  [dep-v]:repositories  repos)))gg
 
-
-" :Piggie
-" ClojureScript REPL
-function! Brepl()
-    execute 'Piggieback (adzerk.boot-cljs-repl/repl-env)'
-endfunction
-command! Piggie silent! call Brepl()
+" :PigBoot, :PigFig
+" ClojureScript Browser REPL
+command! PigBoot execute('Piggieback (adzerk.boot-cljs-repl/repl-env)')
+command! PigFig execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
 
 " :Dos
 " Command prompt for Windows.
