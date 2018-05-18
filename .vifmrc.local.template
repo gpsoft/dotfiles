@@ -1,12 +1,14 @@
 "" マシン固有の設定を書いて ~/.vifmrc.local に置く。
 "" バージョン管理しない。
 
+"colorscheme juef-zenburn.vifm
+
 "set trashdir=c:/tmp/trash
 "set trashdir=/var/tmp/trash
 
 "filetype *.png,*.jpeg,*.jpg pinta %c
 
-"bmark! '~/Download' download
+"bmark! '~/Downloads' download
 "bmark! '~/' home
 "bmark! 'C:/Users/gpsoft/Downloads/' download
 "bmark! 'C:/Users/gpsoft/' home
