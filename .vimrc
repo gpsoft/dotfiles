@@ -28,7 +28,10 @@ let g:pathogen_disabled = [
         \ "Align",
         \ "SQLUtilities",
         \ "dbext.vim",
-        \ ] + g:vimrc_local_disabled_plugins
+        \ ]
+if exists("g:vimrc_local_disabled_plugins")
+let g:pathogen_disabled = g:vimrc_local_disabled_plugins
+endif
 execute pathogen#infect()
 execute pathogen#helptags()
 syntax enable
