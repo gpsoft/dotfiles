@@ -88,7 +88,7 @@ function moveorg() {
 
 # move a file to temp dir.
 function movetotmp() {
-    local t="/tmp"
+    local t="/var/tmp"
     if win; then
         t="$HOME/AppData/Local/Temp"
         # can't use $TMP here.
@@ -129,10 +129,12 @@ function copytempl() {
 
 ##### MAKE SYMBOLIC LINKS
 if mac; then
+    mkdir -p /var/tmp/bak
     linkhome .bash_profile .bash_profile.mac
 elif win; then
     linkhome .bash_profile .bash_profile.win
 else
+    mkdir -p /var/tmp/bak
     linkhome .bash_profile
     linkhome .profile
     linkhome .xprofile
