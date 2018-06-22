@@ -713,6 +713,10 @@ function! MarkdownLevel()
     endif
 endfunction
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
+
+"folding json
+autocmd FileType json nnoremap <buffer> <Space> za
+autocmd FileType json setlocal fdm=syntax
 " }}}
 
 " Key mappings
