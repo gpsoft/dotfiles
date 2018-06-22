@@ -789,7 +789,10 @@ nnoremap <Leader>gW :Gwrite<CR>
 nnoremap <Leader>F migg=G`izz
 nnoremap <Leader>f mi=i}`izz
 
-" Pasting
+" Copy&Pasting
+nnoremap gyy "+yy
+nnoremap gY "+yy
+vnoremap gy "+y
 nnoremap gp "+gp
 nnoremap gP "+gP
 nnoremap <F2> :set invpaste<CR>
