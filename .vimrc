@@ -399,6 +399,12 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_verbose = 0
 "let g:EasyMotion_use_migemo = 1  " Moved to .vimrc.local
 
+" DevDocs
+augroup devdocs-vim
+  autocmd!
+  autocmd FileType php nmap <buffer>K <Plug>(devdocs-under-cursor)
+augroup END
+
 " }}}
 
 " Plugins(Lightline)
