@@ -661,7 +661,11 @@ command! -nargs=? Sql call OpenTabForSql(<f-args>)
 fu! TortoiseCommand(com, others)
     let filename = expand("%:p")
     if filename==''
-        let filename = getcwd()
+        if &ft=='netrw'
+            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+        else 
+            let filename = getcwd()
+        endif
     endif
     let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
     silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
