@@ -60,6 +60,7 @@ set ruler
 set laststatus=2
 set showmode
 set showcmd
+set cursorline
 set textwidth=0
 set number
 " set relativenumber
