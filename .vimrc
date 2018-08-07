@@ -404,6 +404,8 @@ let g:EasyMotion_verbose = 0
 augroup devdocs-vim
   autocmd!
   autocmd FileType php nmap <buffer>K <Plug>(devdocs-under-cursor)
+  autocmd FileType javascript nmap <buffer>K <Plug>(devdocs-under-cursor)
+  autocmd FileType css nmap <buffer>K <Plug>(devdocs-under-cursor)
 augroup END
 
 " }}}
