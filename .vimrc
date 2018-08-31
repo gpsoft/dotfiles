@@ -834,7 +834,8 @@ nnoremap <silent> <Leader>q :copen 10<CR><C-w>J
 nnoremap <Leader>r :OverCommandLine<CR>%s/
 nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
-nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+"nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
