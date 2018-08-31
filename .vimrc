@@ -477,6 +477,9 @@ let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
         \ }
 let g:ctrlp_custom_ignore = '\v(out|target|bin|vendor)/*'
+if executable('rg')
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+endif
 " }}}
 
 " Plugins(Rainbow-paren)
