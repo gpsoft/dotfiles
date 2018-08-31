@@ -781,7 +781,7 @@ xnoremap k gk
 xnoremap j gj
 xnoremap gk k
 xnoremap gj j
-nnoremap <C-]> g<C-]>
+nnoremap <C-]> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap g<C-]> <C-]>
 
 " Searching
