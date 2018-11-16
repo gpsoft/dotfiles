@@ -193,6 +193,14 @@ augroup vimrc_tab
 augroup END
 " }}}
 
+" Grep
+" {{{
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-file\ ~/.gitignore_global
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+" }}}
+
 " FileType
 " {{{
 augroup vimrc_ft
