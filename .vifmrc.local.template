@@ -10,5 +10,6 @@
 
 "bmark! '~/Downloads' download
 "bmark! '~/' home
+"bmark! '/run/media/gpsoft' usbmem
 "bmark! 'C:/Users/gpsoft/Downloads/' download
 "bmark! 'C:/Users/gpsoft/' home
