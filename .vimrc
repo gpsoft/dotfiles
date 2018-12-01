@@ -838,7 +838,7 @@ xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
 " for Fireplace
 nnoremap cpP :Eval<CR>
-nnoremap cpR :Require<CR><CR>
+nnoremap cpR :Require!<CR><CR>
 nnoremap cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:.,$-1yank<CR>:q<CR>%p
 
 " for Tortoise svn
