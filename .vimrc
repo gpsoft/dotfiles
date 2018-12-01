@@ -28,7 +28,10 @@ let g:pathogen_disabled = [
         \ "Align",
         \ "SQLUtilities",
         \ "dbext.vim",
-        \ ] + g:vimrc_local_disabled_plugins
+        \ ]
+if exists("g:vimrc_local_disabled_plugins")
+let g:pathogen_disabled = g:vimrc_local_disabled_plugins
+endif
 execute pathogen#infect()
 execute pathogen#helptags()
 syntax enable
@@ -57,6 +60,7 @@ set ruler
 set laststatus=2
 set showmode
 set showcmd
+set cursorline
 set textwidth=0
 set number
 " set relativenumber
@@ -187,6 +191,14 @@ augroup vimrc_tab
     autocmd FileType sql setlocal ts=2
     autocmd FileType mru setlocal ts=32
 augroup END
+" }}}
+
+" Grep
+" {{{
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-file\ ~/.gitignore_global
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 " }}}
 
 " FileType
@@ -402,6 +414,14 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_verbose = 0
 "let g:EasyMotion_use_migemo = 1  " Moved to .vimrc.local
 
+" DevDocs
+augroup devdocs-vim
+  autocmd!
+  autocmd FileType php nmap <buffer>K <Plug>(devdocs-under-cursor)
+  autocmd FileType javascript nmap <buffer>K <Plug>(devdocs-under-cursor)
+  autocmd FileType css nmap <buffer>K <Plug>(devdocs-under-cursor)
+augroup END
+
 " }}}
 
 " Plugins(Lightline)
@@ -471,6 +491,9 @@ let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
         \ }
 let g:ctrlp_custom_ignore = '\v(out|target|bin|vendor)/*'
+if executable('rg')
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+endif
 " }}}
 
 " Plugins(Rainbow-paren)
@@ -664,7 +687,11 @@ command! -nargs=? Sql call OpenTabForSql(<f-args>)
 fu! TortoiseCommand(com, others)
     let filename = expand("%:p")
     if filename==''
-        let filename = getcwd()
+        if &ft=='netrw'
+            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+        else 
+            let filename = getcwd()
+        endif
     endif
     let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
     silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
@@ -716,6 +743,10 @@ function! MarkdownLevel()
     endif
 endfunction
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
+
+"folding json
+autocmd FileType json nnoremap <buffer> <Space> za
+autocmd FileType json setlocal fdm=syntax
 " }}}
 
 " Key mappings
@@ -764,7 +795,7 @@ xnoremap k gk
 xnoremap j gj
 xnoremap gk k
 xnoremap gj j
-nnoremap <C-]> g<C-]>
+nnoremap <C-]> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap g<C-]> <C-]>
 
 " Searching
@@ -792,7 +823,10 @@ nnoremap <Leader>gW :Gwrite<CR>
 nnoremap <Leader>F migg=G`izz
 nnoremap <Leader>f mi=i}`izz
 
-" Pasting
+" Copy&Pasting
+nnoremap gyy "+yy
+nnoremap gY "+yy
+vnoremap gy "+y
 nnoremap gp "+gp
 nnoremap gP "+gP
 nnoremap <F2> :set invpaste<CR>
@@ -814,7 +848,8 @@ nnoremap <silent> <Leader>q :copen 10<CR><C-w>J
 nnoremap <Leader>r :OverCommandLine<CR>%s/
 nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
-nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+"nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
