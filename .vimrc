@@ -199,7 +199,7 @@ augroup vimrc_ft
         " しかたないのでvim本体を修正した。
         " /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
     else
-        autocmd BufNewFile,BufRead *.md set filetype=markdown
+        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     endif
 
     autocmd FileType messages setlocal autoread
@@ -284,6 +284,12 @@ endfunction
 " endfunction
 " command! -range PhpIndent <line1>,<line2>call s:PhpIndent()
 " xnoremap g= :PhpIndent<CR>
+" }}}
+
+" FileType(markdown)
+" {{{
+let g:markdown_fenced_languages = ['clojure', 'bash=sh']
+let g:markdown_minlines = 150
 " }}}
 
 " FileType(Clojure)
