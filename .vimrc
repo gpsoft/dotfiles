@@ -668,6 +668,10 @@ endif
 " :Sql
 " Open Dbext
 fu! OpenTabForSql(...)
+    if a:0 >= 1
+        silent execute('DBSetOption profile='.a:1)
+        let g:dbext_default_profile = a:1
+    endif
     let f = '\Users\gpsoft\sql\scratchpad.sql'
     if exists('g:vimrc_sql_scratchpad')
         let f = g:vimrc_sql_scratchpad
@@ -677,9 +681,6 @@ fu! OpenTabForSql(...)
         :exe bn.'wincmd w'
     else
         silent execute('tabe '.f.' | normal gg,qlt')
-    endif
-    if a:0 >= 1
-        silent execute('DBSetOption profile='.a:1)
     endif
 endfunc
 command! -nargs=? Sql call OpenTabForSql(<f-args>)
