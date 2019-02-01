@@ -298,6 +298,13 @@ endfunction
 " xnoremap g= :PhpIndent<CR>
 " }}}
 
+" FileType(css)
+" {{{
+augroup vimrc_clj
+    autocmd FileType css setlocal iskeyword+=-
+augroup END
+" }}}
+"
 " FileType(Clojure)
 " {{{
 augroup vimrc_clj
