@@ -4,4 +4,8 @@
 
 set relativenumber
 
-" let g:EasyMotion_use_migemo = 1
+"set wildignore=**/obj/**,**/debug/**,**/bin/**,**/log/**,**/logs/**,**/vendor/**,tags
+
+"let g:EasyMotion_use_migemo = 1
+
+"xnoremap <CR> :Align => // =<CR>:setlocal noet<CR>g;g;

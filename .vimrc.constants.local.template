@@ -9,6 +9,11 @@
 
 "Disable plugins
 let g:vimrc_local_disabled_plugins = [
+        \ "PHP-Indenting-for-VIm",
+        \ "Align",
+        \ "dbext.vim",
+        \ "SQLUtilities",
+        \ "vim-json",
         \ ]
 if ( has('win32unix') )
     call add(g:vimrc_local_disabled_plugins, "ultisnips")
@@ -17,7 +22,11 @@ if ( has('win32unix') )
 "    note that this vim has come with git(not Kaoriya-vim)
 endif
 
+let g:Align_xstrlen = 3
+
+"let g:vimrc_sql_scratchpad = '\Users\gpsoft\sql\scratchpad.sql'
+
 "--------------------------------- gvim用 -----------------------------------
 "Window placement.
-let g:gvimrc_local_init_placement = [800, 10, 40, 100]
-let g:gvimrc_local_sbs_placement = [220, 10, 40, 180]
+let g:gvimrc_local_init_placement = [200, 36, 50, 90]
+let g:gvimrc_local_sbs_placement = [200, 36, 50, 175]
