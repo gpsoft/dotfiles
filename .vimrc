@@ -211,7 +211,7 @@ augroup vimrc_ft
         " しかたないのでvim本体を修正した。
         " /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
     else
-        autocmd BufNewFile,BufRead *.md set filetype=markdown
+        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     endif
 
     autocmd FileType messages setlocal autoread
@@ -300,11 +300,17 @@ endfunction
 
 " FileType(css)
 " {{{
-augroup vimrc_clj
+augroup vimrc_css
     autocmd FileType css setlocal iskeyword+=-
 augroup END
 " }}}
-"
+
+" FileType(markdown)
+" {{{
+let g:markdown_fenced_languages = ['clojure', 'bash=sh']
+let g:markdown_minlines = 150
+" }}}
+
 " FileType(Clojure)
 " {{{
 augroup vimrc_clj
@@ -875,7 +881,7 @@ xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
 " for Fireplace
 nnoremap cpP :Eval<CR>
-nnoremap cpR :Require<CR><CR>
+nnoremap cpR :Require!<CR><CR>
 nnoremap cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:.,$-1yank<CR>:q<CR>%p
 
 " for Tortoise svn
