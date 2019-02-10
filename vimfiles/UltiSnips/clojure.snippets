@@ -1,17 +1,12 @@
 snippet ns "namespace" b
 (ns $0
-  (:use
-    clojure.tools.trace
-    [midje.sweet :only (unfinished)]
-    )
+  (:refer-clojure :exclude [name])
   (:require
-    [clojure.string :as str :refer (split join)]
-    )
+    [clojure.pprint :as pp]
+    [clojure.string :as str :refer (split join)])
   (:import
     java.io.File
-    java.text.SimpleDateFormat
-    [java.util Date Locale]
-    )
+    [java.util Date Locale])
   (:gen-class))
 endsnippet
 

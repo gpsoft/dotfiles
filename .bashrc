@@ -48,6 +48,16 @@ vim()
     stty "$STTYOPTS"
 }
 
+clone()
+{
+    if [ $# == 0 ]; then
+        echo usage: clone REPONAME
+        return
+    fi
+    git clone ssh://maru@genpon14/home/maru/gitrepo/$1
+    cd $1
+}
+
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi

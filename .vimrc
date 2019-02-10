@@ -28,7 +28,10 @@ let g:pathogen_disabled = [
         \ "Align",
         \ "SQLUtilities",
         \ "dbext.vim",
-        \ ] + g:vimrc_local_disabled_plugins
+        \ ]
+if exists("g:vimrc_local_disabled_plugins")
+let g:pathogen_disabled = g:vimrc_local_disabled_plugins
+endif
 execute pathogen#infect()
 execute pathogen#helptags()
 syntax enable
@@ -57,6 +60,7 @@ set ruler
 set laststatus=2
 set showmode
 set showcmd
+set cursorline
 set textwidth=0
 set number
 " set relativenumber
@@ -103,6 +107,8 @@ set incsearch
 set hlsearch
 set wrapscan
 set history=200
+set wildignore+=**/obj/**,**/debug/**,**/bin/**
+set foldlevelstart=99
 
 set noundofile
 set backup
@@ -175,12 +181,24 @@ endif
 set sw=0 sts=0 ts=4 et
 augroup vimrc_tab
     autocmd!
+    autocmd FileType php setlocal noet
+    autocmd FileType html setlocal noet
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
     autocmd FileType css setlocal noet
     autocmd FileType javascript setlocal noet
     autocmd FileType markdown setlocal ts=2
+    autocmd FileType sql setlocal ts=2
+    autocmd FileType mru setlocal ts=32
 augroup END
+" }}}
+
+" Grep
+" {{{
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-file\ ~/.gitignore_global
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 " }}}
 
 " FileType
@@ -193,7 +211,7 @@ augroup vimrc_ft
         " しかたないのでvim本体を修正した。
         " /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
     else
-        autocmd BufNewFile,BufRead *.md set filetype=markdown
+        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     endif
 
     autocmd FileType messages setlocal autoread
@@ -221,6 +239,23 @@ augroup vimrc_php
     autocmd FileType php setlocal autoindent
     autocmd FileType php setlocal smartindent
        "    indentation in php has been broken??
+
+    autocmd FileType php noremap <script> <buffer> <silent> ]]
+            \ :call <SID>NextPhpSection(1, 0, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> [[
+            \ :call <SID>NextPhpSection(1, 1, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> ][
+            \ :call <SID>NextPhpSection(2, 0, 0)<cr>
+    autocmd FileType php noremap <script> <buffer> <silent> []
+            \ :call <SID>NextPhpSection(2, 1, 0)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> ]]
+            \ :<c-u>call <SID>NextPhpSection(1, 0, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> [[
+            \ :<c-u>call <SID>NextPhpSection(1, 1, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> ][
+            \ :<c-u>call <SID>NextPhpSection(2, 0, 1)<cr>
+    autocmd FileType php vnoremap <script> <buffer> <silent> []
+            \ :<c-u>call <SID>NextPhpSection(2, 1, 1)<cr>
 augroup END
 
 let php_htmlInStrings=1
@@ -228,6 +263,30 @@ let php_sql_query=1
 let php_baselib=1
 let php_parent_error_close=1
 " let php_folding=1   " it may slow vim down
+
+function! s:NextPhpSection(type, backwards, visual)
+    if a:visual
+        normal! gv
+    endif
+
+    if a:type == 1
+        let pattern = '\v^\s*(public |private ){0,1}function'
+        " note that using {0,1} instead of ?
+        " for backward search
+        let flags = ''
+    elseif a:type == 2
+        let pattern = '\v^}'
+        let flags = ''
+    endif
+
+    if a:backwards
+        let dir = '?'
+    else
+        let dir = '/'
+    endif
+
+    execute 'silent normal! ' . dir . pattern . dir . flags . "\r"
+endfunction
 
 " function! s:PhpIndent() range
 "     let t = &filetype
@@ -239,6 +298,19 @@ let php_parent_error_close=1
 " xnoremap g= :PhpIndent<CR>
 " }}}
 
+" FileType(css)
+" {{{
+augroup vimrc_css
+    autocmd FileType css setlocal iskeyword+=-
+augroup END
+" }}}
+
+" FileType(markdown)
+" {{{
+let g:markdown_fenced_languages = ['clojure', 'bash=sh']
+let g:markdown_minlines = 150
+" }}}
+
 " FileType(Clojure)
 " {{{
 augroup vimrc_clj
@@ -246,7 +318,7 @@ augroup vimrc_clj
     autocmd BufNewFile,BufRead *.cljs set filetype=clojure
     autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
-    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask
+    autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask,go-loop
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
     autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
@@ -297,6 +369,11 @@ let g:clojure_maxlines = 300
 " MRU
 let MRU_Max_Entries = 100
 let MRU_Exclude_Files = "^crontab\."
+let MRU_Filename_Format = {
+        \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
+        \ 'parser': '\t- \zs.*\ze$',
+        \ 'syntax': '\v^.*\t- '
+        \ }
 
 " VIM-JSON
 let g:vim_json_syntax_conceal = 0
@@ -311,9 +388,11 @@ let g:UltiSnipsEditSplit="vertical"
 " Tagbar
 let g:tagbar_width=50
 let g:tagbar_type_php={
-        \ 'ctagsargs': '--php-kinds=cdf -f -',
         \ 'kinds': [
+        \ 'n:namespaces',
         \ 'c:classes',
+        \ 't:traits',
+        \ 'i:interfaces',
         \ 'd:constant definitions:0:0',
         \ 'f:functions']}
 
@@ -338,8 +417,17 @@ let g:sqlutil_align_comma = 1
 let g:EasyMotion_do_mapping=0
 let g:EasyMotion_keys = 'ASDFGHJKL;WERTYUIO'
 let g:EasyMotion_use_upper = 1
+let g:EasyMotion_smartcase = 1
 let g:EasyMotion_verbose = 0
 "let g:EasyMotion_use_migemo = 1  " Moved to .vimrc.local
+
+" DevDocs
+augroup devdocs-vim
+  autocmd!
+  autocmd FileType php nmap <buffer>K <Plug>(devdocs-under-cursor)
+  autocmd FileType javascript nmap <buffer>K <Plug>(devdocs-under-cursor)
+  autocmd FileType css nmap <buffer>K <Plug>(devdocs-under-cursor)
+augroup END
 
 " }}}
 
@@ -409,7 +497,10 @@ let g:ctrlp_by_filename = 0
 let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
         \ }
-let g:ctrlp_custom_ignore = '\v(out|target)/*'
+let g:ctrlp_custom_ignore = '\v(out|target|bin|vendor)/*'
+if executable('rg')
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+endif
 " }}}
 
 " Plugins(Rainbow-paren)
@@ -478,6 +569,9 @@ let g:dbext_default_MYSQL_extra = '--default-character-set=utf8'
 let g:dbext_default_profile = 'hoge'
 let g:dbext_default_buffer_lines = 20
 let g:dbext_default_always_prompt_for_variables=0
+function! DBextPostResult(db_type, buf_nr)
+    setlocal ts=16
+endfunction
 " }}}
 
 " Custom commands
@@ -506,12 +600,11 @@ else
     command! Repl !start cmd.exe /c cd /d "%:h"&& lein.bat repl
 endif
 
-" :Piggie
-" ClojureScript REPL
-function! Brepl()
-    execute 'Piggieback (adzerk.boot-cljs-repl/repl-env)'
-endfunction
-command! Piggie silent! call Brepl()
+
+" :PigBoot, :PigFig
+" ClojureScript Browser REPL
+command! PigBoot execute('Piggieback (adzerk.boot-cljs-repl/repl-env)')
+command! PigFig execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
 
 " :Dos
 " Command prompt for Windows.
@@ -580,8 +673,15 @@ endif
 
 " :Sql
 " Open Dbext
-fu! OpenTabForSql()
-    let f = 'C:\Users\gpsoft\sql\scratchpad.sql'
+fu! OpenTabForSql(...)
+    if a:0 >= 1
+        silent execute('DBSetOption profile='.a:1)
+        let g:dbext_default_profile = a:1
+    endif
+    let f = '\Users\gpsoft\sql\scratchpad.sql'
+    if exists('g:vimrc_sql_scratchpad')
+        let f = g:vimrc_sql_scratchpad
+    endif
     let bn = bufwinnr(f)
     if bn > 0
         :exe bn.'wincmd w'
@@ -589,16 +689,23 @@ fu! OpenTabForSql()
         silent execute('tabe '.f.' | normal gg,qlt')
     endif
 endfunc
-command! Sql call OpenTabForSql()
+command! -nargs=? Sql call OpenTabForSql(<f-args>)
 
 " TortoiseSVN
 fu! TortoiseCommand(com, others)
-    let filename = expand("%")
+    let filename = expand("%:p")
+    if filename==''
+        if &ft=='netrw'
+            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+        else 
+            let filename = getcwd()
+        endif
+    endif
     let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
     silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
 endfunc
 fu! TortoiseBlame()
-    let filename = expand("%")
+    let filename = expand("%:p")
     let linenum = line(".")
     let others = '/line:'.linenum.' /closeonend'
     call TortoiseCommand('blame', others)
@@ -644,6 +751,10 @@ function! MarkdownLevel()
     endif
 endfunction
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
+
+"folding json
+autocmd FileType json nnoremap <buffer> <Space> za
+autocmd FileType json setlocal fdm=syntax
 " }}}
 
 " Key mappings
@@ -694,6 +805,8 @@ xnoremap k gk
 xnoremap j gj
 xnoremap gk k
 xnoremap gj j
+nnoremap <C-]> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap g<C-]> <C-]>
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
@@ -720,7 +833,10 @@ nnoremap <Leader>gW :Gwrite<CR>
 nnoremap <Leader>F migg=G`izz
 nnoremap <Leader>f mi=i}`izz
 
-" Pasting
+" Copy&Pasting
+nnoremap gyy "+yy
+nnoremap gY "+yy
+vnoremap gy "+y
 nnoremap gp "+gp
 nnoremap gP "+gP
 nnoremap <F2> :set invpaste<CR>
@@ -742,11 +858,13 @@ nnoremap <silent> <Leader>q :copen 10<CR><C-w>J
 nnoremap <Leader>r :OverCommandLine<CR>%s/
 nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
-nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+"nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
+nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
 nnoremap <Leader>w :set wrap!<CR>
+nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
@@ -765,6 +883,8 @@ xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
 " for Fireplace
 nnoremap cpP :Eval<CR>
+nnoremap cpR :Require!<CR><CR>
+nnoremap cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:.,$-1yank<CR>:q<CR>%p
 
 " for Tortoise svn
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
