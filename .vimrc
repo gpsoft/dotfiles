@@ -574,6 +574,16 @@ function! DBextPostResult(db_type, buf_nr)
 endfunction
 " }}}
 
+" Plugins(tmux-navigator)
+" {{{
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w>p :TmuxNavigatePrevious<cr>
+" }}}
+
 " Custom commands
 " {{{
 
