@@ -681,7 +681,9 @@ nnoremap <C-G> 1<C-G>
 
 " Moving around
 nmap <C-F> <Leader><Leader>f
+nmap <C-F><C-F> <Leader><Leader>w
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+nmap <Leader><Leader>w <Plug>(easymotion-bd-W)
 nnoremap <Leader>t :TagbarOpenAutoClose<CR>
 nnoremap <Leader>T :echo tagbar#currenttag('[%s]', 'not in a function?')<CR>
 nnoremap k gk
