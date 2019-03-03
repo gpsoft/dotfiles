@@ -584,6 +584,11 @@ nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w>p :TmuxNavigatePrevious<cr>
 " }}}
 
+" Plugins(investigate)
+" {{{
+let g:investigate_url_for_php="http://php.net/search.php?show=quickref&pattern=^s"
+" }}}
+
 " Custom commands
 " {{{
 
@@ -875,6 +880,8 @@ nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
 nnoremap <Leader>w :set wrap!<CR>
 nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
+nnoremap gK :call investigate#Investigate('n')<CR>
+vnoremap gK :call investigate#Investigate('v')<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
