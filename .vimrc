@@ -748,6 +748,9 @@ command! OpenBrowserCurrent execute "OpenBrowser" "file:///" . expand('%:p:gs?\\
 " Experimental
 " {{{
 
+" if you feel vim is too slow...
+set lazyredraw
+set regexpengine=1
 
 " html
 " let g:html_indent_script1="inc"
