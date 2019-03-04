@@ -354,6 +354,7 @@ let g:clojure_align_multiline_strings = 0
 let g:netrw_keepj="keepj"
 " let g:netrw_liststyle=3
 " let g:netrw_silent=1
+autocmd FileType netrw setl bufhidden=delete
 
 " MATCHIT
 runtime macros/matchit.vim
