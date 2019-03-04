@@ -824,8 +824,8 @@ nnoremap <C-]> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap g<C-]> <C-]>
 
 " Searching
-nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J
-nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J
+nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
+nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
@@ -878,7 +878,7 @@ nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal s
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap <Leader>bu <Plug>(openbrowser-open)
-nnoremap <Leader>w :set wrap!<CR>
+nnoremap <Leader>w :setlocal wrap!<CR>
 nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
 nnoremap gK :call investigate#Investigate('n')<CR>
 vnoremap gK :call investigate#Investigate('v')<CR>
