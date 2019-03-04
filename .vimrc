@@ -617,10 +617,11 @@ else
 endif
 
 
-" :PigBoot, :PigFig
+" :PigBoot, :PigFig, :PigNode
 " ClojureScript Browser REPL
 command! PigBoot execute('Piggieback (adzerk.boot-cljs-repl/repl-env)')
 command! PigFig execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
+command! PigNode execute('Piggieback (cljs.repl.node/repl-env)')
 
 " :Dos
 " Command prompt for Windows.
