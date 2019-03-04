@@ -103,3 +103,6 @@
 [submodule "vimfiles/bundle/vim-tmux-navigator"]
 	path = vimfiles/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vimfiles/bundle/investigate.vim"]
+	path = vimfiles/bundle/investigate.vim
+	url = https://github.com/keith/investigate.vim.git
