@@ -408,6 +408,9 @@ let g:bufExplorerSortBy='fullpath'
 if exists('g:vimrc_local_browser')
     let g:previm_open_cmd=g:vimrc_local_browser
 endif
+let g:netrw_nogx = 1
+let g:openbrowser_message_verbosity = 1
+let g:previm_show_header = 0
 
 " SQLUtilities
 let g:sqlutil_load_default_maps = 0
@@ -740,7 +743,7 @@ function! PasteReplace()
     endif
 endfunction
 
-":
+":OpenBrowserCurrent
 command! OpenBrowserCurrent execute "OpenBrowser" "file:///" . expand('%:p:gs?\\?/?')
 
 " }}}
@@ -882,7 +885,7 @@ nnoremap <Leader>p :PrevimOpen<CR>
 nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
-nmap <Leader>bu <Plug>(openbrowser-open)
+nmap gx <Plug>(openbrowser-smart-search)
 nnoremap <Leader>w :setlocal wrap!<CR>
 nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
 nnoremap gK :call investigate#Investigate('n')<CR>
