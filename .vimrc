@@ -901,7 +901,7 @@ xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 " for Fireplace
 nnoremap cpP :Eval<CR>
 nnoremap cpR :Require!<CR><CR>
-nnoremap cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:.,$-1yank<CR>:q<CR>%p
+nnoremap <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:%s/\r//g<CR>:0,$-1yank<CR>:q!<CR>%p
 
 " for Tortoise svn
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
