@@ -60,7 +60,6 @@ set ruler
 set laststatus=2
 set showmode
 set showcmd
-set cursorline
 set textwidth=0
 set number
 " set relativenumber
@@ -190,6 +189,15 @@ augroup vimrc_tab
     autocmd FileType markdown setlocal ts=2
     autocmd FileType sql setlocal ts=2
     autocmd FileType mru setlocal ts=32
+augroup END
+" }}}
+
+" Cursorline
+" {{{
+augroup vimrc_cursorline
+    autocmd!
+    autocmd InsertLeave,WinEnter * set cursorline
+    autocmd InsertEnter,WinLeave * set nocursorline
 augroup END
 " }}}
 
