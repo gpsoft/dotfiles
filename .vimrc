@@ -47,10 +47,14 @@ set background=dark
 " colorscheme slate
 
 " Lucius
+augroup vimrc_color
+    autocmd!
+    autocmd ColorScheme lucius highlight! LineNr ctermfg=247 ctermbg=238
+    autocmd ColorScheme lucius highlight! CursorLineNr ctermfg=172 ctermbg=240
+    autocmd ColorScheme lucius highlight! ColorColumn ctermbg=5
+    autocmd ColorScheme lucius highlight! Normal ctermbg=235
+augroup END
 colorscheme lucius
-highlight LineNr ctermfg=247 ctermbg=238
-highlight CursorLineNr ctermfg=172 ctermbg=240
-highlight ColorColumn ctermbg=5
 
 call matchadd('ColorColumn', '\%82v', 1000)
 call matchadd('ColorColumn', '\%83v', 1000)
