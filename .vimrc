@@ -335,6 +335,12 @@ augroup vimrc_clj
     " autocmd FileType clojure setlocal iskeyword-=.
     autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
 
+    autocmd FileType clojure nnoremap <buffer> cpP :Eval<CR>
+    autocmd FileType clojure nnoremap <buffer> cpR :Require!<CR><CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
+    autocmd FileType clojure nnoremap <buffer> <C-]> :split<CR>:normal ]<C-D><CR>
+    autocmd FileType clojure nnoremap <buffer> g<C-]> :normal ]<C-D><CR>
+
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
         if getline(v:lnum) =~ '^('
@@ -914,11 +920,6 @@ cnoremap <C-n> <Down>
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
-
-" for Fireplace
-nnoremap cpP :Eval<CR>
-nnoremap cpR :Require!<CR><CR>
-nnoremap <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:%s/\r//g<CR>:0,$-1yank<CR>:q!<CR>%p
 
 " for Tortoise svn
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
