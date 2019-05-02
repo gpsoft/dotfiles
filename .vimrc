@@ -683,6 +683,7 @@ command! ToggleSyntax call s:ToggleSyntax()
 
 function! ToggleFold()
     if &foldlevel > 0
+        setlocal foldenable
         setlocal foldlevel=0
     else
         setlocal foldlevel=99
