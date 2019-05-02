@@ -21,3 +21,4 @@
 	sta = status --short --branch
 	co = checkout
 	com = commit
+	ls = ls-files
