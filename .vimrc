@@ -336,10 +336,13 @@ augroup vimrc_clj
     autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
 
     autocmd FileType clojure nnoremap <buffer> cpP :Eval<CR>
-    autocmd FileType clojure nnoremap <buffer> cpR :Require!<CR><CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> gcpr :Require!<CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> cpR :Eval (if-let [r (resolve 'user/reset)] (r))<CR>
     autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
     autocmd FileType clojure nnoremap <buffer> <C-]> :split<CR>:normal ]<C-D><CR>
     autocmd FileType clojure nnoremap <buffer> g<C-]> :normal ]<C-D><CR>
+
+    autocmd FileType clojure command! -buffer Publics Eval (clojure.pprint/pprint (sort (keys (ns-publics *ns*))))
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
