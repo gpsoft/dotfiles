@@ -891,7 +891,8 @@ nnoremap <Leader>r :OverCommandLine<CR>%s/
 nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
 "nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
-nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
+" nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
+nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>I[z=] <C-R>z<Esc>
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
 nmap gx <Plug>(openbrowser-smart-search)
