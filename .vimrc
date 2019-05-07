@@ -746,6 +746,15 @@ endfunction
 ":OpenBrowserCurrent
 command! OpenBrowserCurrent execute "OpenBrowser" "file:///" . expand('%:p:gs?\\?/?')
 
+":DiffThem()
+"diff with clipboard
+function! DiffThem()
+    rightbelow vsplit __DiffThem__
+    setlocal buftype=nofile
+    normal! ggdG
+    normal! "+P
+    windo diffthis
+endfunction
 " }}}
 
 " Experimental
@@ -890,6 +899,7 @@ nnoremap <Leader>w :setlocal wrap!<CR>
 nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
 nnoremap gK :call investigate#Investigate('n')<CR>
 vnoremap gK :call investigate#Investigate('v')<CR>
+nnoremap <Leader>d :call DiffThem()<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
