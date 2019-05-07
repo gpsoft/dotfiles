@@ -89,6 +89,7 @@ set smartindent
 set smarttab
 set backspace=indent,eol,start
 set complete=.,w,b,u,t
+set completeopt=menuone
 set formatoptions+=j
 set noautoread
 set pastetoggle=<F2>
@@ -188,7 +189,7 @@ augroup vimrc_tab
     autocmd FileType html setlocal noet
     autocmd FileType go setlocal noet
     autocmd FileType xml setlocal noet
-    autocmd FileType css setlocal noet
+    autocmd FileType css setlocal sw=4 noet " need sw(bug?)
     autocmd FileType javascript setlocal noet
     autocmd FileType markdown setlocal ts=2
     autocmd FileType sql setlocal ts=2
@@ -429,6 +430,9 @@ let g:bufExplorerSortBy='fullpath'
 if exists('g:vimrc_local_browser')
     let g:previm_open_cmd=g:vimrc_local_browser
 endif
+let g:netrw_nogx = 1
+let g:openbrowser_message_verbosity = 1
+let g:previm_show_header = 0
 
 " SQLUtilities
 let g:sqlutil_load_default_maps = 0
@@ -588,7 +592,9 @@ let g:dbext_map_prefix = '<Leader>q'
 let g:dbext_default_profile_hoge='type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=hoge'
 let g:dbext_default_profile_fuga='type=MYSQL:host=192.168.1.100:user=mysql:passwd=mysql:dbname=fuga'
 let g:dbext_default_MYSQL_extra = '--default-character-set=utf8'
-let g:dbext_default_profile = 'hoge'
+if !exists("g:dbext_default_profile")
+    let g:dbext_default_profile = 'hoge'
+endif
 let g:dbext_default_buffer_lines = 20
 let g:dbext_default_always_prompt_for_variables=0
 function! DBextPostResult(db_type, buf_nr)
@@ -762,9 +768,18 @@ function! PasteReplace()
     endif
 endfunction
 
-":
+":OpenBrowserCurrent
 command! OpenBrowserCurrent execute "OpenBrowser" "file:///" . expand('%:p:gs?\\?/?')
 
+":DiffThem()
+"diff with clipboard
+function! DiffThem()
+    rightbelow vsplit __DiffThem__
+    setlocal buftype=nofile
+    normal! ggdG
+    normal! "+P
+    windo diffthis
+endfunction
 " }}}
 
 " Experimental
@@ -847,12 +862,14 @@ xnoremap k gk
 xnoremap j gj
 xnoremap gk k
 xnoremap gj j
-nnoremap <C-]> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-]> :split<CR>:exe "tjump ".expand('<cword>')<CR>
 nnoremap g<C-]> <C-]>
 
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
+" nmap <Leader>GG :exe("grep ".expand('<cword>')." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
+nmap <Leader>GG :let @/=expand("<cword>")<CR>:exe("grep! ".@/." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
@@ -901,14 +918,16 @@ nnoremap <Leader>r :OverCommandLine<CR>%s/
 nnoremap <Leader>p :PrevimOpen<CR>
 " nnoremap <Leader>b :silent! !%:p<CR>
 "nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
-nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
+" nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
+nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>I[z=] <C-R>z<Esc>
 nnoremap <Leader>` :Marks<CR>
 nnoremap <Leader>bf :OpenBrowserCurrent<CR>
-nmap <Leader>bu <Plug>(openbrowser-open)
+nmap gx <Plug>(openbrowser-smart-search)
 nnoremap <Leader>w :setlocal wrap!<CR>
 nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
 nnoremap gK :call investigate#Investigate('n')<CR>
 vnoremap gK :call investigate#Investigate('v')<CR>
+nnoremap <Leader>d :call DiffThem()<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
