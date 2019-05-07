@@ -47,10 +47,14 @@ set background=dark
 " colorscheme slate
 
 " Lucius
+augroup vimrc_color
+    autocmd!
+    autocmd ColorScheme lucius highlight! LineNr ctermfg=247 ctermbg=238
+    autocmd ColorScheme lucius highlight! CursorLineNr ctermfg=172 ctermbg=240
+    autocmd ColorScheme lucius highlight! ColorColumn ctermbg=5
+    autocmd ColorScheme lucius highlight! Normal ctermbg=235
+augroup END
 colorscheme lucius
-highlight LineNr ctermfg=247 ctermbg=238
-highlight CursorLineNr ctermfg=172 ctermbg=240
-highlight ColorColumn ctermbg=5
 
 call matchadd('ColorColumn', '\%82v', 1000)
 call matchadd('ColorColumn', '\%83v', 1000)
@@ -60,7 +64,6 @@ set ruler
 set laststatus=2
 set showmode
 set showcmd
-set cursorline
 set textwidth=0
 set number
 " set relativenumber
@@ -194,6 +197,15 @@ augroup vimrc_tab
 augroup END
 " }}}
 
+" Cursorline
+" {{{
+augroup vimrc_cursorline
+    autocmd!
+    autocmd InsertLeave,WinEnter * set cursorline
+    autocmd InsertEnter,WinLeave * set nocursorline
+augroup END
+" }}}
+
 " Grep
 " {{{
 if executable('rg')
@@ -323,6 +335,15 @@ augroup vimrc_clj
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
     autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
+
+    autocmd FileType clojure nnoremap <buffer> cpP :Eval<CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> gcpr :Require!<CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> cpR :Eval (if-let [r (resolve 'user/reset)] (r))<CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
+    autocmd FileType clojure nnoremap <buffer> <C-]> :split<CR>:normal ]<C-D><CR>
+    autocmd FileType clojure nnoremap <buffer> g<C-]> :normal ]<C-D><CR>
+
+    autocmd FileType clojure command! -buffer Publics Eval (clojure.pprint/pprint (sort (keys (ns-publics *ns*))))
 
     autocmd FileType clojure call EnableClojureFolding()
     function! GetClojureFold()
@@ -921,11 +942,6 @@ cnoremap <C-n> <Down>
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
-
-" for Fireplace
-nnoremap cpP :Eval<CR>
-nnoremap cpR :Require!<CR><CR>
-nnoremap <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:%s/\r//g<CR>:0,$-1yank<CR>:q!<CR>%p
 
 " for Tortoise svn
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
