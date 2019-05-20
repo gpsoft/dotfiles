@@ -209,7 +209,7 @@ augroup END
 " Grep
 " {{{
 if executable('rg')
-    set grepprg=rg\ --vimgrep\ --no-heading\ --ignore-file\ ~/.gitignore_global
+    set grepprg=rg\ -i\ --vimgrep\ --no-heading\ --ignore-file\ ~/.gitignore_global
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 " }}}
@@ -868,7 +868,7 @@ nnoremap g<C-]> <C-]>
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 " nmap <Leader>GG :exe("grep ".expand('<cword>')." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
-nmap <Leader>GG :let @/=expand("<cword>")<CR>:exe("grep! ".@/." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
+nmap <Leader>GG :let @/=expand("<cword>")<CR>:let @g="grep! ".@/." ."<CR>:exe("grep! ".@/." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
