@@ -647,7 +647,8 @@ endif
 " :PigBoot, :PigFig, :PigNode
 " ClojureScript Browser REPL
 command! PigBoot execute('Piggieback (adzerk.boot-cljs-repl/repl-env)')
-command! PigFig execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
+command! PigFigSidecar execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
+command! PigFigMain execute('Piggieback (figwheel.main.api/repl-env "dev")')
 command! PigNode execute('Piggieback (cljs.repl.node/repl-env)')
 
 " :Dos
