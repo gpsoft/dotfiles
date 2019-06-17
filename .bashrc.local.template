@@ -28,3 +28,4 @@ if ! win; then
 fi
 
 alias dev='cd ~/dev'
+alias mutt='neomutt'

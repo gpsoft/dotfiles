@@ -337,9 +337,9 @@ augroup vimrc_clj
     autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
 
     autocmd FileType clojure nnoremap <buffer> cpP :Eval<CR>
-    autocmd FileType clojure nnoremap <buffer> <silent> gcpr :Require!<CR>
-    autocmd FileType clojure nnoremap <buffer> <silent> cpR :Eval (if-let [r (resolve 'user/reset)] (r))<CR>
     autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
+    autocmd FileType clojure nnoremap <buffer> <silent> cpR :Eval (if-let [r (resolve 'user/reset)] (do (with-out-str (r)) 'reset!) (symbol "No reset func; use cpe"))<CR>
+    autocmd FileType clojure nnoremap <buffer> <silent> cpe :Require!<CR>
     autocmd FileType clojure nnoremap <buffer> <C-]> :split<CR>:normal ]<C-D><CR>
     autocmd FileType clojure nnoremap <buffer> g<C-]> :normal ]<C-D><CR>
 
@@ -647,7 +647,8 @@ endif
 " :PigBoot, :PigFig, :PigNode
 " ClojureScript Browser REPL
 command! PigBoot execute('Piggieback (adzerk.boot-cljs-repl/repl-env)')
-command! PigFig execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
+command! PigFigSidecar execute('Piggieback (figwheel-sidecar.repl-api/repl-env)')
+command! PigFigMain execute('Piggieback (figwheel.main.api/repl-env "dev")')
 command! PigNode execute('Piggieback (cljs.repl.node/repl-env)')
 
 " :Dos
@@ -689,6 +690,7 @@ command! ToggleSyntax call s:ToggleSyntax()
 
 function! ToggleFold()
     if &foldlevel > 0
+        setlocal foldenable
         setlocal foldlevel=0
     else
         setlocal foldlevel=99
