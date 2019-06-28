@@ -182,18 +182,14 @@ endif
 
 " Tab
 " {{{
-set sw=0 sts=0 ts=4 et
+" set sw=0 sts=0 ts=4 noet
 augroup vimrc_tab
     autocmd!
-    autocmd FileType php setlocal noet
-    autocmd FileType html setlocal noet
-    autocmd FileType go setlocal noet
-    autocmd FileType xml setlocal noet
+    autocmd FileType * setlocal sw=0 sts=0 ts=4 noet
     autocmd FileType css setlocal sw=4 noet " need sw(bug?)
-    autocmd FileType javascript setlocal noet
-    autocmd FileType markdown setlocal ts=2
-    autocmd FileType sql setlocal ts=2
-    autocmd FileType mru setlocal ts=32
+    autocmd FileType markdown setlocal ts=2 et
+    autocmd FileType sql setlocal ts=2 et
+    autocmd FileType mru setlocal ts=32 et
 augroup END
 " }}}
 
