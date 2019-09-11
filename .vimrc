@@ -881,6 +881,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbo
 
 " Replacing
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+map <Leader>R <Plug>(operator-replace)
 
 " Git(fugitive)
 nnoremap <Leader>gs :Gstatus<CR>
