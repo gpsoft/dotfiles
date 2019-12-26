@@ -7,6 +7,9 @@
 "set trashdir=/var/tmp/trash
 
 "filetype *.png,*.jpeg,*.jpg pinta %c
+"filextype *.png,*.jpeg,*.jpg
+"        \ {Open with feh}
+"        \ feh -x -g 800x600+800+400 -. -s %f &
 
 "bmark! '~/Downloads' download
 "bmark! '~/' home
