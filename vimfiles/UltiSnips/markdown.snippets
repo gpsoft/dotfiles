@@ -7,12 +7,10 @@ snippet img "image"
 endsnippet
 
 snippet tab "table"
-|$0     |        |    |
-|----:|:-------|:--:|
-|     |        |    |
-|     |        |    |
-|     |        |    |
-
+| ${0:ABC}|DEFG|HIJK |
+| :- | :- | :-- |
+| abc|defg|hijk |
+| abc|defg|hijk |
 endsnippet
 
 snippet esc "escape key" i
@@ -44,8 +42,7 @@ $0
 endsnippet
 
 snippet sh "shell session for blog"
-\`\`\`shell-session
-$ $0
+\`\`\`shell-session$0
 \`\`\`
 endsnippet
 
