@@ -1,0 +1,15 @@
+ 51 102 153		Azure1
+ 26  89 153		Azure2
+ 64 129 194		Azure3
+253 245 164		Banana
+ 85 125 209		Clojure1
+140 174 246		Clojure2
+ 96 171  48		Clojure3
+140 213  69		Clojure4
+215  83  65		Coral1
+215  52  30		Coral2
+255  98  77		Coral3
+235  77  40		Git Red
+230   0  51		The Red
+200  16  46		Soul Red
+  0 148  49		Vim Green
