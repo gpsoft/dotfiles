@@ -8,3 +8,7 @@ fi
 if [ -f /usr/bin/startx ] && [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec startx
 fi
+
+if [ -f ~/dotfiles/.git-completion.bash ]; then
+  . ~/dotfiles/.git-completion.bash
+fi
