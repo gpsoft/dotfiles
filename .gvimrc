@@ -84,8 +84,10 @@ function! SidebysidePlacement()
         return
     endif
     let l:placement = g:gvimrc_local_sbs_placement
-    execute 'winpos' l:placement[0] l:placement[1]
+    " winpos should be after resizing because
+    " gvim moves window after resizing
     execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
+    execute 'winpos' l:placement[0] l:placement[1]
 endfunction
 function! WinSidebyside()
     call SidebysidePlacement()
@@ -107,7 +109,7 @@ endfunction
 
 " File system
 nnoremap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
-nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>:call InitPlacement()<CR>
 
 " Arrange windows
 nnoremap <silent> <C-W><C-S> :<C-u>call WinSidebyside()<CR>
