@@ -122,6 +122,9 @@ if filereadable(expand("~/.gvimrc.local"))
 endif
 " }}}
 
-call InitPlacement()
+augroup gvimrc_last
+    autocmd!
+    autocmd GUIEnter * call InitPlacement()
+augroup END
 
 " vim:fdm=marker:fmr={{{,}}}:sw=4:sts=4:ts=4:et:
