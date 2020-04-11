@@ -115,3 +115,6 @@
 [submodule "vimfiles/bundle/rainbow"]
 	path = vimfiles/bundle/rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "vimfiles/bundle/vim-css-color"]
+	path = vimfiles/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
