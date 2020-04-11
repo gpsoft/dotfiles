@@ -356,7 +356,7 @@ augroup vimrc_clj
         setlocal nofoldenable
     endfunction
 
-    autocmd FileType clojure call ActivateRainbowParen()
+    " autocmd FileType clojure call ActivateRainbowParen()
 augroup END
 
 "let g:clojure_fold = 1
@@ -557,6 +557,27 @@ function! ActivateRainbowParen()
 endfunction
 " }}}
 
+" Plugins(Rainbow)
+" {{{
+"RAINBOW
+let g:rainbow_conf = {
+        \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+        \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+        \	'guis': [''],
+        \	'cterms': [''],
+        \	'operators': '',
+        \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+        \	'separately': {
+        \		'*': {},
+        \		'clojure': {
+        \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3']
+        \		},
+        \		'css': 0,
+        \	}
+        \}
+let g:rainbow_active = 1
+" }}}
+"
 " Plugins(Vim-sexp)
 " {{{
 let g:sexp_mappings = {
@@ -872,7 +893,8 @@ nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nmap <Leader>GG :let @/=expand("<cword>")<CR>:let @g="grep! ".@/." ."<CR>:exe("grep! ".@/." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
+" nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
+nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw!<CR>
 " nnoremap & :&&<CR>
 
 " Replacing
