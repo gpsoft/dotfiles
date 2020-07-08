@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+#== Usage: ./install.sh
+#==
+#== Summary:
+#==   It installs my dot files.
+#==
+#== Arguments:
+#==
+#== Options:
+#==   -h       Show this message.
+
+help() {
+	sed -rn 's/^#== ?//;T;p' "$0"
+}
+
+if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    help
+    exit 1
+fi
+
 ##### UTILITY FUNCTIONS
 function win() { [[ -n "$WINDIR" ]]; }
 function mac() { [ `uname` = "Darwin" ]; }
