@@ -845,8 +845,8 @@ noremap \ ,
 nnoremap <C-Q> :q<CR>
 nnoremap <C-T> :w<CR>
 nnoremap <Leader>E :Ex<CR>
-nnoremap <Leader>S :Sex<CR>
-nnoremap <Leader>V :Vex<CR>
+nnoremap <Leader>S :Hex<CR>
+nnoremap <Leader>V :Vex!<CR>
 nnoremap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
 nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>
 "After re-loading .vimrc, rainbow paren gets off.
