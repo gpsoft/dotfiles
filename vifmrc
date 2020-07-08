@@ -17,4 +17,6 @@ nnoremap ,% :!echo %"d:gs!\!/! %i | clip<cr>
 
 nnoremap b :bmgo<space>
 
+nnoremap h za
+
 source ~/.vifmrc.local
