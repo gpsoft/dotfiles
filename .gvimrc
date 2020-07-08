@@ -23,6 +23,7 @@ augroup gvimrc_color
     autocmd ColorScheme solarized highlight! SpecialKey guifg=grey guibg=#fdf6e3
     autocmd ColorScheme solarized highlight! WarningMsg guifg=white guibg=lightred
     autocmd ColorScheme solarized highlight! MatchParen guifg=red guibg=#FBD6D0
+    autocmd ColorScheme solarized highlight! Comment gui=NONE
 augroup END
 colorscheme solarized
 let g:solarized_menu=0
