@@ -767,7 +767,7 @@ fu! TortoiseCommand(com, others)
             let filename = getcwd()
         endif
     endif
-    let svn = 'C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
+    let svn = 'start C:\Progra~1\TortoiseSVN\bin\TortoiseProc.exe'
     silent execute('!'.svn.' /command:'.a:com.' /path:"'.filename.'" /notempfile '.a:others)
 endfunc
 fu! TortoiseBlame()
