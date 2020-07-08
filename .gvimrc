@@ -72,12 +72,14 @@ set guicursor+=i-ci:ver30-iCursor-blinkon0
 " Custom commands
 " {{{
 
-function! InitPlacement()
+function! InitPlacement(only_move)
     if ( !exists('g:gvimrc_local_init_placement') )
         return
     endif
     let l:placement = g:gvimrc_local_init_placement
-    execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
+    if ( a:only_move == 0 )
+        execute 'set lines='.l:placement[2] 'columns='.l:placement[3]
+    endif
     execute 'winpos' l:placement[0] l:placement[1]
 endfunction
 function! SidebysidePlacement()
@@ -110,7 +112,7 @@ endfunction
 
 " File system
 nnoremap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
-nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>:call InitPlacement()<CR>
+nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>:call InitPlacement(0)<CR>
 
 " Arrange windows
 nnoremap <silent> <C-W><C-S> :<C-u>call WinSidebyside()<CR>
@@ -127,7 +129,9 @@ endif
 
 augroup gvimrc_last
     autocmd!
-    autocmd GUIEnter * call InitPlacement()
+    autocmd GUIEnter * call InitPlacement(0)
+    " autocmd VimResized * call InitPlacement(1)
+    " autocmd WinEnter * call InitPlacement(1)
 augroup END
 
 " vim:fdm=marker:fmr={{{,}}}:sw=4:sts=4:ts=4:et:
