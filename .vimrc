@@ -870,9 +870,10 @@ nnoremap <C-G> 1<C-G>
 
 " Moving around
 nmap <C-F> <Leader><Leader>f
-nmap <C-F><C-F> <Leader><Leader>w
+nmap <C-F><C-F> <Leader><Leader>n
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 nmap <Leader><Leader>w <Plug>(easymotion-bd-W)
+nmap <Leader><Leader>n :let @/='\<\v[0-9a-zA-Z]' \| :call EasyMotion#Search(0,2,0) \| :let @/=''<CR>
 nnoremap <Leader>t :TagbarOpenAutoClose<CR>
 nnoremap <Leader>T :echo tagbar#currenttag('[%s]', 'not in a function?')<CR>
 nnoremap k gk
