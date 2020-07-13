@@ -30,7 +30,7 @@ let g:pathogen_disabled = [
         \ "dbext.vim",
         \ ]
 if exists("g:vimrc_local_disabled_plugins")
-let g:pathogen_disabled = g:vimrc_local_disabled_plugins
+    let g:pathogen_disabled = g:vimrc_local_disabled_plugins
 endif
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -187,6 +187,7 @@ augroup vimrc_tab
     autocmd!
     autocmd FileType * setlocal sw=0 sts=0 ts=4 noet
     autocmd FileType css setlocal sw=4 noet " need sw(bug?)
+    autocmd FileType clojure setlocal ts=2 et
     autocmd FileType markdown setlocal ts=2 et
     autocmd FileType sql setlocal ts=2 et
     autocmd FileType mru setlocal ts=32 et
