@@ -746,8 +746,8 @@ fu! OpenTabForSql(...)
         let g:dbext_default_profile = a:1
     endif
     let f = '\Users\gpsoft\sql\scratchpad.sql'
-    if exists('g:vimrc_sql_scratchpad')
-        let f = g:vimrc_sql_scratchpad
+    if exists('g:vimrc_local_sql_scratchpad')
+        let f = g:vimrc_local_sql_scratchpad
     endif
     let bn = bufwinnr(f)
     if bn > 0

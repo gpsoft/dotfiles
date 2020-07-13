@@ -7,6 +7,8 @@
 " let g:vimrc_local_path_notes = 'd:\dwh\notes'
 " let g:vimrc_local_path_notes = '~/notes'
 
+"set timeout timeoutlen=400 ttimeoutlen=100
+
 "Disable plugins
 let g:vimrc_local_disabled_plugins = [
         \ "PHP-Indenting-for-VIm",
@@ -24,7 +26,10 @@ endif
 
 let g:Align_xstrlen = 3
 
-"let g:vimrc_sql_scratchpad = '\Users\gpsoft\sql\scratchpad.sql'
+"DBEXT
+"let g:vimrc_local_sql_scratchpad = '/home/gpsoft/Documents/scratchpad.sql'
+let g:dbext_default_profile_scott='type=MYSQL:host=localhost:user=root:passwd=tiger:dbname=scott'
+let g:dbext_default_profile = 'scott'
 
 "--------------------------------- gvim用 -----------------------------------
 "Window placement.
