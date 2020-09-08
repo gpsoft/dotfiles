@@ -56,8 +56,8 @@ augroup vimrc_color
 augroup END
 colorscheme lucius
 
-call matchadd('ColorColumn', '\%82v', 1000)
-call matchadd('ColorColumn', '\%83v', 1000)
+call matchadd('ColorColumn', '\%92v', 1000)
+call matchadd('ColorColumn', '\%93v', 1000)
 
 set notitle
 set ruler
@@ -764,6 +764,7 @@ fu! TortoiseCommand(com, others)
     if filename==''
         if &ft=='netrw'
             let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
         else 
             let filename = getcwd()
         endif
