@@ -801,6 +801,7 @@ function! DiffThem()
     setlocal buftype=nofile
     normal! ggdG
     normal! "+P
+    diffoff!
     windo diffthis
 endfunction
 " }}}
