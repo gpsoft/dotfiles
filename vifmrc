@@ -8,7 +8,9 @@ nnoremap o :!gvim --remote-tab-silent %f<cr>
 
 nnoremap ,ve :write | execute ':!gvim ~/dotfiles/vifmrc' | restart<cr>
 
-nnoremap ,e :!start %d<cr>
+nnoremap ,e :!cmd /c start .<cr>
+nnoremap ,d :!start "%d"<cr>
+nnoremap ,b :!cmd /c start %f<cr>
 nnoremap ,p :view<cr>
 
 nnoremap yy "ayy
