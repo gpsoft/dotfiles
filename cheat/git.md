@@ -1,5 +1,9 @@
 # Git Cheat Sheet
 
+## export
+
+    git checkout-index --prefix=c:/temp/proj1/ -a
+
 ## 戻す
     git checkout -- FILE
     git reset HEAD^                      ...commit前へ
