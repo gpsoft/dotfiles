@@ -733,7 +733,7 @@ endfunction
 " :Blog
 if exists('g:vimrc_local_path_notes')
     function! s:openBlogDir()
-        execute 'Sexp '.g:vimrc_local_path_notes.'/gpblog/resources/templates/md/posts'
+        execute 'Sexp '.g:vimrc_local_path_notes.'/gpblog/content/md/posts'
     endfunction
     command! Blog call <SID>openBlogDir()
 endif
@@ -801,6 +801,7 @@ function! DiffThem()
     setlocal buftype=nofile
     normal! ggdG
     normal! "+P
+    diffoff!
     windo diffthis
 endfunction
 " }}}
