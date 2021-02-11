@@ -1,24 +1,5 @@
 #!/usr/bin/env bash
 
-#== Usage: ./install.sh
-#==
-#== Summary:
-#==   It installs my dot files.
-#==
-#== Arguments:
-#==
-#== Options:
-#==   -h       Show this message.
-
-help() {
-	sed -rn 's/^#== ?//;T;p' "$0"
-}
-
-if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
-    help
-    exit 1
-fi
-
 ##### UTILITY FUNCTIONS
 function win() { [[ -n "$WINDIR" ]]; }
 function mac() { [ `uname` = "Darwin" ]; }
@@ -45,7 +26,8 @@ function dellink() {
     fi
 }
 
-# usage: symlink <LINK> <REAL>
+# make a symlink or test if it exists
+# usage: symlink <LINK> [<REAL>]
 # symlink ~/.bashrc ~/dotfiles/.bashrc
 function symlink() {
     # second arg is optional.
@@ -91,6 +73,7 @@ function symlink() {
 }
 
 # move the original file
+# moveorg <FILE>
 function moveorg() {
     local o="$1.org"
     if [[ -e $o ]]; then
@@ -127,6 +110,9 @@ function movetotmp() {
 ##### OPERATION FUNCTIONS
 
 # a wrapper to call symlink.
+# usage: linkhome <REAL_AND_LINK> [<REAL-ALT>]
+# linkhome hoge       ... link hoge to ~/hoge
+# linkhome hoge fuga  ... link fuga to ~/hoge
 function linkhome() {
     local real=$1
     if [[ -n "$2" ]]; then
@@ -145,6 +131,28 @@ function copytempl() {
         cp $1.template ~/$1
     fi
 }
+
+
+
+
+
+if mac; then
+    linkhome .zprofile  sh_profile.mac
+    linkhome .zshrc     shrc.mac
+else
+    exit
+fi
+linkhome .gitconfig        gitconfig
+linkhome .gitignore_global gitignore_global
+linkhome .tmux.conf        tmux.conf
+linkhome .vim       vimfiles
+linkhome .vimrc     vimrc
+exit
+
+
+
+
+
 
 ##### MAKE SYMBOLIC LINKS
 if mac; then

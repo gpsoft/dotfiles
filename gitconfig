@@ -3,14 +3,14 @@
 	email = etoh.gpsoft@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = gvim -f
+	editor = vim -f
 	autoCRLF = false
 	quotepath = false
 	pager = less --quit-if-one-screen --no-init
 [push]
 	default = simple
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 [color "branch"]
 	upstream = cyan
 [alias]
