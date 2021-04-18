@@ -911,7 +911,7 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 " nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gb :Gblame -w -M<CR>
-nnoremap <Leader>gl :Glog<CR>:copen<CR><C-w>J
+nnoremap <Leader>gl :Gclog!<CR>:copen<CR><C-w>J
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
 " nnoremap <Leader>gp :Git push<CR>
