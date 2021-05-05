@@ -187,7 +187,7 @@ augroup vimrc_tab
     autocmd!
     autocmd FileType * setlocal sw=0 sts=0 ts=4 noet
     autocmd FileType css setlocal sw=4 noet " need sw(bug?)
-    autocmd FileType clojure setlocal ts=2 et
+    autocmd FileType clojure setlocal sw=2 ts=2 et " need sw(bug?)
     autocmd FileType markdown setlocal ts=2 et
     autocmd FileType ruby setlocal ts=2 et
     autocmd FileType sql setlocal ts=2 et
