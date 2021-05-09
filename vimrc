@@ -53,6 +53,12 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
+" Clojure
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
 " Specific file type
 Plug 'kannokanno/previm',  { 'for': 'markdown' }
 Plug 'vim-scripts/SQLUtilities', { 'for': 'sql' }
@@ -60,13 +66,9 @@ Plug 'vim-scripts/dbext.vim', { 'on': 'Sql' }
 
 "Plug 'elzr/vim-json'
 "Plug 'kien/rainbow_parentheses.vim'
-"Plug 'guns/vim-clojure-static'
 "Plug 'guns/vim-clojure-highlight'
-"Plug 'tpope/vim-fireplace'
 "Plug '2072/PHP-Indenting-for-VIm'
 "Plug '2072/vim-syntax-for-PHP'
-"Plug 'guns/vim-sexp'
-"Plug 'tpope/vim-sexp-mappings-for-regular-people'
 "Plug 'vim-scripts/Align'
 "Plug 'keith/investigate.vim'
 "Plug 'kana/vim-operator-user'
@@ -226,7 +228,7 @@ augroup vimrc_tab
     autocmd!
     autocmd FileType * setlocal sw=0 sts=0 ts=4 noet
     autocmd FileType css setlocal sw=4 noet " need sw(bug?)
-    autocmd FileType clojure setlocal ts=2 et
+    autocmd FileType clojure setlocal sw=2 ts=2 et " need sw(bug?)
     autocmd FileType markdown setlocal ts=2 et
     autocmd FileType sql setlocal ts=2 et
     autocmd FileType mru setlocal ts=32 et
@@ -364,16 +366,16 @@ let g:markdown_minlines = 150
 " {{{
 augroup vimrc_clj
     autocmd!
-    autocmd BufNewFile,BufRead *.cljs set filetype=clojure
+    " autocmd BufNewFile,BufRead *.cljs set filetype=clojure
     autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
     autocmd FileType clojure setlocal lispwords+=defproject,provided,tabular,domonad,with-monad,defmonad,deftask,go-loop
     " autocmd FileType clojure setlocal iskeyword-=/
     " autocmd FileType clojure setlocal iskeyword-=.
-    autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
+    " autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
 
     autocmd FileType clojure nnoremap <buffer> cpP :Eval<CR>
-    autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):Eval (clojure.pprint/pprint 0)<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
+    autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):silent !Eval (#?(:clj clojure.pprint/pprint :cljs cljs.pprint/pprint) 0)<CR>:redraw!<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
     autocmd FileType clojure nnoremap <buffer> <silent> cpR :Eval (if-let [r (resolve 'user/reset)] (do (with-out-str (r)) 'reset!) (symbol "No reset func; use cpe"))<CR>
     autocmd FileType clojure nnoremap <buffer> <silent> cpe :Require!<CR>
     autocmd FileType clojure nnoremap <buffer> <C-]> :split<CR>:normal ]<C-D><CR>
@@ -400,9 +402,9 @@ augroup vimrc_clj
 augroup END
 
 "let g:clojure_fold = 1
-let g:clojure_highlight_references = 1
-let g:clojure_align_multiline_strings = 0
-    
+" let g:clojure_highlight_references = 1
+" let g:clojure_align_multiline_strings = 0
+let g:clojure_align_subforms = 1
 " }}}
 
 " Plugins
@@ -418,12 +420,12 @@ autocmd FileType netrw setl bufhidden=delete
 runtime macros/matchit.vim
 
 " VIM-CLOJURE-STATIC
-let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = [
-        \ '^\(future-\)\?facts\?$',
-        \ '^prerequisites\?$'
-        \ ]
-let g:clojure_maxlines = 300
+" let g:clojure_fuzzy_indent = 1
+" let g:clojure_fuzzy_indent_patterns = [
+"         \ '^\(future-\)\?facts\?$',
+"         \ '^prerequisites\?$'
+"         \ ]
+" let g:clojure_maxlines = 300
 
 " MRU
 let MRU_Max_Entries = 100
