@@ -516,9 +516,11 @@ call AlterWombat()
 let g:ctrlp_map = '<Nop>'
 " let g:ctrlp_max_files  = 5000
 " let g:ctrlp_max_depth = 6
-" let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:8,results:30'
-let g:ctrlp_working_path_mode = 'wra'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['.ctrlp_stopper']
 let g:ctrlp_by_filename = 0
 let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
