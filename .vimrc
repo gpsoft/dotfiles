@@ -113,6 +113,7 @@ set wrapscan
 set history=200
 set wildignore+=**/obj/**,**/debug/**,**/bin/**
 set foldlevelstart=99
+set mouse=c
 
 set noundofile
 set backup
