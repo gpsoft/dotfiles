@@ -907,10 +907,10 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 map <Leader>R <Plug>(operator-replace)
 
 " Git(fugitive)
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-" nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gb :Gblame -w -M<CR>
+nnoremap <Leader>gs :Git<CR>
+nnoremap <Leader>gd :Gdiffsplit<CR>
+" nnoremap <Leader>gc :Git commit<CR>
+nnoremap <Leader>gb :Git blame -w -M<CR>
 nnoremap <Leader>gl :Gclog!<CR>:copen<CR><C-w>J
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
