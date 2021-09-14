@@ -766,10 +766,11 @@ command! -nargs=? Sql call OpenTabForSql(<f-args>)
 " TortoiseSVN
 fu! TortoiseCommand(com, others)
     let filename = expand("%:p")
+    let filename = substitute(filename, "NetrwTreeListing", "", "")
     if filename==''
         if &ft=='netrw'
-            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
-            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
+            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
         else 
             let filename = getcwd()
         endif
