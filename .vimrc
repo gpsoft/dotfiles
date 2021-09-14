@@ -962,6 +962,8 @@ nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to cl
 nnoremap gK :call investigate#Investigate('n')<CR>
 vnoremap gK :call investigate#Investigate('v')<CR>
 nnoremap <Leader>d :call DiffThem()<CR>
+nnoremap T H
+nnoremap H h
 
 " Insert mode
 inoremap <C-w> <Nop>
