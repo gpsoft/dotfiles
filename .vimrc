@@ -374,6 +374,7 @@ let g:clojure_align_multiline_strings = 0
 " let g:netrw_keepdir=0
 let g:netrw_keepj="keepj"
 " let g:netrw_liststyle=3
+let g:netrw_banner=0
 " let g:netrw_silent=1
 autocmd FileType netrw setl bufhidden=delete
 
@@ -850,6 +851,7 @@ noremap \ ,
 nnoremap <C-Q> :q<CR>
 nnoremap <C-T> :w<CR>
 nnoremap <Leader>E :Ex<CR>
+nnoremap - :Ex<CR>
 nnoremap <Leader>S :Hex<CR>
 nnoremap <Leader>V :Vex!<CR>
 nnoremap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
