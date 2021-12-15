@@ -917,7 +917,8 @@ nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiffsplit<CR>
 " nnoremap <Leader>gc :Git commit<CR>
 nnoremap <Leader>gb :Git blame -w -M<CR>
-nnoremap <Leader>gl :Gclog!<CR>:copen<CR><C-w>J
+" nnoremap <Leader>gl :Gclog!<CR>:copen<CR><C-w>J
+nnoremap <Leader>gl :exe ':Git! ll --follow -- '.expand('%')<CR>
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
 " nnoremap <Leader>gp :Git push<CR>
