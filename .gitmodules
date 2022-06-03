@@ -118,3 +118,5 @@
 [submodule "vimfiles/bundle/ctrlp.vim"]
 	path = vimfiles/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim-abolish"]
+	url = https://github.com/tpope/vim-abolish.git
