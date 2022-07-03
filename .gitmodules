@@ -7,9 +7,6 @@
 [submodule "vimfiles/bundle/vim-json"]
 	path = vimfiles/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
-[submodule "vimfiles/bundle/ctrlp.vim"]
-	path = vimfiles/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vimfiles/bundle/vim-over"]
 	path = vimfiles/bundle/vim-over
 	url = https://github.com/osyo-manga/vim-over.git
@@ -118,3 +115,8 @@
 [submodule "vimfiles/bundle/vim-css-color"]
 	path = vimfiles/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
+[submodule "vimfiles/bundle/ctrlp.vim"]
+	path = vimfiles/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim-abolish"]
+	url = https://github.com/tpope/vim-abolish.git

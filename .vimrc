@@ -113,6 +113,7 @@ set wrapscan
 set history=200
 set wildignore+=**/obj/**,**/debug/**,**/bin/**
 set foldlevelstart=99
+set mouse=c
 
 set noundofile
 set backup
@@ -373,6 +374,7 @@ let g:clojure_align_multiline_strings = 0
 " let g:netrw_keepdir=0
 let g:netrw_keepj="keepj"
 " let g:netrw_liststyle=3
+let g:netrw_banner=0
 " let g:netrw_silent=1
 autocmd FileType netrw setl bufhidden=delete
 
@@ -514,9 +516,11 @@ call AlterWombat()
 let g:ctrlp_map = '<Nop>'
 " let g:ctrlp_max_files  = 5000
 " let g:ctrlp_max_depth = 6
-" let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:8,results:30'
-let g:ctrlp_working_path_mode = 'wra'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['.ctrlp_stopper']
 let g:ctrlp_by_filename = 0
 let g:ctrlp_prompt_mappings = {
         \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>', '<c-q>'],
@@ -762,10 +766,11 @@ command! -nargs=? Sql call OpenTabForSql(<f-args>)
 " TortoiseSVN
 fu! TortoiseCommand(com, others)
     let filename = expand("%:p")
+    let filename = substitute(filename, "NetrwTreeListing", "", "")
     if filename==''
         if &ft=='netrw'
-            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
-            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
+            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
         else 
             let filename = getcwd()
         endif
@@ -849,6 +854,7 @@ noremap \ ,
 nnoremap <C-Q> :q<CR>
 nnoremap <C-T> :w<CR>
 nnoremap <Leader>E :Ex<CR>
+nnoremap - :Ex<CR>
 nnoremap <Leader>S :Hex<CR>
 nnoremap <Leader>V :Vex!<CR>
 nnoremap <Leader>ve :split $HOME/dotfiles/.vimrc<CR>
@@ -907,11 +913,12 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 map <Leader>R <Plug>(operator-replace)
 
 " Git(fugitive)
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-" nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gb :Gblame -w -M<CR>
-nnoremap <Leader>gl :Gclog!<CR>:copen<CR><C-w>J
+nnoremap <Leader>gs :Git<CR>
+nnoremap <Leader>gd :Gdiffsplit<CR>
+" nnoremap <Leader>gc :Git commit<CR>
+nnoremap <Leader>gb :Git blame -w -M<CR>
+" nnoremap <Leader>gl :Gclog!<CR>:copen<CR><C-w>J
+nnoremap <Leader>gl :exe ':Git! ll --follow -- '.expand('%')<CR>
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
 " nnoremap <Leader>gp :Git push<CR>
@@ -956,6 +963,8 @@ nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to cl
 nnoremap gK :call investigate#Investigate('n')<CR>
 vnoremap gK :call investigate#Investigate('v')<CR>
 nnoremap <Leader>d :call DiffThem()<CR>
+nnoremap T H
+nnoremap H h
 
 " Insert mode
 inoremap <C-w> <Nop>
