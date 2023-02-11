@@ -428,7 +428,7 @@ runtime macros/matchit.vim
 
 " MRU
 let MRU_Max_Entries = 100
-let MRU_Exclude_Files = "^crontab\.|MERGE_MSG|COMMIT_EDITMSG"
+let MRU_Exclude_Files = "^crontab\.\|MERGE_MSG\|COMMIT_EDITMSG"
 let MRU_Filename_Format = {
         \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
         \ 'parser': '\t- \zs.*\ze$',
