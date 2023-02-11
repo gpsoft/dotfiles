@@ -44,6 +44,7 @@ Jetpack 'SirVer/ultisnips'
 Jetpack 'tpope/vim-commentary'
 Jetpack 'machakann/vim-swap'
 Jetpack 'luochen1990/rainbow'
+Jetpack 'keith/investigate.vim'
 
 " LSP
 " Jetpack 'prabirshrestha/async.vim'
@@ -74,9 +75,6 @@ Jetpack 'vim-scripts/dbext.vim', { 'on': 'Sql' }
 "'2072/PHP-Indenting-for-VIm'
 "'2072/vim-syntax-for-PHP'
 "'vim-scripts/Align'
-"'keith/investigate.vim'
-"'kana/vim-operator-user'
-"'kana/vim-operator-replace'
 call jetpack#end()
 " }}}
 
@@ -936,17 +934,10 @@ nnoremap g<C-]> <C-]>
 " Searching
 nmap <Leader>gg :vim //j %%**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nmap <Leader>gG :vim //j %%../**<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
-" nmap <Leader>GG :exe("grep ".expand('<cword>')." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nmap <Leader>GG :let @/=expand("<cword>")<CR>:let @g="grep! ".@/." ."<CR>:exe("grep! ".@/." .")<CR>:copen<CR><C-w>J:setlocal nowrap<CR>
 nnoremap <silent> * :let @/="\\<".expand("<cword>")."\\>" \| :call histadd('search', @/) \| set hlsearch<CR>
 nnoremap <silent> g* :let @/=expand("<cword>") \| :call histadd('search', @/) \| set hlsearch<CR>
-" nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw! \|silent! call ActivateRainbowParen()<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw!<CR>
-" nnoremap & :&&<CR>
-
-" Replacing
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-map <Leader>R <Plug>(operator-replace)
 
 " Git(fugitive)
 nnoremap <Leader>gs :Git<CR>
@@ -977,27 +968,18 @@ nnoremap <Space> zA
 nnoremap <silent> g<Space> :<C-U>call ToggleFold()<CR>
 
 " Arrange windows
-" nnoremap <C-k> :res +3<CR>
-" nnoremap <C-j> :res -3<CR>
 nnoremap <silent> <C-P> :res +2<CR>
 nnoremap <silent> <C-N> :res -2<CR>
 
-" Misc
-nnoremap <silent> <Leader>q :copen 10<CR><C-w>J
-nnoremap <Leader>r :OverCommandLine<CR>%s/
+" Open-Browser & previm
 nnoremap <Leader>p :PrevimOpen<CR>
-" nnoremap <Leader>b :silent! !%:p<CR>
+nnoremap <Leader>bf :OpenBrowserCurrent<CR>
+" nmap gx <Plug>(openbrowser-smart-search)
+
+" Spell check
 "nnoremap <silent> <Leader>s :setlocal spell! spelllang=en_us,cjk<CR>:ToggleSyntax<CR>
 " nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>:put z<CR>
 nnoremap <silent> <Leader>s :let @z=expand('<cword>')<CR> :tabnew<CR>:setlocal spell! spelllang=en_us,cjk <CR>I[z=] <C-R>z<Esc>
-nnoremap <Leader>` :Marks<CR>
-nnoremap <Leader>bf :OpenBrowserCurrent<CR>
-nmap gx <Plug>(openbrowser-smart-search)
-nnoremap <Leader>w :setlocal wrap!<CR>
-nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
-nnoremap gK :call investigate#Investigate('n')<CR>
-vnoremap gK :call investigate#Investigate('v')<CR>
-nnoremap <Leader>d :call DiffThem()<CR>
 
 " Insert mode
 inoremap <C-w> <Nop>
@@ -1014,11 +996,23 @@ xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 
-" for Tortoise svn
+" Tortoise svn
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
 nnoremap <Leader>tl : call TortoiseCommand('log', '')<CR>
 nnoremap <Leader>tc : call TortoiseCommand('commit', '')<CR>
 nnoremap <Leader>tb : call TortoiseBlame()<CR>
+
+" Investigate
+nnoremap gK :call investigate#Investigate('n')<CR>
+vnoremap gK :call investigate#Investigate('v')<CR>
+
+" Misc
+nnoremap <silent> <Leader>q :copen 10<CR><C-w>J
+nnoremap <Leader>r :OverCommandLine<CR>%s/
+nnoremap <Leader>` :Marks<CR>
+nnoremap <Leader>w :setlocal wrap!<CR>
+nnoremap <Leader>% :let @+=expand('%:p')\| :echo "Current file path copied to clipboard."<CR>
+nnoremap <Leader>d :call DiffThem()<CR>
 
 " }}}
 
