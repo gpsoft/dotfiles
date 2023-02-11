@@ -69,7 +69,6 @@ Jetpack 'tyru/open-browser.vim',  { 'for': 'markdown' }
 Jetpack 'vim-scripts/SQLUtilities', { 'for': 'sql' }
 Jetpack 'vim-scripts/dbext.vim', { 'on': 'Sql' }
 
-"'elzr/vim-json'
 "'kien/rainbow_parentheses.vim'
 "'guns/vim-clojure-highlight'
 "'2072/PHP-Indenting-for-VIm'
@@ -435,9 +434,6 @@ let MRU_Filename_Format = {
         \ 'parser': '\t- \zs.*\ze$',
         \ 'syntax': '\v^.*\t- '
         \ }
-
-" VIM-JSON
-" let g:vim_json_syntax_conceal = 0
 
 " UltiSnips
 let g:UltiSnipsSnippetsDir=expand("$HOME/dotfiles/vimfiles/UltiSnips")
@@ -873,11 +869,6 @@ function! MarkdownLevel()
     endif
 endfunction
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
-
-"folding json
-" autocmd FileType json nnoremap <buffer> <Space> za
-" autocmd FileType json setlocal fdm=syntax
-" }}}
 
 " Key mappings
 " {{{
