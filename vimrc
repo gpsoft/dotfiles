@@ -10,73 +10,76 @@ set fileformats=unix,dos,mac
 
 " Local constants
 " {{{
-let g:vimrc_local_disabled_plugins = []
 if filereadable(expand("~/.vimrc.constants.local"))
     source ~/.vimrc.constants.local
 endif
 " }}}
 
-" vim-plug
+" Manage plugins with vim-jetpack
 " {{{
-call plug#begin('~/.vim/plugged')
+packadd vim-jetpack
+call jetpack#begin()
+Jetpack 'tani/vim-jetpack', {'opt': 1}
+
 " Themes
-Plug 'jonathanfilip/vim-lucius'
-Plug 'altercation/vim-colors-solarized'
+Jetpack 'jonathanfilip/vim-lucius'
+" Jetpack 'altercation/vim-colors-solarized'
 
 " General purpose
-Plug 'vim-scripts/mru.vim'
-Plug 'tpope/vim-vinegar'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'kien/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'osyo-manga/vim-over'
-Plug 'tpope/vim-abolish'
+Jetpack 'vim-scripts/mru.vim'
+Jetpack 'tpope/vim-vinegar'
+Jetpack 'jlanzarotta/bufexplorer'
+Jetpack 'kien/ctrlp.vim'
+Jetpack 'itchyny/lightline.vim'
+Jetpack 'easymotion/vim-easymotion'
+Jetpack 'christoomey/vim-tmux-navigator'
+Jetpack 'tpope/vim-surround'
+Jetpack 'tpope/vim-repeat'
+Jetpack 'tpope/vim-fugitive'
+Jetpack 'osyo-manga/vim-over'
+Jetpack 'tpope/vim-abolish'
 
 " Programming
-Plug 'SirVer/ultisnips'
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-commentary'
-Plug 'machakann/vim-swap'
-Plug 'tpope/vim-projectionist'
-Plug 'rhysd/devdocs.vim'
-Plug 'tyru/open-browser.vim'
-Plug 'ap/vim-css-color'
-Plug 'luochen1990/rainbow'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Jetpack 'SirVer/ultisnips'
+Jetpack 'tpope/vim-commentary'
+Jetpack 'machakann/vim-swap'
+Jetpack 'luochen1990/rainbow'
+
+" LSP
+" Jetpack 'prabirshrestha/async.vim'
+" Jetpack 'prabirshrestha/asyncomplete.vim'
+" Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
+" Jetpack 'prabirshrestha/vim-lsp'
+" Jetpack 'mattn/vim-lsp-settings'
 
 " Clojure
-Plug 'guns/vim-clojure-static'
-Plug 'tpope/vim-fireplace'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Jetpack 'guns/vim-clojure-static', { 'for': 'clojure' }
+Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
+Jetpack 'guns/vim-sexp', { 'for': 'clojure' }
+Jetpack 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
 " Specific file type
-Plug 'kannokanno/previm',  { 'for': 'markdown' }
-Plug 'vim-scripts/SQLUtilities', { 'for': 'sql' }
-Plug 'vim-scripts/dbext.vim', { 'on': 'Sql' }
+Jetpack 'majutsushi/tagbar', { 'for': ['php', 'javascript'] }
+Jetpack 'tpope/vim-projectionist', { 'for': ['php', 'javascript'] }
+Jetpack 'rhysd/devdocs.vim', { 'for': ['php', 'javascript'] }
+Jetpack 'ap/vim-css-color',  { 'for': 'css' }
+Jetpack 'kannokanno/previm',  { 'for': 'markdown' }
+Jetpack 'tyru/open-browser.vim',  { 'for': 'markdown' }
+Jetpack 'vim-scripts/SQLUtilities', { 'for': 'sql' }
+Jetpack 'vim-scripts/dbext.vim', { 'on': 'Sql' }
 
-"Plug 'elzr/vim-json'
-"Plug 'kien/rainbow_parentheses.vim'
-"Plug 'guns/vim-clojure-highlight'
-"Plug '2072/PHP-Indenting-for-VIm'
-"Plug '2072/vim-syntax-for-PHP'
-"Plug 'vim-scripts/Align'
-"Plug 'keith/investigate.vim'
-"Plug 'kana/vim-operator-user'
-"Plug 'kana/vim-operator-replace'
-call plug#end()
+"'elzr/vim-json'
+"'kien/rainbow_parentheses.vim'
+"'guns/vim-clojure-highlight'
+"'2072/PHP-Indenting-for-VIm'
+"'2072/vim-syntax-for-PHP'
+"'vim-scripts/Align'
+"'keith/investigate.vim'
+"'kana/vim-operator-user'
+"'kana/vim-operator-replace'
+call jetpack#end()
 " }}}
-let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_smart_completion = 1
+
 let g:asyncomplete_auto_popup = 1
 
 " Basic settings
@@ -84,10 +87,7 @@ let g:asyncomplete_auto_popup = 1
 set t_Co=256
 set background=dark
 
-" Slate
-" colorscheme slate
-
-" Lucius
+" Themes
 augroup vimrc_color
     autocmd!
     autocmd ColorScheme lucius highlight! LineNr ctermfg=247 ctermbg=238
@@ -96,6 +96,7 @@ augroup vimrc_color
     autocmd ColorScheme lucius highlight! Normal ctermbg=235
 augroup END
 colorscheme lucius
+" colorscheme slate
 
 call matchadd('ColorColumn', '\%92v', 1000)
 call matchadd('ColorColumn', '\%93v', 1000)
@@ -107,7 +108,7 @@ set showmode
 set showcmd
 set textwidth=0
 set number
-" set relativenumber
+set relativenumber
 "    Relativenumber can make scroll slow in terminal.
 
 if ( has('win32') || has('win64') )
@@ -408,6 +409,7 @@ let g:clojure_align_subforms = 1
 " }}}
 
 " Plugins
+" :PlugInstall
 " {{{
 " NETRW
 " let g:netrw_keepdir=0
@@ -429,7 +431,7 @@ runtime macros/matchit.vim
 
 " MRU
 let MRU_Max_Entries = 100
-let MRU_Exclude_Files = "^crontab\."
+let MRU_Exclude_Files = "^crontab\.|MERGE_MSG|COMMIT_EDITMSG"
 let MRU_Filename_Format = {
         \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
         \ 'parser': '\t- \zs.*\ze$',
@@ -437,7 +439,7 @@ let MRU_Filename_Format = {
         \ }
 
 " VIM-JSON
-let g:vim_json_syntax_conceal = 0
+" let g:vim_json_syntax_conceal = 0
 
 " UltiSnips
 let g:UltiSnipsSnippetsDir=expand("$HOME/dotfiles/vimfiles/UltiSnips")
@@ -875,8 +877,8 @@ endfunction
 autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
 
 "folding json
-autocmd FileType json nnoremap <buffer> <Space> za
-autocmd FileType json setlocal fdm=syntax
+" autocmd FileType json nnoremap <buffer> <Space> za
+" autocmd FileType json setlocal fdm=syntax
 " }}}
 
 " Key mappings
@@ -947,11 +949,11 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 map <Leader>R <Plug>(operator-replace)
 
 " Git(fugitive)
-nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 " nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gb :Gblame -w -M<CR>
-nnoremap <Leader>gl :Glog<CR>:copen<CR><C-w>J
+nnoremap <Leader>gb :Git_blame -w -M<CR>
+nnoremap <Leader>gl :Gclog<CR>:copen<CR><C-w>J
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
 " nnoremap <Leader>gp :Git push<CR>

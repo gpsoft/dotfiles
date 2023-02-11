@@ -120,3 +120,6 @@
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "vim-abolish"]
 	url = https://github.com/tpope/vim-abolish.git
+[submodule "vimfiles/pack/jetpack/opt/vim-jetpack"]
+	path = vimfiles/pack/jetpack/opt/vim-jetpack
+	url = https://github.com/tani/vim-jetpack.git

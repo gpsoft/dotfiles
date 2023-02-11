@@ -2,11 +2,26 @@
 
 My dotfiles for...
 
-- bash
+- bash/zsh
 - vim
 - git
-- hg(Mercurial) ...may be coming soon
+- and more
 
+## Goal
+
+- work on Win(Gvim, DOS prompt and git bash)/Mac(terminal)/Linux(Gvim and terminal)
+- take care of machine local settings
+- semi-automatic
+
+## Checkpoints
+### Vim
+
+- `,vs` shortcut
+- `listchars` and `ambiwidth`
+- `ColorColumn`
+- off ime when normal mode
+
+# === out dated ===
 ## Usage
 
 This is a message for myself as I'm the only user.
