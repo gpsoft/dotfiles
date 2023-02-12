@@ -260,7 +260,7 @@ augroup vimrc_ft
         " しかたないのでvim本体を修正した。
         " /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
     else
-        autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+        " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     endif
 
     autocmd FileType messages setlocal autoread
@@ -868,7 +868,7 @@ function! MarkdownLevel()
         return ">1"
     endif
 endfunction
-autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() 
+autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownLevel() foldlevel=99
 
 " Key mappings
 " {{{
