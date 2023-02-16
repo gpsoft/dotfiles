@@ -2,7 +2,7 @@
 
 My dotfiles for...
 
-- bash/zsh
+- bash/zsh/X
 - vim
 - git
 - and more
@@ -12,6 +12,37 @@ My dotfiles for...
 - work on Win(Gvim, DOS prompt and git bash)/Mac(terminal)/Linux(Gvim and terminal)
 - take care of machine local settings
 - semi-automatic
+
+## symlinks
+
+```
+~/.bash_profile     -> dotfiles/sh_profile.mac
+~/.bashrc           -> dotfiles/sh_rc.mac
+~/.bash_profile     -> dotfiles/sh_profile.linux
+~/.bashrc           -> dotfiles/sh_rc.linux
+~/.xprofile         -> dotfiles/x_profile.linux
+
+~/.vimrc            -> dotfiles/vimrc
+~/.gvimrc           -> dotfiles/gvimrc
+~/.gitconfig        -> dotfiles/gitconfig
+~/.gitignore_blobal -> dotfiles/gitignore_blobal
+~/.tmux.conf        -> dotfiles/tmux.conf
+~/.vifm/vifmrc      -> dotfiles/vifmrc
+```
+
+## local settings
+
+```
+dotfiles:
+  bashrc.local.template
+  zshrc.local.template
+  vimrc.local.template
+  gvimrc.local.template
+  vifmrc.local.template
+```
+
+- Copy `dotfiles/{hoge}.local.template` to `~/.{hoge}.local`
+- Edit `~/.{hoge}` to source `~/.{hoge}.local`
 
 ## Checkpoints
 ### Vim

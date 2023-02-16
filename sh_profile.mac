@@ -1,7 +1,7 @@
 export PATH=/opt/homebrew/bin:~/local/bin:$PATH
 
-eval "$(rbenv init -)"
-
 if [ -f ~/.zshrc ]; then
    source ~/.zshrc
+elif [ -f ~/.bashrc ]; then
+   source ~/.bashrc
 fi

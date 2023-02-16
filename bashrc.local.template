@@ -40,3 +40,13 @@ man()
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+clone()
+{
+    if [ $# == 0 ]; then
+        echo usage: clone REPONAME
+        return
+    fi
+    git clone ssh://maru@genpon14/home/maru/gitrepo/$1
+    cd $1
+}

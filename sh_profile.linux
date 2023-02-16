@@ -1,4 +1,5 @@
 export PATH=~/bin:~/local/bin:$PATH
+export EDITOR=/usr/bin/vim
 export VTE_CJK_WIDTH=1
 
 if [ -f ~/.bashrc ]; then

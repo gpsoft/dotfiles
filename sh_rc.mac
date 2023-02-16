@@ -1,2 +1,9 @@
+eval "$(rbenv init -)"
+
 alias ll='ls -lrt'
 
+if [ -f ~/.zshrc.local ]; then
+   source ~/.zshrc.local
+elif [ -f ~/.bashrc.local ]; then
+   source ~/.bashrc.local
+fi
