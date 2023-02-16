@@ -123,3 +123,6 @@
 [submodule "vimfiles/pack/jetpack/opt/vim-jetpack"]
 	path = vimfiles/pack/jetpack/opt/vim-jetpack
 	url = https://github.com/tani/vim-jetpack.git
+[submodule "vimfiles/pack/minpac/opt/minpac"]
+	path = vimfiles/pack/minpac/opt/minpac
+	url = https://github.com/k-takata/minpac.git

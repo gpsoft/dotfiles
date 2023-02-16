@@ -15,66 +15,68 @@ if filereadable(expand("~/.vimrc.constants.local"))
 endif
 " }}}
 
-" Manage plugins with vim-jetpack
+" Manage plugins with minpac and plugpac
+" Run :PackInstall from time to time
 " {{{
-packadd vim-jetpack
-call jetpack#begin()
-Jetpack 'tani/vim-jetpack', {'opt': 1}
+syntax enable
+filetype plugin indent on
+call plugpac#begin()
+Pack 'k-takata/minpac', {'type': 'opt'}
 
 " Themes
-Jetpack 'jonathanfilip/vim-lucius'
-" Jetpack 'altercation/vim-colors-solarized'
+Pack 'jonathanfilip/vim-lucius'
+" Pack 'altercation/vim-colors-solarized'
 
 " General purpose
-Jetpack 'vim-scripts/mru.vim'
-Jetpack 'tpope/vim-vinegar'
-Jetpack 'jlanzarotta/bufexplorer'
-Jetpack 'kien/ctrlp.vim'
-Jetpack 'itchyny/lightline.vim'
-Jetpack 'easymotion/vim-easymotion'
-Jetpack 'christoomey/vim-tmux-navigator'
-Jetpack 'tpope/vim-surround'
-Jetpack 'tpope/vim-repeat'
-Jetpack 'tpope/vim-fugitive'
-Jetpack 'osyo-manga/vim-over'
-Jetpack 'tpope/vim-abolish'
+Pack 'vim-scripts/mru.vim'
+Pack 'tpope/vim-vinegar'
+Pack 'jlanzarotta/bufexplorer'
+Pack 'kien/ctrlp.vim'
+Pack 'itchyny/lightline.vim'
+Pack 'easymotion/vim-easymotion'
+Pack 'christoomey/vim-tmux-navigator'
+Pack 'tpope/vim-surround'
+Pack 'tpope/vim-repeat'
+Pack 'tpope/vim-fugitive'
+Pack 'osyo-manga/vim-over'
+Pack 'tpope/vim-abolish'
 
 " Programming
-Jetpack 'SirVer/ultisnips'
-Jetpack 'tpope/vim-commentary'
-Jetpack 'machakann/vim-swap'
-Jetpack 'luochen1990/rainbow'
-Jetpack 'keith/investigate.vim'
+Pack 'SirVer/ultisnips'
+Pack 'tpope/vim-commentary'
+Pack 'machakann/vim-swap'
+Pack 'luochen1990/rainbow'
+Pack 'keith/investigate.vim'
 
 " LSP
-" Jetpack 'prabirshrestha/async.vim'
-" Jetpack 'prabirshrestha/asyncomplete.vim'
-" Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
-" Jetpack 'prabirshrestha/vim-lsp'
-" Jetpack 'mattn/vim-lsp-settings'
+" Pack 'prabirshrestha/async.vim'
+" Pack 'prabirshrestha/asyncomplete.vim'
+" Pack 'prabirshrestha/asyncomplete-lsp.vim'
+" Pack 'prabirshrestha/vim-lsp'
+" Pack 'mattn/vim-lsp-settings'
 
 " Clojure
-Jetpack 'guns/vim-clojure-static', { 'for': 'clojure' }
-Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
-Jetpack 'guns/vim-sexp', { 'for': 'clojure' }
-Jetpack 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Pack 'guns/vim-clojure-static', {'for': 'clojure'}
+Pack 'tpope/vim-fireplace', {'for': 'clojure'}
+Pack 'guns/vim-sexp', {'for': 'clojure'}
+Pack 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
 
 " Specific file type
-Jetpack 'majutsushi/tagbar', { 'for': ['php', 'javascript'] }
-Jetpack 'tpope/vim-projectionist', { 'for': ['php', 'javascript'] }
-Jetpack 'rhysd/devdocs.vim', { 'for': ['php', 'javascript'] }
-Jetpack 'ap/vim-css-color',  { 'for': 'css' }
-Jetpack 'kannokanno/previm',  { 'for': 'markdown' }
-Jetpack 'tyru/open-browser.vim',  { 'for': 'markdown' }
-Jetpack 'vim-scripts/SQLUtilities', { 'for': 'sql' }
-Jetpack 'vim-scripts/dbext.vim', { 'on': 'Sql' }
+Pack 'majutsushi/tagbar', {'for': ['php', 'javascript']}
+Pack 'tpope/vim-projectionist', {'for': ['php', 'javascript']}
+Pack 'rhysd/devdocs.vim', {'for': ['php', 'javascript']}
+Pack 'ap/vim-css-color',  {'for': 'css'}
+Pack 'kannokanno/previm',  {'for': 'markdown'}
+Pack 'tyru/open-browser.vim',  {'for': 'markdown'}
+Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
+Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
 
 "'kien/rainbow_parentheses.vim'
 "'guns/vim-clojure-highlight'
 "'2072/PHP-Indenting-for-VIm'
 "'2072/vim-syntax-for-PHP'
 "'vim-scripts/Align'
-call jetpack#end()
+call plugpac#end()
 " }}}
 
 let g:asyncomplete_auto_popup = 1
