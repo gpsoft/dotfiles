@@ -1,7 +1,0 @@
-[ui]
-username=gpsoft <etoh.gpsoft@gmail.com>
-ignore=~/.hgignore_global
-
-[alias]
-ll=log --style compact -l 3
-cr=commit -m "regular"
