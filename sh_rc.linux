@@ -1,8 +1,12 @@
+function win() { [[ -n "$WINDIR" ]]; }
+function mac() { [ `uname` = "Darwin" ]; }
+function linux() { [ `uname` = "Linux" ]; }
+
 alias cd='cd -P'
 alias ls='ls --color=auto -F --show-control-chars'
 alias ll='ls -lrt --show-control-chars'
 
-eval `dircolors ~/.colorrc`
+eval `dircolors ~/dotfiles/colorrc`
 
 PROMPT_DIRTRIM=3
 # PS1='\u \[\033[32m\]\w\[\033[0m\] \$ '

@@ -1,3 +1,7 @@
+function win() { [[ -n "$WINDIR" ]]; }
+function mac() { [ `uname` = "Darwin" ]; }
+function linux() { [ `uname` = "Linux" ]; }
+
 eval "$(rbenv init -)"
 
 alias ll='ls -lrt'
