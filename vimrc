@@ -25,7 +25,7 @@ Pack 'k-takata/minpac', {'type': 'opt'}
 
 " Themes
 Pack 'jonathanfilip/vim-lucius'
-" Pack 'altercation/vim-colors-solarized'
+Pack 'altercation/vim-colors-solarized'
 
 " General purpose
 Pack 'vim-scripts/mru.vim'
@@ -76,10 +76,13 @@ Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
 "'2072/PHP-Indenting-for-VIm'
 "'2072/vim-syntax-for-PHP'
 "'vim-scripts/Align'
+"
+if filereadable(expand("~/.vimrc.plugins.local"))
+    source ~/.vimrc.plugins.local
+endif
+
 call plugpac#end()
 " }}}
-
-let g:asyncomplete_auto_popup = 1
 
 " Basic settings
 " {{{
@@ -89,10 +92,12 @@ set background=dark
 " Themes
 augroup vimrc_color
     autocmd!
-    autocmd ColorScheme lucius highlight! LineNr ctermfg=247 ctermbg=238
-    autocmd ColorScheme lucius highlight! CursorLineNr ctermfg=172 ctermbg=240
-    autocmd ColorScheme lucius highlight! ColorColumn ctermbg=5
-    autocmd ColorScheme lucius highlight! Normal ctermbg=235
+    autocmd ColorScheme lucius {
+        highlight! LineNr ctermfg=247 ctermbg=238
+        highlight! CursorLineNr ctermfg=172 ctermbg=240
+        highlight! ColorColumn ctermbg=5
+        highlight! Normal ctermbg=235
+    }
 augroup END
 colorscheme lucius
 " colorscheme slate
@@ -158,30 +163,26 @@ set foldlevelstart=99
 set noundofile
 set backup
 set noswapfile
-if has('mac')
+if has('mac') || has('unix')
     set backupdir=/var/tmp/bak
     set backupskip=/tmp/*,/private/tmp/*
+    if !isdirectory(&backupdir)
+        call mkdir(&backupdir, 'p')
+    endif
 elseif has('win32unix')
     if isdirectory('/c/tmp/apptmp')
         set backupdir=/c/tmp/apptmp/bak
-        set directory=/c/tmp/apptmp/swp
     elseif isdirectory('/d/tmp/apptmp')
         set backupdir=/d/tmp/apptmp/bak
-        set directory=/d/tmp/apptmp/swp
     else
         set nobackup
         set noswapfile
     endif
-elseif has('unix')
-    set backupdir=/var/tmp/bak
-    set backupskip=/tmp/*
 else
     if isdirectory('c:\tmp\apptmp\bak')
         set backupdir=c:\tmp\apptmp\bak
-        set directory=c:\tmp\apptmp\swp
     elseif isdirectory('d:\tmp\apptmp\bak')
         set backupdir=d:\tmp\apptmp\bak
-        set directory=d:\tmp\apptmp\swp
     else
         set nobackup
         set noswapfile
@@ -284,29 +285,28 @@ augroup END
 augroup vimrc_php
     autocmd!
     autocmd BufNewFile,BufRead *.ctp set filetype=php
-    autocmd FileType php setlocal foldmethod=indent | normal zR
-    autocmd FileType php setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/
-
-    autocmd FileType php setlocal autoindent
-    autocmd FileType php setlocal smartindent
-       "    indentation in php has been broken??
-
-    autocmd FileType php noremap <script> <buffer> <silent> ]]
-            \ :call <SID>NextPhpSection(1, 0, 0)<cr>
-    autocmd FileType php noremap <script> <buffer> <silent> [[
-            \ :call <SID>NextPhpSection(1, 1, 0)<cr>
-    autocmd FileType php noremap <script> <buffer> <silent> ][
-            \ :call <SID>NextPhpSection(2, 0, 0)<cr>
-    autocmd FileType php noremap <script> <buffer> <silent> []
-            \ :call <SID>NextPhpSection(2, 1, 0)<cr>
-    autocmd FileType php vnoremap <script> <buffer> <silent> ]]
-            \ :<c-u>call <SID>NextPhpSection(1, 0, 1)<cr>
-    autocmd FileType php vnoremap <script> <buffer> <silent> [[
-            \ :<c-u>call <SID>NextPhpSection(1, 1, 1)<cr>
-    autocmd FileType php vnoremap <script> <buffer> <silent> ][
-            \ :<c-u>call <SID>NextPhpSection(2, 0, 1)<cr>
-    autocmd FileType php vnoremap <script> <buffer> <silent> []
-            \ :<c-u>call <SID>NextPhpSection(2, 1, 1)<cr>
+    autocmd FileType php {
+        setlocal foldmethod=indent | normal zR
+        setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=>,=*/
+        setlocal autoindent
+        setlocal smartindent
+        noremap <script> <buffer> <silent> ]]
+                \ :call <SID>NextPhpSection(1, 0, 0)<cr>
+        noremap <script> <buffer> <silent> [[
+                \ :call <SID>NextPhpSection(1, 1, 0)<cr>
+        noremap <script> <buffer> <silent> ][
+                \ :call <SID>NextPhpSection(2, 0, 0)<cr>
+        noremap <script> <buffer> <silent> []
+                \ :call <SID>NextPhpSection(2, 1, 0)<cr>
+        vnoremap <script> <buffer> <silent> ]]
+                \ :<c-u>call <SID>NextPhpSection(1, 0, 1)<cr>
+        vnoremap <script> <buffer> <silent> [[
+                \ :<c-u>call <SID>NextPhpSection(1, 1, 1)<cr>
+        vnoremap <script> <buffer> <silent> ][
+                \ :<c-u>call <SID>NextPhpSection(2, 0, 1)<cr>
+        vnoremap <script> <buffer> <silent> []
+                \ :<c-u>call <SID>NextPhpSection(2, 1, 1)<cr>
+    }
 augroup END
 
 let php_htmlInStrings=1

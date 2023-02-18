@@ -1,0 +1,6 @@
+" マシン固有のプラグインを書いて ~/.vimrc.plugins.local に置く。
+" これを、.vimrcからsourceする。
+" バージョン管理しない。
+
+" Pack 'hoge/fuga'
+" Pack 'piyo/piyopiyo-vim', {'for': 'php'}

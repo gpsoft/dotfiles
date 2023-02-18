@@ -9,27 +9,18 @@
 
 "set timeout timeoutlen=400 ttimeoutlen=100
 
-"Disable plugins
-let g:vimrc_local_disabled_plugins = [
-        \ "PHP-Indenting-for-VIm",
-        \ "Align",
-        \ "dbext.vim",
-        \ "SQLUtilities",
-        \ "vim-json",
-        \ ]
-if ( has('win32unix') )
-    call add(g:vimrc_local_disabled_plugins, "ultisnips")
-"    ultisnips doesn't work in msys bash on Windows
-"    because msys-python2.7.dll is missing.
-"    note that this vim has come with git(not Kaoriya-vim)
-endif
+"Align
+" let g:Align_xstrlen = 3
 
-let g:Align_xstrlen = 3
+"dbext.vim
+" let g:vimrc_local_sql_scratchpad =
+"         \ '/home/gpsoft/Documents/scratchpad.sql'
+" let g:dbext_default_profile_scott =
+"         \ 'type=MYSQL:host=localhost:user=root:passwd=tiger:dbname=scott'
+" let g:dbext_default_profile = 'scott'
 
-"DBEXT
-"let g:vimrc_local_sql_scratchpad = '/home/gpsoft/Documents/scratchpad.sql'
-let g:dbext_default_profile_scott='type=MYSQL:host=localhost:user=root:passwd=tiger:dbname=scott'
-let g:dbext_default_profile = 'scott'
+"asyncomplete.vim
+" let g:asyncomplete_auto_popup = 1
 
 "--------------------------------- gvim用 -----------------------------------
 "Window placement.
