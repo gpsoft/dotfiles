@@ -936,7 +936,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch \|redraw!<CR>
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 " nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gb :Git_blame -w -M<CR>
+nnoremap <Leader>gb :Git blame -w -M<CR>
 nnoremap <Leader>gl :Gclog<CR>:copen<CR><C-w>J
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
