@@ -42,6 +42,15 @@ Pack 'osyo-manga/vim-over'
 Pack 'tpope/vim-abolish'
 
 " Programming
+if has('win32unix')
+    " disable ultisnips on git bash
+    " because it fails to load python dll(problem with handling dos style path?)
+    let did_plugin_ultisnips=1
+    autocmd BufReadPost,FileType * {
+        b:did_autoload_ultisnips = 1
+        b:did_autoload_ultisnips_map_keys = 1
+    }
+endif
 Pack 'SirVer/ultisnips'
 Pack 'tpope/vim-commentary'
 Pack 'machakann/vim-swap'
@@ -115,20 +124,13 @@ set number
 set relativenumber
 "    Relativenumber can make scroll slow in terminal.
 
-if ( has('win32') || has('win64') )
-    set listchars=
-    "    better to clear lcs before setting ambiwidth to auto or double;
-    "    or you could get E834.
-    set ambiwidth=auto
-else
-    set ambiwidth=double
-    "    should be 'double' to show fullwidth chars(such as ■)
-    "    correctly.
-    " set list lcs=tab:»\ ,eol:¬,trail:©
-    set list lcs=tab:»\ ,eol:¬,trail:∙
-    "    need to update lcs depending on the terminal font
-    "    so that they don't include any fullwidth-caracter.
-endif
+set ambiwidth=double
+"    should be 'double' to show fullwidth chars(such as ■)
+"    correctly.
+" set list lcs=tab:»\ ,eol:¬,trail:©
+set list lcs=tab:»\ ,eol:¬,trail:∙
+"    need to update lcs depending on the terminal font
+"    so that they don't include any fullwidth-caracter.
 
 set autoindent
 set smartindent
@@ -438,11 +440,15 @@ let MRU_Filename_Format = {
         \ }
 
 " UltiSnips
-let g:UltiSnipsSnippetsDir=expand("$HOME/dotfiles/vimfiles/UltiSnips")
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
+if has('win32unix')
+    let g:UltiSnipsExpandTrigger="<M-C-tab>"
+else
+    let g:UltiSnipsSnippetsDir=expand("$HOME/dotfiles/vimfiles/UltiSnips")
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+    let g:UltiSnipsEditSplit="vertical"
+endif
 
 " Tagbar
 let g:tagbar_width=50

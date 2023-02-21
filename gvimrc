@@ -35,7 +35,7 @@ set guioptions-=m
 set guioptions-=T
 
 if ( has('win32') || has('win64') )
-    set list lcs=tab:»\ ,eol:¬,trail:·
+    set list lcs=tab:»\ ,eol:¬,trail:∙
         "Don't use a character which shows in double-width.
 endif
 " }}}
@@ -111,7 +111,7 @@ endfunction
 " {{{
 
 " File system
-nnoremap <Leader>ge :split $HOME/dotfiles/.gvimrc<CR>
+nnoremap <Leader>ge :split $HOME/dotfiles/gvimrc<CR>
 nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>:so $MYGVIMRC<CR>:call InitPlacement(0)<CR>
 
 " Arrange windows

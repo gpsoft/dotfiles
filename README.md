@@ -9,7 +9,7 @@ My dotfiles for...
 
 ## Goal
 
-- work on Win(Gvim, DOS prompt and git bash)/Mac(terminal)/Linux(Gvim and terminal)
+- work on Win(Gvim and git bash)/Mac(terminal)/Linux(Gvim and terminal)
 - take care of machine local settings
 - semi-automatic
 
@@ -28,6 +28,9 @@ My dotfiles for...
 ~/.gitignore_blobal -> dotfiles/gitignore_blobal
 ~/.tmux.conf        -> dotfiles/tmux.conf
 ~/.vifm/vifmrc      -> dotfiles/vifmrc
+
+~/.vim/             -> dotfiles/vimfiles
+~/vimfiles/         -> dotfiles/vimfiles   ... for Win(Gvim)
 ```
 
 ## local settings
@@ -44,13 +47,13 @@ dotfiles:
 - Copy `dotfiles/{hoge}.local.template` to `~/.{hoge}.local`
 - Edit `~/.{hoge}` to source `~/.{hoge}.local`
 
-## Checkpoints
-### Vim
+## Installation
 
-- `,vs` shortcut
-- `listchars` and `ambiwidth`
-- `ColorColumn`
-- off ime when normal mode
+- `git submodule update --init`
+- `:PlugInstall` on vim
+- make symlinks
+- copy and edit local setting files
+
 
 # === out dated ===
 ## Usage
