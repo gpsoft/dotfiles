@@ -49,11 +49,15 @@ dotfiles:
 
 ## Installation
 
-- `git submodule update --init`
-- `:PlugInstall` on vim
 - make symlinks
 - copy and edit local setting files
+- `git submodule update --init`
+- `:PlugInstall` on vim
 
+- for gvim on win
+  - need `python3.exe` on the path(symlink to `python.exe` will do)
+- for vim on git bash
+  - had to disable ultisnips; it failes to load python dll
 
 # === out dated ===
 ## Usage
