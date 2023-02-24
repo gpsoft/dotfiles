@@ -1,0 +1,28 @@
+" マシン固有の定数を書いて ~/.vimrc.constants.local に置く。
+" これを、.vimrcの先頭でsourceする。
+" バージョン管理しない。
+
+"--------------------------------- vim用 ------------------------------------
+"Path.
+" let g:vimrc_local_path_notes = 'd:\dwh\notes'
+" let g:vimrc_local_path_notes = '~/notes'
+
+"set timeout timeoutlen=400 ttimeoutlen=100
+
+"Align
+" let g:Align_xstrlen = 3
+
+"dbext.vim
+" let g:vimrc_local_sql_scratchpad =
+"         \ '/home/gpsoft/Documents/scratchpad.sql'
+" let g:dbext_default_profile_scott =
+"         \ 'type=MYSQL:host=localhost:user=root:passwd=tiger:dbname=scott'
+" let g:dbext_default_profile = 'scott'
+
+"asyncomplete.vim
+" let g:asyncomplete_auto_popup = 1
+
+"--------------------------------- gvim用 -----------------------------------
+"Window placement.
+let g:gvimrc_local_init_placement = [200, 36, 50, 90]
+let g:gvimrc_local_sbs_placement = [200, 36, 50, 175]

@@ -1,5 +1,9 @@
 # Git Cheat Sheet
 
+## export
+
+    git checkout-index --prefix=c:/temp/proj1/ -a
+
 ## 戻す
     git checkout -- FILE
     git reset HEAD^                      ...commit前へ
@@ -44,6 +48,10 @@
     git push --delete origin br1   ...リモートリポジトリのbr1を削除
     git branch --unset-upstream br1   ...br1の追跡設定を解除
     push --all は「全ブランチ」だが、fetch --allは「全リモート」
+
+## Blame
+
+    git blame -w -M hoge.md  ...空白を無視(-w)、移動を考慮(-M)
 
 ## Cherry-pick
     git cherry-pick --no-commit 8d7baf8

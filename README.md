@@ -2,11 +2,69 @@
 
 My dotfiles for...
 
-- bash
+- bash/zsh/X
 - vim
 - git
-- hg(Mercurial) ...may be coming soon
+- and more
 
+## Goal
+
+- work on Win(Gvim and git bash)/Mac(terminal)/Linux(Gvim and terminal)
+- take care of machine local settings
+- semi-automatic
+
+## Installation
+
+- make symlinks
+- source from originals
+- copy and edit local setting files
+- `git submodule update --init`
+- `:PlugInstall` on vim
+
+- for gvim on win
+  - need `python3.exe` on the path(symlink to `python.exe` will do)
+- for vim on git bash
+  - had to disable ultisnips; it failes to load python dll
+
+## symlinks
+
+```
+~/.vimrc            -> dotfiles/vimrc
+~/.gvimrc           -> dotfiles/gvimrc
+~/.vim/             -> dotfiles/vimfiles
+~/vimfiles/         -> dotfiles/vimfiles   ... for Win(Gvim)
+
+~/.gitconfig        -> dotfiles/gitconfig
+~/.gitignore_blobal -> dotfiles/gitignore_blobal
+
+~/.tmux.conf        -> dotfiles/tmux.conf
+~/.vifm/vifmrc      -> dotfiles/vifmrc
+
+```
+
+## sourcing
+
+```
+from .bash_profile  source dotfiles/sh_profile.linux
+from .bashrc        source dotfiles/sh_rc.linux
+from .xprofile      source dotfiles/x_profile.linux
+```
+
+## local settings
+
+```
+dotfiles:
+  bashrc.local.template
+  zshrc.local.template
+  vimrc.local.template
+  gvimrc.local.template
+  vifmrc.local.template
+```
+
+- Copy `dotfiles/{hoge}.local.template` to `~/.{hoge}.local`
+- Edit `~/.{hoge}` to source `~/.{hoge}.local`
+
+# === out dated ===
 ## Usage
 
 This is a message for myself as I'm the only user.

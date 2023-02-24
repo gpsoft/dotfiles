@@ -7,10 +7,53 @@ snippet img "image"
 endsnippet
 
 snippet tab "table"
-|     |        |    |
-|----:|:-------|:--:|
-|     |        |    |
-|     |        |    |
-|     |        |    |
+| ${0:ABC}|DEFG|HIJK |
+| :- | :- | :-- |
+| abc|defg|hijk |
+| abc|defg|hijk |
+endsnippet
+
+snippet esc "escape key" i
+<Esc>
+endsnippet
+
+snippet kb "key" i
+\`KB$1\`$0
+endsnippet
+
+snippet cus "cursor position" i
+CUSHERE$0
+endsnippet
+
+snippet spell "spell table"
+
+|呪文                      |意味|
+|:-------------------------|:---|
+|$0                          ||
+|                          ||
 
 endsnippet
+
+snippet png "png image"
+
+![$1](img/$2.png)
+
+$0
+endsnippet
+
+snippet sh "shell session for blog"
+\`\`\`shell-session$0
+\`\`\`
+endsnippet
+
+snippet clj "clojure code"
+\`\`\`clojure
+$0
+\`\`\`
+endsnippet
+
+snippet hr "horizontal line for markdown-clj"
+- - -
+$0
+endsnippet
+

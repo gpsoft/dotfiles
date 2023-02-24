@@ -1,0 +1,13 @@
+function win() { [[ -n "$WINDIR" ]]; }
+function mac() { [ `uname` = "Darwin" ]; }
+function linux() { [ `uname` = "Linux" ]; }
+
+eval "$(rbenv init -)"
+
+alias ll='ls -lrt'
+
+if [ -f ~/.zshrc.local ]; then
+   source ~/.zshrc.local
+elif [ -f ~/.bashrc.local ]; then
+   source ~/.bashrc.local
+fi

@@ -1,17 +1,52 @@
 ## マシン固有の設定を書いて ~/.bashrc.local に置く。
 ## バージョン管理しない。
 
+alias poff='poweroff'
+alias calc='bc -l'
+
+lookup-dic() {
+    cat $1 |LANG=ja_JP.utf-8 less -I -p ^$2
+}
+alias ej='lookup-dic ~/reference/dic-ej.txt'
+alias je='lookup-dic ~/reference/dic-je.txt'
+
 ## Alias for Docker
 if ! win; then
+    alias dksta='systemctl start docker.service'
     alias dkps='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.ID}}\t{{.Status}}"'
     alias dkim='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.Size}}"'
     alias dkrm='docker ps --filter "status=exited" --format "{{.ID}}\t{{.Status}}" |grep "weeks ago" |cut -f1 |xargs docker rm'
     alias dkrma='docker container prune'
     alias dkrmi='docker images --filter "dangling=true" -q |xargs docker rmi'
     alias dkrmv='docker volume ls --filter "dangling=true" -q |xargs docker volume rm'
+    alias dkrun='docker run --rm -it -v$(pwd):/tmp -w /tmp'
     alias dkc='docker-compose'
 
     if mac; then
         alias dktty='screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty'
     fi
 fi
+
+alias dev='cd ~/dev'
+alias mutt='neomutt'
+
+man()
+{
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
+
+clone()
+{
+    if [ $# == 0 ]; then
+        echo usage: clone REPONAME
+        return
+    fi
+    git clone ssh://maru@genpon14/home/maru/gitrepo/$1
+    cd $1
+}

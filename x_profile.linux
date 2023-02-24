@@ -1,0 +1,14 @@
+export PATH=~/bin:~/local/bin:$PATH
+export EDITOR=/usr/bin/vim
+export VTE_CJK_WIDTH=1
+
+xset -b
+
+setxkbmap -model jp106 -layout jp -option "ctrl:nocaps"
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
+export LC_MESSAGES=en_US.utf8
+export LC_CTYPE=ja_JP.utf8

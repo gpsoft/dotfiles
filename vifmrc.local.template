@@ -1,0 +1,28 @@
+"" マシン固有の設定を書いて ~/.vifmrc.local に置く。
+"" バージョン管理しない。
+
+"colorscheme juef-zenburn.vifm
+
+"set trashdir=c:/tmp/trash
+"set trashdir=/var/tmp/trash
+
+"filetype *.png,*.jpeg,*.jpg pinta %c
+"filextype *.png,*.jpeg,*.jpg
+"        \ {Open with feh}
+"        \ feh -x -g 800x600+800+400 -. -s %f &
+
+"bmark! '~/Downloads' download
+"bmark! '~/' home
+"bmark! '~/dev' dev
+"bmark! '/run/media/gpsoft' usbmem
+"bmark! 'C:/Users/gpsoft/Downloads/' download
+"bmark! 'C:/Users/gpsoft/' home
+"bmark! 'C:/Temp/' tmp
+
+"nnoremap ,tl :!svn log %c<cr>
+"nnoremap ,tu :!svn update %c<cr>
+"nnoremap ,td :!svn diff %c<cr>
+"nnoremap ,tb :!svn blame %c<cr>
+"nnoremap ,tL :!svn log %d<cr>
+"nnoremap ,tU :!svn update %d<cr>
+"nnoremap ,tD :!svn diff %d<cr>

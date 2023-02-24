@@ -1,0 +1,13 @@
+snippet fld "a folding block" b
+" $1
+" {{{
+$0
+" }}}
+endsnippet
+
+snippet au "an autogroup block" b
+augroup vimrc_$1
+    autocmd!
+$0
+augroup END
+endsnippet

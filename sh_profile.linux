@@ -1,4 +1,5 @@
 export PATH=~/bin:~/local/bin:$PATH
+export EDITOR=/usr/bin/vim
 export VTE_CJK_WIDTH=1
 
 if [ -f ~/.bashrc ]; then
@@ -7,4 +8,8 @@ fi
 
 if [ -f /usr/bin/startx ] && [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec startx
+fi
+
+if [ -f ~/dotfiles/.git-completion.bash ]; then
+  . ~/dotfiles/.git-completion.bash
 fi

@@ -1,5 +1,0 @@
-" マシン固有の設定を書いて ~/.gvimrc.local に置く。
-" これを、.gvimrcの最後でsourceする。
-" バージョン管理しない。
-
-set linespace=0

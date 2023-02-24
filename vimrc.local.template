@@ -1,0 +1,11 @@
+" マシン固有の設定を書いて ~/.vimrc.local に置く。
+" これを、.vimrcの最後でsourceする。
+" バージョン管理しない。
+
+set relativenumber
+
+"set wildignore=**/obj/**,**/debug/**,**/bin/**,**/log/**,**/logs/**,**/vendor/**,tags
+
+"let g:EasyMotion_use_migemo = 1
+
+"xnoremap <CR> :Align => // =<CR>:setlocal noet<CR>g;g;

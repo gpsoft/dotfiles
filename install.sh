@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-##### FUNCTIONS
+##### UTILITY FUNCTIONS
 function win() { [[ -n "$WINDIR" ]]; }
 function mac() { [ `uname` = "Darwin" ]; }
 function linux() { [ `uname` = "Linux" ]; }
@@ -13,7 +13,21 @@ function winpath() {
     echo ${p//\//\\}
 }
 
-# usage: symlink <LINK> <REAL>
+# delete a symlink
+function dellink() {
+    if win; then
+        local c="del"
+        if [[ -d "$1" ]]; then
+            c="rd"
+        fi
+        cmd <<<"$c \"`winpath $1`\"" >/dev/null
+    else
+        rm "$1"
+    fi
+}
+
+# make a symlink or test if it exists
+# usage: symlink <LINK> [<REAL>]
 # symlink ~/.bashrc ~/dotfiles/.bashrc
 function symlink() {
     # second arg is optional.
@@ -36,31 +50,12 @@ function symlink() {
     # delete if it's already been linked.
     if symlink "$1"; then
         echo removing $1.
-        if win; then
-            local c="del"
-            if [[ -d "$1" ]]; then
-                c="rd"
-            fi
-            cmd <<<"$c \"`winpath $1`\"" >/dev/null
-        else
-            rm "$1"
-        fi
+        dellink $1
     fi
 
-    # move away if 1st arg is a real dir/file.
+    # save it if 1st arg is a real dir/file.
     if [[ -e "$1" ]]; then
-        local t="/tmp"
-        if win; then
-            t="$HOME/AppData/Local/Temp"
-            # can't use $TMP here.
-        fi
-        echo MOVING $1 TO $t.
-        echo RESCUE THEM IF YOU NEED.
-        if win; then
-            cmd <<<"move \"`winpath $1`\" \"`winpath $t`\"" >/dev/null
-        else
-            mv "$1" "$t"
-        fi
+        moveorg $1
     fi
 
     # make a link.
@@ -77,7 +72,47 @@ function symlink() {
     ln -s "$2" "$1"
 }
 
+# move the original file
+# moveorg <FILE>
+function moveorg() {
+    local o="$1.org"
+    if [[ -e $o ]]; then
+        echo "CANNOT CONTINUE; $o already exists."
+        exit -1
+    fi
+    echo moving original to $o.
+    if win; then
+        cmd <<<"move \"`winpath $1`\" \"`winpath $o`\"" >/dev/null
+    else
+        mv "$1" "$o"
+    fi
+}
+
+# move a file to temp dir.
+function movetotmp() {
+    local t="/var/tmp"
+    if win; then
+        t="$HOME/AppData/Local/Temp"
+        # can't use $TMP here.
+    fi
+    echo MOVING $1 TO $t.
+    echo RESCUE THEM IF YOU NEED.
+    if win; then
+        cmd <<<"move \"`winpath $1`\" \"`winpath $t`\"" >/dev/null
+    else
+        mv "$1" "$t"
+    fi
+}
+
+
+
+
+##### OPERATION FUNCTIONS
+
 # a wrapper to call symlink.
+# usage: linkhome <REAL_AND_LINK> [<REAL-ALT>]
+# linkhome hoge       ... link hoge to ~/hoge
+# linkhome hoge fuga  ... link fuga to ~/hoge
 function linkhome() {
     local real=$1
     if [[ -n "$2" ]]; then
@@ -86,33 +121,72 @@ function linkhome() {
     symlink ~/$1 `pwd`/$real;
 }
 
+# copy a template file to home
+function copytempl() {
+    if [[ -e ~/$1 ]]; then
+        movetotmp ~/$1
+    fi
+    if [[ -e $1.template ]]; then
+        echo copying $1.template to ~
+        cp $1.template ~/$1
+    fi
+}
+
+
+
+
+
+if mac; then
+    linkhome .zprofile  sh_profile.mac
+    linkhome .zshrc     shrc.mac
+else
+    exit
+fi
+linkhome .gitconfig        gitconfig
+linkhome .gitignore_global gitignore_global
+linkhome .tmux.conf        tmux.conf
+linkhome .vim       vimfiles
+linkhome .vimrc     vimrc
+exit
+
+
+
+
+
+
 ##### MAKE SYMBOLIC LINKS
 if mac; then
+    mkdir -p /var/tmp/bak
     linkhome .bash_profile .bash_profile.mac
 elif win; then
     linkhome .bash_profile .bash_profile.win
 else
+    mkdir -p /var/tmp/bak
     linkhome .bash_profile
+    linkhome .profile
+    linkhome .xprofile
 fi
 linkhome .bashrc
 linkhome .colorrc
 linkhome .gitconfig
 linkhome .gitignore_global
-linkhome .hgignore_global
-linkhome .hgrc
 linkhome .vimrc
 linkhome .gvimrc
 linkhome .vrapperrc
-linkhome .vimperatorrc
-linkhome .vimperator
+linkhome .tmux.conf
 if win; then
     linkhome vimfiles
 else
     linkhome .vim vimfiles
 fi
 
+copytempl .bashrc.local
+copytempl .vimrc.constants.local
+copytempl .vimrc.local
+copytempl .gvimrc.local
+
 ##### UPDATE GIT SUBMODULES
-git checkout master
+git checkout renewal2017
 git pull
 git submodule init
 echo updating submodules.

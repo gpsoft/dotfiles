@@ -1,0 +1,16 @@
+[core]
+key-next=Right
+key-prev=Left
+key-jump-short=r
+key-jump+medium=s
+key-disc-menu=m
+key-quit=q
+key-vol-up=Up
+key-vol-down=Down
+key-audio-track=v
+key-subtitle-track=b
+extrashort-jump-size=5
+short-jump-size=10
+medium-jump-size=28
+long-jump-size=180
+
