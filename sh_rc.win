@@ -1,0 +1,11 @@
+function win() { [[ -n "$WINDIR" ]]; }
+function mac() { [ `uname` = "Darwin" ]; }
+function linux() { [ `uname` = "Linux" ]; }
+
+alias cd='cd -P'
+alias ls='ls --color=auto -F --show-control-chars'
+alias ll='ls -lrt --show-control-chars'
+
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
