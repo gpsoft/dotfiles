@@ -76,7 +76,7 @@ Pack 'tpope/vim-projectionist', {'for': ['php', 'javascript']}
 Pack 'rhysd/devdocs.vim', {'for': ['php', 'javascript']}
 Pack 'ap/vim-css-color',  {'for': 'css'}
 Pack 'kannokanno/previm',  {'for': 'markdown'}
-Pack 'tyru/open-browser.vim',  {'for': 'markdown'}
+Pack 'tyru/open-browser.vim',  {'for': ['markdown', 'html']}
 Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
 Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
 

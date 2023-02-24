@@ -13,24 +13,41 @@ My dotfiles for...
 - take care of machine local settings
 - semi-automatic
 
+## Installation
+
+- make symlinks
+- source from originals
+- copy and edit local setting files
+- `git submodule update --init`
+- `:PlugInstall` on vim
+
+- for gvim on win
+  - need `python3.exe` on the path(symlink to `python.exe` will do)
+- for vim on git bash
+  - had to disable ultisnips; it failes to load python dll
+
 ## symlinks
 
 ```
-~/.bash_profile     -> dotfiles/sh_profile.mac
-~/.bashrc           -> dotfiles/sh_rc.mac
-~/.bash_profile     -> dotfiles/sh_profile.linux
-~/.bashrc           -> dotfiles/sh_rc.linux
-~/.xprofile         -> dotfiles/x_profile.linux
-
 ~/.vimrc            -> dotfiles/vimrc
 ~/.gvimrc           -> dotfiles/gvimrc
+~/.vim/             -> dotfiles/vimfiles
+~/vimfiles/         -> dotfiles/vimfiles   ... for Win(Gvim)
+
 ~/.gitconfig        -> dotfiles/gitconfig
 ~/.gitignore_blobal -> dotfiles/gitignore_blobal
+
 ~/.tmux.conf        -> dotfiles/tmux.conf
 ~/.vifm/vifmrc      -> dotfiles/vifmrc
 
-~/.vim/             -> dotfiles/vimfiles
-~/vimfiles/         -> dotfiles/vimfiles   ... for Win(Gvim)
+```
+
+## sourcing
+
+```
+from .bash_profile  source dotfiles/sh_profile.linux
+from .bashrc        source dotfiles/sh_rc.linux
+from .xprofile      source dotfiles/x_profile.linux
 ```
 
 ## local settings
@@ -46,18 +63,6 @@ dotfiles:
 
 - Copy `dotfiles/{hoge}.local.template` to `~/.{hoge}.local`
 - Edit `~/.{hoge}` to source `~/.{hoge}.local`
-
-## Installation
-
-- make symlinks
-- copy and edit local setting files
-- `git submodule update --init`
-- `:PlugInstall` on vim
-
-- for gvim on win
-  - need `python3.exe` on the path(symlink to `python.exe` will do)
-- for vim on git bash
-  - had to disable ultisnips; it failes to load python dll
 
 # === out dated ===
 ## Usage
