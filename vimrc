@@ -28,7 +28,7 @@ Pack 'jonathanfilip/vim-lucius'
 Pack 'altercation/vim-colors-solarized'
 
 " General purpose
-Pack 'vim-scripts/mru.vim'
+Pack 'vim-scripts/mru.vim', {'on': 'MRU'}
 Pack 'tpope/vim-vinegar'
 Pack 'jlanzarotta/bufexplorer'
 Pack 'kien/ctrlp.vim'
@@ -37,7 +37,7 @@ Pack 'easymotion/vim-easymotion'
 Pack 'christoomey/vim-tmux-navigator'
 Pack 'tpope/vim-surround'
 Pack 'tpope/vim-repeat'
-Pack 'tpope/vim-fugitive'
+Pack 'tpope/vim-fugitive', {'on': ['Git', 'Gdiff', 'Gclog']}
 Pack 'osyo-manga/vim-over'
 Pack 'tpope/vim-abolish'
 
