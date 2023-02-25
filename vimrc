@@ -808,8 +808,8 @@ fu! TortoiseCommand(com, others)
     let filename = expand("%:p")
     if filename==''
         if &ft=='netrw'
-            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
-            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
+            " let filename = eval('g:netrw_dirhist_'.g:netrw_dirhist_cnt)
+            let filename = eval('g:netrw_dirhist_'.g:netrw_dirhistcnt)
         else 
             let filename = getcwd()
         endif
