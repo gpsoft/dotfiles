@@ -65,20 +65,20 @@ Pack 'keith/investigate.vim'
 " Pack 'mattn/vim-lsp-settings'
 
 " Clojure
-Pack 'guns/vim-clojure-static'
-Pack 'tpope/vim-fireplace'
-Pack 'guns/vim-sexp'
+Pack 'guns/vim-clojure-static', {'for': 'clojure'}
+Pack 'tpope/vim-fireplace', {'for': 'clojure'}
+Pack 'guns/vim-sexp', {'for': 'clojure'}
 Pack 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
 
 " Specific file type
 Pack 'majutsushi/tagbar', {'for': ['php', 'javascript']}
-Pack 'tpope/vim-projectionist'
+Pack 'tpope/vim-projectionist', {'for': ['php', 'javascript']}
 Pack 'rhysd/devdocs.vim', {'for': ['php', 'javascript']}
 Pack 'ap/vim-css-color',  {'for': 'css'}
 Pack 'kannokanno/previm'
 Pack 'tyru/open-browser.vim',  {'for': ['markdown', 'html']}
 Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
-Pack 'vim-scripts/dbext.vim'
+Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
 
 "'kien/rainbow_parentheses.vim'
 "'guns/vim-clojure-highlight'
