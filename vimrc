@@ -65,20 +65,20 @@ Pack 'keith/investigate.vim'
 " Pack 'mattn/vim-lsp-settings'
 
 " Clojure
-Pack 'guns/vim-clojure-static', {'for': 'clojure'}
-Pack 'tpope/vim-fireplace', {'for': 'clojure'}
-Pack 'guns/vim-sexp', {'for': 'clojure'}
+Pack 'guns/vim-clojure-static'
+Pack 'tpope/vim-fireplace'
+Pack 'guns/vim-sexp'
 Pack 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
 
 " Specific file type
 Pack 'majutsushi/tagbar', {'for': ['php', 'javascript']}
-Pack 'tpope/vim-projectionist', {'for': ['php', 'javascript']}
+Pack 'tpope/vim-projectionist'
 Pack 'rhysd/devdocs.vim', {'for': ['php', 'javascript']}
 Pack 'ap/vim-css-color',  {'for': 'css'}
-Pack 'kannokanno/previm',  {'for': 'markdown'}
+Pack 'kannokanno/previm'
 Pack 'tyru/open-browser.vim',  {'for': ['markdown', 'html']}
 Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
-Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
+Pack 'vim-scripts/dbext.vim'
 
 "'kien/rainbow_parentheses.vim'
 "'guns/vim-clojure-highlight'
@@ -475,9 +475,6 @@ endif
 let g:netrw_nogx = 1
 let g:openbrowser_message_verbosity = 1
 let g:previm_show_header = 0
-augroup vimrc-previm
-    autocmd FileType markdown call previm#install()
-augroup END
 
 " SQLUtilities
 let g:sqlutil_load_default_maps = 0
