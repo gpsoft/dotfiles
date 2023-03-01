@@ -28,7 +28,7 @@ Pack 'jonathanfilip/vim-lucius'
 Pack 'altercation/vim-colors-solarized'
 
 " General purpose
-Pack 'vim-scripts/mru.vim', {'on': 'MRU'}
+Pack 'vim-scripts/mru.vim'
 Pack 'tpope/vim-vinegar'
 Pack 'jlanzarotta/bufexplorer'
 Pack 'kien/ctrlp.vim'
@@ -475,6 +475,9 @@ endif
 let g:netrw_nogx = 1
 let g:openbrowser_message_verbosity = 1
 let g:previm_show_header = 0
+augroup vimrc-previm
+    autocmd FileType markdown call previm#install()
+augroup END
 
 " SQLUtilities
 let g:sqlutil_load_default_maps = 0
