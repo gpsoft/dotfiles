@@ -72,7 +72,7 @@ Pack 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
 
 " Specific file type
 Pack 'majutsushi/tagbar', {'for': ['php', 'javascript']}
-Pack 'tpope/vim-projectionist', {'for': ['php', 'javascript']}
+Pack 'tpope/vim-projectionist'
 Pack 'rhysd/devdocs.vim', {'for': ['php', 'javascript']}
 Pack 'ap/vim-css-color',  {'for': 'css'}
 Pack 'kannokanno/previm'
