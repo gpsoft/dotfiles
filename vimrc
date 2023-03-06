@@ -528,8 +528,8 @@ let g:lightline = {
         \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
         \ }
 function! MyFugitive()
-    if exists("*fugitive#head")
-        let _ = fugitive#head()
+    if exists("*FugitiveHead")
+        let _ = FugitiveHead()
         return strlen(_) ? "\u2b60"._ : ''
     endif
     return ''
