@@ -28,7 +28,7 @@ Pack 'jonathanfilip/vim-lucius'
 Pack 'altercation/vim-colors-solarized'
 
 " General purpose
-Pack 'vim-scripts/mru.vim'
+Pack 'vim-scripts/mru.vim', {'on': 'MRU'}
 Pack 'tpope/vim-vinegar'
 Pack 'jlanzarotta/bufexplorer'
 Pack 'kien/ctrlp.vim'
@@ -37,7 +37,7 @@ Pack 'easymotion/vim-easymotion'
 Pack 'christoomey/vim-tmux-navigator'
 Pack 'tpope/vim-surround'
 Pack 'tpope/vim-repeat'
-Pack 'tpope/vim-fugitive'
+Pack 'tpope/vim-fugitive', {'on': ['Git', 'Gdiff', 'Gclog']}
 Pack 'osyo-manga/vim-over'
 Pack 'tpope/vim-abolish'
 
@@ -944,7 +944,8 @@ nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 " nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gb :Git blame -w -M<CR>
-nnoremap <Leader>gl :Gclog<CR>:copen<CR><C-w>J
+nnoremap <Leader>gl :exe ':Git! ll --follow -- '.expand('%')<CR><C-w>k
+nnoremap <Leader>gL :Gclog! --all<CR>:copen<CR><C-w>J
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
 " nnoremap <Leader>gp :Git push<CR>
