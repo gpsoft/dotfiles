@@ -65,7 +65,7 @@ Pack 'keith/investigate.vim'
 " Pack 'mattn/vim-lsp-settings'
 
 " Clojure
-Pack 'guns/vim-clojure-static', {'for': 'clojure'}
+" Pack 'guns/vim-clojure-static', {'for': 'clojure'}
 Pack 'tpope/vim-fireplace', {'for': 'clojure'}
 Pack 'guns/vim-sexp', {'for': 'clojure'}
 Pack 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
@@ -80,12 +80,8 @@ Pack 'tyru/open-browser.vim',  {'for': ['markdown', 'html']}
 Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
 Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
 
-"'kien/rainbow_parentheses.vim'
-"'guns/vim-clojure-highlight'
-"'2072/PHP-Indenting-for-VIm'
-"'2072/vim-syntax-for-PHP'
 "'vim-scripts/Align'
-"
+
 if filereadable(expand("~/.vimrc.plugins.local"))
     source ~/.vimrc.plugins.local
 endif
@@ -400,8 +396,6 @@ augroup vimrc_clj
         setlocal foldmethod=expr
         setlocal nofoldenable
     endfunction
-
-    " autocmd FileType clojure call ActivateRainbowParen()
 augroup END
 
 "let g:clojure_fold = 1
@@ -570,38 +564,6 @@ let g:ctrlp_custom_ignore = '\v(out|target|bin|vendor)/*'
 if executable('rg')
     let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
-" }}}
-
-" Plugins(Rainbow-paren)
-" {{{
-"RAINBOW-PAREN
-let g:rbpt_colorpairs = [
-        \ ['brown',       'RoyalBlue3'],
-        \ ['Darkblue',    'SeaGreen3'],
-        \ ['darkgray',    'DarkOrchid3'],
-        \ ['darkgreen',   'firebrick3'],
-        \ ['darkcyan',    'RoyalBlue3'],
-        \ ['darkred',     'SeaGreen3'],
-        \ ['darkmagenta', 'DarkOrchid3'],
-        \ ['brown',       'firebrick3'],
-        \ ['gray',        'RoyalBlue3'],
-        \ ['black',       'SeaGreen3'],
-        \ ['darkmagenta', 'DarkOrchid3'],
-        \ ['Darkblue',    'firebrick3'],
-        \ ['darkgreen',   'RoyalBlue3'],
-        \ ['darkcyan',    'SeaGreen3'],
-        \ ['darkred',     'DarkOrchid3'],
-        \ ['red',         'firebrick3'],
-        \ ]
-let g:rbpt_max = 8
-let g:rbpt_loadcmd_toggle = 0
-
-function! ActivateRainbowParen()
-    RainbowParenthesesLoadRound
-    RainbowParenthesesLoadSquare
-    RainbowParenthesesLoadBraces
-    RainbowParenthesesActivate
-endfunction
 " }}}
 
 " Plugins(Rainbow)
@@ -893,8 +855,6 @@ nnoremap <Leader>S :Hex<CR>
 nnoremap <Leader>V :Vex!<CR>
 nnoremap <Leader>ve :split $HOME/dotfiles/vimrc<CR>
 nnoremap <silent> <Leader>vs :so $MYVIMRC<CR>
-"After re-loading .vimrc, rainbow paren gets off.
-"You should do <C-L> on each clojure buffer to re-activate it.
 nnoremap <Leader>m :MRU<CR>
 nnoremap <silent> <Leader>l :BufExplorerHorizontalSplit<CR>
 nnoremap <Leader>o :CtrlPMixed<CR>
