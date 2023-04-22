@@ -65,7 +65,7 @@ Pack 'keith/investigate.vim'
 " Pack 'mattn/vim-lsp-settings'
 
 " Clojure
-Pack 'guns/vim-clojure-static', {'for': 'clojure'}
+" Pack 'guns/vim-clojure-static', {'for': 'clojure'}
 Pack 'tpope/vim-fireplace', {'for': 'clojure'}
 Pack 'guns/vim-sexp', {'for': 'clojure'}
 Pack 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
@@ -233,6 +233,7 @@ augroup vimrc_tab
     autocmd FileType css setlocal sw=4 noet " need sw(bug?)
     autocmd FileType clojure setlocal sw=2 ts=2 et " need sw(bug?)
     autocmd FileType markdown setlocal ts=2 et
+    autocmd FileType ruby setlocal ts=2 et
     autocmd FileType sql setlocal ts=2 et
     autocmd FileType mru setlocal ts=32 et
 augroup END
