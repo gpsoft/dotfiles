@@ -78,7 +78,7 @@ Pack 'ap/vim-css-color',  {'for': 'css'}
 Pack 'kannokanno/previm'
 Pack 'tyru/open-browser.vim',  {'for': ['markdown', 'html']}
 Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
-Pack 'vim-scripts/dbext.vim', {'on': 'Sql'}
+Pack 'vim-scripts/dbext.vim'
 
 "'vim-scripts/Align'
 
@@ -161,13 +161,7 @@ set foldlevelstart=99
 set noundofile
 set backup
 set noswapfile
-if has('mac') || has('unix')
-    set backupdir=/var/tmp/bak
-    set backupskip=/tmp/*,/private/tmp/*
-    if !isdirectory(&backupdir)
-        call mkdir(&backupdir, 'p')
-    endif
-elseif has('win32unix')
+if has('win32unix')
     if isdirectory('/c/tmp/apptmp')
         set backupdir=/c/tmp/apptmp/bak
     elseif isdirectory('/d/tmp/apptmp')
@@ -175,6 +169,12 @@ elseif has('win32unix')
     else
         set nobackup
         set noswapfile
+    endif
+elseif has('mac') || has('unix')
+    set backupdir=/var/tmp/bak
+    set backupskip=/tmp/*,/private/tmp/*
+    if !isdirectory(&backupdir)
+        call mkdir(&backupdir, 'p')
     endif
 else
     if isdirectory('c:\tmp\apptmp\bak')
@@ -308,10 +308,10 @@ augroup vimrc_php
     }
 augroup END
 
-let php_htmlInStrings=1
+let php_htmlInStrings=0
 let php_sql_query=1
 let php_baselib=1
-let php_parent_error_close=1
+let php_parent_error_close=0
 " let php_folding=1   " it may slow vim down
 
 function! s:NextPhpSection(type, backwards, visual)
@@ -414,6 +414,10 @@ let g:netrw_keepj="keepj"
 " let g:netrw_silent=1
 autocmd FileType netrw setl bufhidden=delete
 
+" LSP
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+
 " MATCHIT
 runtime macros/matchit.vim
 
@@ -455,6 +459,9 @@ let g:tagbar_type_php={
         \ 'i:interfaces',
         \ 'd:constant definitions:0:0',
         \ 'f:functions']}
+let g:tagbar_type_javascript={
+        \ 'kinds': [
+        \ 'f:functions:1']}
 
 " BufExplorer
 let g:bufExplorerShowDirectories=0
