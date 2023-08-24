@@ -155,7 +155,7 @@ set incsearch
 set hlsearch
 set wrapscan
 set history=200
-set wildignore+=**/obj/**,**/debug/**,**/bin/**
+set wildignore+=**/obj/**,**/debug/**,**/bin/**,**/lib/**
 set foldlevelstart=99
 
 set noundofile
@@ -649,6 +649,16 @@ nnoremap <silent> <C-w>p :TmuxNavigatePrevious<cr>
 " {{{
 let g:investigate_url_for_php="http://php.net/search.php?show=quickref&pattern=^s"
 " }}}
+
+" Keymap for quickfix
+augroup qfopen
+    function! QFopen() abort
+        nmap <buffer> <Leader>gg :echoe 'Do NOT vimgrep on quickfix!'<CR>
+        nmap <buffer> <Leader>gG :echoe 'Do NOT vimgrep on quickfix!'<CR>
+    endfunction
+    au!
+    au FileType qf call QFopen()
+augroup END
 
 " Custom commands
 " {{{
