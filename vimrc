@@ -650,14 +650,15 @@ nnoremap <silent> <C-w>p :TmuxNavigatePrevious<cr>
 let g:investigate_url_for_php="http://php.net/search.php?show=quickref&pattern=^s"
 " }}}
 
-" Keymap for quickfix
-augroup qfopen
-    function! QFopen() abort
-        nmap <buffer> <Leader>gg :echoe 'Do NOT vimgrep on quickfix!'<CR>
-        nmap <buffer> <Leader>gG :echoe 'Do NOT vimgrep on quickfix!'<CR>
+" Keymap for grep guard
+augroup grepGuard
+    function! GrepGuard() abort
+        nmap <buffer> <Leader>gg :echoe 'Do NOT vimgrep on quickfix or netrw!'<CR>
+        nmap <buffer> <Leader>gG :echoe 'Do NOT vimgrep on quickfix or netrw!'<CR>
     endfunction
     au!
-    au FileType qf call QFopen()
+    au FileType qf call GrepGuard()
+    au FileType netrw call GrepGuard()
 augroup END
 
 " Custom commands
