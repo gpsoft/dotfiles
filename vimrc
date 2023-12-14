@@ -280,6 +280,31 @@ augroup END
     "    Global setting doesn't work for some filetypes
 " }}}
 
+" FileType(js)
+" {{{
+augroup vimrc_js
+    autocmd!
+    autocmd FileType javascript {
+        noremap <script> <buffer> <silent> ]]
+                \ :call <SID>NextPhpSection(1, 0, 0)<cr>
+        noremap <script> <buffer> <silent> [[
+                \ :call <SID>NextPhpSection(1, 1, 0)<cr>
+        noremap <script> <buffer> <silent> ][
+                \ :call <SID>NextPhpSection(2, 0, 0)<cr>
+        noremap <script> <buffer> <silent> []
+                \ :call <SID>NextPhpSection(2, 1, 0)<cr>
+        vnoremap <script> <buffer> <silent> ]]
+                \ :<c-u>call <SID>NextPhpSection(1, 0, 1)<cr>
+        vnoremap <script> <buffer> <silent> [[
+                \ :<c-u>call <SID>NextPhpSection(1, 1, 1)<cr>
+        vnoremap <script> <buffer> <silent> ][
+                \ :<c-u>call <SID>NextPhpSection(2, 0, 1)<cr>
+        vnoremap <script> <buffer> <silent> []
+                \ :<c-u>call <SID>NextPhpSection(2, 1, 1)<cr>
+    }
+augroup END
+" }}}
+
 " FileType(php)
 " {{{
 augroup vimrc_php
@@ -321,7 +346,7 @@ function! s:NextPhpSection(type, backwards, visual)
     endif
 
     if a:type == 1
-        let pattern = '\v^\s*(public |private ){0,1}function'
+        let pattern = '\v^\s*(public|private){0,1}\s*function\s+'
         " note that using {0,1} instead of ?
         " for backward search
         let flags = ''
