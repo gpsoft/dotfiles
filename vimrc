@@ -20,7 +20,7 @@ endif
 " {{{
 syntax enable
 filetype plugin indent on
-call plugpac#begin()
+call plugpac#Begin()
 Pack 'k-takata/minpac', {'type': 'opt'}
 
 " Themes
@@ -37,7 +37,8 @@ Pack 'easymotion/vim-easymotion'
 Pack 'christoomey/vim-tmux-navigator'
 Pack 'tpope/vim-surround'
 Pack 'tpope/vim-repeat'
-Pack 'tpope/vim-fugitive', {'on': ['Git', 'Gdiff', 'Gclog']}
+" Pack 'tpope/vim-fugitive', {'on': ['Git', 'Gdiff', 'Gclog']}
+Pack 'tpope/vim-fugitive'
 Pack 'osyo-manga/vim-over'
 Pack 'tpope/vim-abolish'
 
@@ -86,7 +87,7 @@ if filereadable(expand("~/.vimrc.plugins.local"))
     source ~/.vimrc.plugins.local
 endif
 
-call plugpac#end()
+call plugpac#End()
 " }}}
 
 " Basic settings
@@ -309,7 +310,7 @@ augroup vimrc_php
 augroup END
 
 let php_htmlInStrings=0
-let php_sql_query=1
+let php_sql_query=0
 let php_baselib=1
 let php_parent_error_close=0
 " let php_folding=1   " it may slow vim down
@@ -923,7 +924,8 @@ nnoremap <Leader>gd :Gdiff<CR>
 " nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gb :Git blame -w -M<CR>
 nnoremap <Leader>gl :exe ':Git! ll --follow -- '.expand('%')<CR><C-w>k
-nnoremap <Leader>gL :Gclog! --all<CR>:copen<CR><C-w>J
+" nnoremap <Leader>gL :Gclog! --all<CR>:copen<CR><C-w>J
+nnoremap <Leader>gL :Git -p lg --all<CR>
 nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gW :Gwrite<CR>
 " nnoremap <Leader>gp :Git push<CR>
