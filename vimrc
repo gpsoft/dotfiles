@@ -79,9 +79,9 @@ Pack 'ap/vim-css-color',  {'for': 'css'}
 Pack 'kannokanno/previm'
 Pack 'tyru/open-browser.vim',  {'for': ['markdown', 'html']}
 Pack 'vim-scripts/SQLUtilities', {'for': 'sql'}
+Pack 'vim-scripts/Align', {'for': 'sql'}
 Pack 'vim-scripts/dbext.vim'
 
-"'vim-scripts/Align'
 
 if filereadable(expand("~/.vimrc.plugins.local"))
     source ~/.vimrc.plugins.local
