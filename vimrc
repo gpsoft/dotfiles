@@ -146,7 +146,7 @@ set scrolloff=1
 set sidescrolloff=3
 
 set suffixesadd=.clj,.cljs,.rb  " for gf
-set nrformats=                  " format for <C-A> or <C-X>
+set nrformats=unsigned          " format for <C-A> or <C-X>
 set hidden
 
 set ignorecase
