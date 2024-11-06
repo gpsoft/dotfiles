@@ -139,6 +139,7 @@ set completeopt=menuone
 set formatoptions+=j
 set noautoread
 set pastetoggle=<F2>
+set showtabline=2
 
 set timeout timeoutlen=600 ttimeoutlen=100
 "    longer ttimeoutlen makes slow to move from insert mode to normal mode.
