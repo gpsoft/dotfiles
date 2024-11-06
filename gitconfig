@@ -22,3 +22,5 @@
 	co = checkout
 	com = commit
 	ls = ls-files
+[safe]
+	directory = *
