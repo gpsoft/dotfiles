@@ -347,23 +347,40 @@ function! s:NextPhpSection(type, backwards, visual)
         normal! gv
     endif
 
+    let pattern = '\v^\s*(public|private){0,1}\s*function\s+'
+    " Note that using {0,1} instead of ? for backward search
+
     if a:type == 1
-        let pattern = '\v^\s*(public|private){0,1}\s*function\s+'
-        " note that using {0,1} instead of ?
-        " for backward search
-        let flags = ''
-    elseif a:type == 2
-        let pattern = '\v^}'
-        let flags = ''
+        call search(pattern, a:backwards ? 'bW' : 'W')
+        return
+    endif
+
+    let c = line('.')                 " current
+    let pos = getpos('.')
+    let ct = search(pattern, 'bWc')   " closest top
+    if ct <= 0
+        return
+    endif
+    call search('{')
+    execute 'silent normal! %\r'
+    let cb = line('.')                " closest bottom
+
+    if a:backwards && c > cb
+        return
+    endif
+    if !a:backwards && c < cb
+        return
     endif
 
     if a:backwards
-        let dir = '?'
-    else
-        let dir = '/'
+        call search(pattern, 'bW')
     endif
-
-    execute 'silent normal! ' . dir . pattern . dir . flags . "\r"
+    if search(pattern, a:backwards ? 'bW' : 'W') <= 0
+        call setpos('.', pos)
+        return
+    endif
+    call search('{')
+    execute 'silent normal! %\r'
 endfunction
 
 " function! s:PhpIndent() range
