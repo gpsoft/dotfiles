@@ -1,7 +1,7 @@
 set vicmd=gvim
 set cpoptions-=t
 
-colorscheme = juef-zenburn
+colorscheme juef-zenburn
 
 nnoremap - h
 "nnoremap l <nop>
