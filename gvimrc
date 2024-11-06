@@ -8,16 +8,11 @@ set fileencodings=utf-8,cp932,sjis,utf-16le,euc-jp
 set fileformats=unix,dos,mac
 " }}}
 
-" Basic settings
+" Color settings
 " {{{
 " set t_Co=256
 
-" Slate
-" set background=dark
-" colorscheme slate
-
 " Solarized
-set background=light
 augroup gvimrc_color
     autocmd!
     autocmd ColorScheme solarized highlight! SpecialKey guifg=grey guibg=#fdf6e3
@@ -25,14 +20,22 @@ augroup gvimrc_color
     autocmd ColorScheme solarized highlight! MatchParen guifg=red guibg=#FBD6D0
     autocmd ColorScheme solarized highlight! Comment gui=NONE
 augroup END
-colorscheme solarized
 let g:solarized_menu=0
 
 highlight ColorColumn guibg=#ffcfcf
 
+" Should be overwritten in gvimrc.local
+set background=light
+colorscheme solarized
+
+" }}}
+
+" Basic settings
+" {{{
 set relativenumber
 set guioptions-=m
 set guioptions-=T
+set mouse=c
 
 if ( has('win32') || has('win64') )
     set list lcs=tab:»\ ,eol:¬,trail:∙

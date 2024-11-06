@@ -4,6 +4,10 @@
 
 set linespace=0
 
+" Color
+" set background=dark
+" colorscheme slate
+
 " Font
 " Mac/Win
 " set guifont=Consolas:h12
