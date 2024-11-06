@@ -62,8 +62,8 @@ endif
 " {{{
 
 highlight iCursor guifg=white guibg=steelblue
-set guicursor=n-v-c:block-Cursor-blinkon0
-set guicursor+=i-ci:ver30-iCursor-blinkon0
+" set guicursor=n-v-c:block-Cursor-blinkon0
+" set guicursor+=i-ci:ver30-iCursor-blinkon0
 " set guicursor+=i-ci:ver30-iCursor-blinkwait300-blinkon300-blinkoff100
 " set guicursor+=n-v-c:blinkon0
 " set guicursor+=i-ci:blinkon0
