@@ -39,6 +39,7 @@ Pack 'tpope/vim-surround'
 Pack 'tpope/vim-repeat'
 " Pack 'tpope/vim-fugitive', {'on': ['Git', 'Gdiff', 'Gclog']}
 Pack 'tpope/vim-fugitive'
+Pack 'tpope/vim-dispatch'
 Pack 'osyo-manga/vim-over'
 Pack 'tpope/vim-abolish'
 
@@ -400,7 +401,7 @@ augroup vimrc_clj
     " autocmd FileType clojure setlocal complete+=k~/dotfiles/dic/clojure.txt
 
     autocmd FileType clojure nnoremap <buffer> cpP :Eval<CR>
-    autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):silent !Eval (#?(:clj clojure.pprint/pprint :cljs cljs.pprint/pprint) 0)<CR>:redraw!<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:0,$-1yank<CR>:q!<CR>%p
+    autocmd FileType clojure nnoremap <buffer> <silent> cp@ ya):silent !Eval (#?(:clj clojure.pprint/pprint :cljs cljs.pprint/pprint) 0)<CR>:redraw!<CR>:Last<CR>:setlocal modifiable<CR>:%s/\r//ge<CR>:%yank<CR>:q!<CR>%p
     autocmd FileType clojure nnoremap <buffer> <silent> cpR :Eval (if-let [r (resolve 'user/reset)] (do (with-out-str (r)) 'reset!) (symbol "No reset func; use cpe"))<CR>
     autocmd FileType clojure nnoremap <buffer> <silent> cpe :Require!<CR>
     autocmd FileType clojure nnoremap <buffer> <C-]> :split<CR>:normal ]<C-D><CR>
@@ -457,7 +458,7 @@ runtime macros/matchit.vim
 
 " MRU
 let MRU_Max_Entries = 100
-let MRU_Exclude_Files = '^crontab\.\|MERGE_MSG\|COMMIT_EDITMSG'
+let MRU_Exclude_Files = '^crontab\.\|MERGE_MSG\|COMMIT_EDITMSG\|^c:\\tmp\\.*\|^c:\\temp\\.*'
 let MRU_Filename_Format = {
         \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
         \ 'parser': '\t- \zs.*\ze$',
