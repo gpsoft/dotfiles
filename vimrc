@@ -119,6 +119,8 @@ set showmode
 set showcmd
 set textwidth=0
 set number
+set splitright
+set splitbelow
 set relativenumber
 "    Relativenumber can make scroll slow in terminal.
 
