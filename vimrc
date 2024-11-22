@@ -349,7 +349,7 @@ function! s:NextPhpSection(type, backwards, visual)
         normal! gv
     endif
 
-    let pattern = '\v^\s*(public|private){0,1}\s*function\s+'
+    let pattern = '\v^\s*(public|private|protected){0,1}\s*function\s+'
     " Note that using {0,1} instead of ? for backward search
 
     if a:type == 1
