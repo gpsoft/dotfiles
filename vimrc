@@ -120,7 +120,7 @@ set showcmd
 set textwidth=0
 set number
 set splitright
-set splitbelow
+" set splitbelow
 set relativenumber
 "    Relativenumber can make scroll slow in terminal.
 
@@ -160,7 +160,7 @@ set incsearch
 set hlsearch
 set wrapscan
 set history=200
-set wildignore+=**/obj/**,**/debug/**,**/bin/**,**/lib/**
+set wildignore+=**/obj/**,**/debug/**,**/bin/**,**/lib/**,**/min.js/**,**/min.css/**
 set foldlevelstart=99
 
 set noundofile
@@ -478,7 +478,7 @@ runtime macros/matchit.vim
 
 " MRU
 let MRU_Max_Entries = 100
-let MRU_Exclude_Files = '^crontab\.\|MERGE_MSG\|COMMIT_EDITMSG\|^c:\\tmp\\.*\|^c:\\temp\\.*'
+let MRU_Exclude_Files = '^crontab\.\|MERGE_MSG\|COMMIT_EDITMSG\|^c:\\tmp\\.*\|^c:\\temp\\.*|^x:\\'
 let MRU_Filename_Format = {
         \ 'formatter': 'fnamemodify(v:val,":t")."\t- ".v:val',
         \ 'parser': '\t- \zs.*\ze$',
@@ -1028,6 +1028,7 @@ xnoremap <Leader>p :<C-u>call PasteReplace()<CR>
 nnoremap <Leader>td : call TortoiseCommand('diff', '')<CR>
 nnoremap <Leader>tl : call TortoiseCommand('log', '')<CR>
 nnoremap <Leader>tc : call TortoiseCommand('commit', '')<CR>
+nnoremap <Leader>tu : call TortoiseCommand('update', '')<CR>
 nnoremap <Leader>tb : call TortoiseBlame()<CR>
 
 " Investigate
