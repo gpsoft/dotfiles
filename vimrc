@@ -515,6 +515,11 @@ let g:bufExplorerShowDirectories=0
 let g:bufExplorerShowNoName=0
 let g:bufExplorerShowUnlisted=0
 let g:bufExplorerSortBy='fullpath'
+let g:bufExplorerFindActive=0
+augroup vimrc_bufexplorer
+    autocmd!
+    autocmd User BufExplorer_Started nnoremap <buffer> <CR> <Plug>(BufExplorer_OpenBufferOriginalWindow)
+augroup END
 
 " Open-Browser & previm
 " let g:netrw_browsex_viewer="firefox-bin"
